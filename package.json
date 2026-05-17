@@ -1,0 +1,24 @@
+{
+  "name": "pattaya-rent-a-car",
+  "version": "1.0.0",
+  "description": "Production-ready multi-page static marketing website for Pattaya Rent A Car.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js && npx tailwindcss -i src/styles/main.css -o dist/assets/css/main.css",
+    "start": "node scripts/server.js"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "fs-extra": "^11.3.0",
+    "glob": "^11.0.1",
+    "lucide-react": "^0.546.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "tsx": "^4.21.0"
+  }
+}

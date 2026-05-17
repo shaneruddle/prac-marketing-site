@@ -1,0 +1,150 @@
+<!-- Hero Section -->
+<section class="min-h-[80vh] flex flex-col pt-12">
+    <div class="container mx-auto px-6 flex-1 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <!-- Editorial Left Section -->
+        <div class="md:col-span-7 py-12">
+            <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Cars available right now
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-light leading-[1.1] tracking-tight mb-8 text-ink">
+                Easiest booking.<br/><span class="font-black italic text-primary">Best service</span> in Pattaya.
+            </h1>
+            <p class="text-lg text-gray-500 max-w-lg mb-10 leading-relaxed font-medium">
+                Premium fleet, free delivery to your hotel, and 24/7 support. No hidden fees. Just the freedom to explore Chonburi.
+            </p>
+
+            <!-- Trust Indicators -->
+            <div class="flex flex-wrap gap-8 items-center border-t border-gray-100 pt-10">
+                <div>
+                    <div class="text-2xl font-black text-ink"><%= site.trust.years %> Years</div>
+                    <div class="text-[10px] text-gray-400 uppercase font-black tracking-widest">In Pattaya</div>
+                </div>
+                <div class="hidden sm:block w-px h-10 bg-gray-100"></div>
+                <div>
+                    <div class="text-2xl font-black text-ink">★ <%= site.trust.googleRating %></div>
+                    <div class="text-[10px] text-gray-400 uppercase font-black tracking-widest"><%= site.trust.googleReviews %> Google Reviews</div>
+                </div>
+                <div class="hidden sm:block w-px h-10 bg-gray-100"></div>
+                <div class="flex -space-x-3">
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200"></div>
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-300"></div>
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-[10px] text-white font-black uppercase"><%= site.trust.customers.replace('+', 'k+') %></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Section Right -->
+        <div class="md:col-span-5 pb-12">
+            <%- include('../components/date-picker', { locations, currentLoc: 'central-pattaya' }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Strip Component (Muted style) -->
+<div class="bg-gray-900 h-20 text-white hidden md:flex items-center">
+    <div class="container mx-auto px-6 flex justify-between">
+        <div class="flex gap-12">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-primary italic font-black">C</div>
+                <span class="text-[10px] font-black uppercase tracking-widest">Free Cancellation</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-primary italic font-black">H</div>
+                <span class="text-[10px] font-black uppercase tracking-widest">Hotel Delivery</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-primary italic font-black">24</div>
+                <span class="text-[10px] font-black uppercase tracking-widest">24/7 Support</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Key Features -->
+<section class="py-24">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Us?</h2>
+            <p class="text-gray-500 max-w-xl mx-auto">We focus on making your holiday stress-free with the smoothest rental process in Thailand.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <% [
+                { title: 'Free Cancellation', desc: 'Up to 24 hours before your pickup, no questions asked.', icon: 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' },
+                { title: '24/7 Support', desc: 'Real humans ready to help you on WhatsApp and Line anytime.', icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z' },
+                { title: 'Full Insurance', desc: 'Every rental includes comprehensive insurance for your peace of mind.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+                { title: 'Hotel Delivery', desc: 'We bring the car to you. No need to visit our office.', icon: 'M5 13l4 4L19 7' }
+            ].forEach(feature => { %>
+                <div class="card-editorial transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-8 border border-blue-100/50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="<%= feature.icon %>"/></svg>
+                    </div>
+                    <h3 class="text-xl font-black mb-4 text-ink italic uppercase tracking-tight"><%= feature.title %></h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-medium"><%= feature.desc %></p>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Fleet -->
+<section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Featured Fleet</h2>
+                <p class="text-gray-500">From budget city cars to premium family SUVs.</p>
+            </div>
+            <a href="/cars" class="text-orange-600 font-bold hover:underline flex items-center gap-1">
+                View All Cars
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% cars.slice(0, 3).forEach(car => { %>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                    <div class="aspect-[4/3] bg-gray-200 relative">
+                        <!-- Placeholder for car image -->
+                        <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-medium">Image: <%= car.name %></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold group-hover:text-primary transition-colors"><%= car.name %></h3>
+                                <div class="flex items-center gap-3 text-xs text-ink/40 font-black uppercase tracking-widest mt-1">
+                                    <span><%= car.transmission %></span>
+                                    <span class="w-1 h-1 bg-gray-200 rounded-full"></span>
+                                    <span><%= car.seats %> Seats</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="/cars/<%= car.slug %>" class="flex-1 text-center py-3 rounded-xl border border-gray-100 text-[10px] font-black uppercase tracking-widest text-ink/40 hover:text-primary hover:border-primary transition-colors">Details</a>
+                            <a href="/cars/<%= car.slug %>" class="btn-primary flex-1 text-xs py-3">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Locations Selection -->
+<section class="py-24">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Available All Over Pattaya</h2>
+            <p class="text-gray-500">Wherever you stay, we deliver for free.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <% locations.forEach(loc => { %>
+                <a href="/locations/<%= loc.slug %>" class="p-4 rounded-xl border border-gray-100 hover:border-orange-500 hover:bg-orange-50 transition-all text-center group">
+                    <span class="block font-bold group-hover:text-orange-700 transition-colors"><%= loc.name %></span>
+                </a>
+            <% }) %>
+        </div>
+    </div>
+</section>

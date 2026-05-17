@@ -1,0 +1,54 @@
+<section class="bg-gray-50 pt-32 pb-24">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Contact Us</h1>
+        <p class="text-xl text-gray-500 max-w-2xl">We are here 24/7. Reach out via WhatsApp, Line, or visit our office in Central Pattaya.</p>
+    </div>
+</section>
+
+<section class="py-24">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Our Office</h3>
+                    <div class="space-y-4">
+                        <p class="flex gap-4">
+                            <span class="font-bold text-gray-400 w-24">Address</span>
+                            <span><%= site.address.street %>, <%= site.address.area %>, <%= site.address.city %>, <%= site.address.country %> <%= site.address.zip %></span>
+                        </p>
+                        <p class="flex gap-4">
+                            <span class="font-bold text-gray-400 w-24">Hours</span>
+                            <span class="text-green-600 font-bold uppercase tracking-widest text-xs mt-1">Open 24/7</span>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Direct Contact</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="https://wa.me/<%= site.contact.whatsapp %>" class="flex items-center gap-4 p-4 border border-gray-100 rounded-2xl hover:border-green-500 transition-all group">
+                            <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center shrink-0">
+                                WhatsApp
+                            </div>
+                            <span class="font-bold text-gray-900"><%= site.contact.whatsapp %></span>
+                        </a>
+                        <a href="mailto:<%= site.contact.email %>" class="flex items-center gap-4 p-4 border border-gray-100 rounded-2xl hover:border-gray-500 transition-all group">
+                            <div class="w-12 h-12 bg-gray-50 text-gray-400 rounded-xl flex items-center justify-center shrink-0">
+                                Email
+                            </div>
+                            <span class="font-bold text-gray-900">Send Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl">
+                <h3 class="text-2xl font-bold mb-6">Send an Enquiry</h3>
+                <form id="contact-form" class="space-y-4">
+                    <input type="text" placeholder="Your Name" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
+                    <input type="email" placeholder="Your Email" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
+                    <textarea rows="6" placeholder="How can we help you?" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                    <button type="submit" class="w-full bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all">Submit Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

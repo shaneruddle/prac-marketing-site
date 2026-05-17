@@ -1,0 +1,45 @@
+<section class="bg-paper pt-32 pb-24 border-b border-gray-100">
+    <div class="container mx-auto px-6">
+        <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
+            Scooter & Motorbikes
+        </div>
+        <h1 class="text-4xl md:text-6xl font-light tracking-tight mb-6 text-ink">Motorbike <span class="font-black italic text-primary">Rental</span></h1>
+        <p class="text-xl text-gray-500 max-w-2xl font-medium">The ultimate freedom in Pattaya. Modern, well-maintained bikes including Honda Click, PCX, and more.</p>
+    </div>
+</section>
+
+<section class="py-24">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <% [
+                { name: 'Honda Click 125i', price: 250, desc: 'Perfect city commuter. Easy to park and fuel efficient.' },
+                { name: 'Honda PCX 160', price: 500, desc: 'Premium scooter with extra storage and comfort for longer rides.' },
+                { name: 'Yamaha NMAX', price: 500, desc: 'Great performance and safe braking with ABS.' },
+                { name: 'Yamaha Aerox 155', price: 450, desc: 'Sporty look and powerful engine for a fun ride.' }
+            ].forEach(bike => { %>
+                <div class="card-editorial flex flex-col transition-all hover:-translate-y-1">
+                    <div class="w-full aspect-square bg-paper rounded-2xl mb-8 flex items-center justify-center text-gray-300 font-black uppercase tracking-widest text-[10px]">
+                        <%= bike.name %> Image
+                    </div>
+                    <h3 class="text-2xl font-black mb-2 text-ink"><%= bike.name %></h3>
+                    <p class="text-xs text-gray-400 font-medium leading-relaxed mb-8"><%= bike.desc %></p>
+                    <a href="https://wa.me/<%= site.contact.whatsapp %>" class="btn-primary w-full text-xs py-3.5 mt-auto">Book WhatsApp</a>
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="mt-24 max-w-4xl mx-auto bg-blue-50 p-12 rounded-[2rem] border border-blue-100">
+            <h2 class="text-2xl font-black text-ink mb-8 italic uppercase tracking-tight">Essential Information</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <% ['Valid passport and driving license required.', 'Helmets included for both riders.', 'IDP recommended for legality.', 'Full tank to full tank policy.'].forEach(info => { %>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-6 h-6 bg-blue-100 text-primary rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-sm font-medium text-blue-900/60 leading-snug"><%= info %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</section>

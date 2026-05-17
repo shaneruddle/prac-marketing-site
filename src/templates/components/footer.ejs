@@ -1,0 +1,73 @@
+<footer class="bg-ink text-white">
+    <!-- Main Footer Features -->
+    <div class="border-b border-white/5 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white font-black text-lg">P</div>
+                        <span class="text-lg font-black tracking-tight uppercase">Pattaya <span class="text-primary tracking-normal lowercase">Rent A Car</span></span>
+                    </div>
+                    <p class="text-white/40 text-xs leading-relaxed max-w-xs mb-8">
+                        The easiest and most reliable car rental service in Pattaya. Operating since 2016 with over 50+ vehicles.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="https://wa.me/<%= site.contact.whatsapp %>" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <span class="text-xs font-black italic">W</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <span class="text-xs font-black italic">L</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-8">Company</h4>
+                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-white/50">
+                        <li><a href="<%= lang === 'en' ? '/about' : '/' + lang + '/about' %>" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="<%= lang === 'en' ? '/blog' : '/' + lang + '/blog' %>" class="hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="<%= lang === 'en' ? '/faq' : '/' + lang + '/faq' %>" class="hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="<%= lang === 'en' ? '/contact' : '/' + lang + '/contact' %>" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-8">Services</h4>
+                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-white/50">
+                        <li><a href="<%= lang === 'en' ? '/long-term-rental' : '/' + lang + '/long-term-rental' %>" class="hover:text-primary transition-colors">Long Term Rental</a></li>
+                        <li><a href="<%= lang === 'en' ? '/motorbike-rental' : '/' + lang + '/motorbike-rental' %>" class="hover:text-primary transition-colors">Motorbikes</a></li>
+                        <li><a href="<%= lang === 'en' ? '/locations' : '/' + lang + '/locations' %>" class="hover:text-primary transition-colors">Pick-up Points</a></li>
+                        <li><a href="<%= lang === 'en' ? '/insurance' : '/' + lang + '/insurance' %>" class="hover:text-primary transition-colors">Insurance</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-8">Contact</h4>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-white/20 mb-2">Office</p>
+                            <p class="text-xs font-bold text-white/60"><%= site.address.street %>, <%= site.address.city %></p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-white/20 mb-2">Phone</p>
+                            <a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>" class="text-lg font-black text-white hover:text-primary transition-colors"><%= site.contact.phone %></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="py-10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[10px] font-black uppercase tracking-widest text-white/20">
+                © <%= new Date().getFullYear() %> <%= site.name %>. All rights reserved.
+            </p>
+            <div class="flex gap-8 text-[10px] font-black uppercase tracking-widest text-white/20">
+                <a href="<%= lang === 'en' ? '/terms' : '/' + lang + '/terms' %>" class="hover:text-white transition-colors">Terms</a>
+                <a href="<%= lang === 'en' ? '/privacy' : '/' + lang + '/privacy' %>" class="hover:text-white transition-colors">Privacy</a>
+            </div>
+        </div>
+    </div>
+</footer>

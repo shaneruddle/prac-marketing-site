@@ -1,0 +1,53 @@
+<section class="bg-gray-900 pt-32 pb-24 text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Long Term Car Rental</h1>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">Special rates for expats and digital nomads. Starting from ฿15,000 per month including all maintenance.</p>
+    </div>
+</section>
+
+<section class="py-24">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-8">Benefits of Monthly Rental</h2>
+                <div class="space-y-6">
+                    <% [
+                        { t: 'Significant Discounts', d: 'Get up to 40% off standard daily rates for monthly contracts.' },
+                        { t: 'Free Maintenance', d: 'Oil changes, tire rotation, and mechanical checks all included.' },
+                        { t: 'Flexible Car Swapping', d: 'Need a different car for a weekend trip? Swap within our fleet easily.' },
+                        { t: 'No Long-term Commitment', d: 'Rent month-to-month or for a full year. You decide.' }
+                    ].forEach(benefit => { %>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900"><%= benefit.t %></h4>
+                                <p class="text-sm text-gray-500"><%= benefit.d %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-2xl">
+                <h3 class="text-2xl font-bold mb-6">Enquire Now</h3>
+                <form id="long-term-form" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Full Name" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
+                        <input type="email" placeholder="Email Address" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
+                    </div>
+                    <input type="tel" placeholder="WhatsApp / Phone Number" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
+                    <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
+                        <option>Desired Car Type</option>
+                        <option>Economy Sedan</option>
+                        <option>Family SUV</option>
+                        <option>Work Pickup</option>
+                    </select>
+                    <textarea rows="4" placeholder="How many months do you need the car for?" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                    <button type="submit" class="w-full bg-orange-500 text-white font-bold py-4 rounded-xl hover:bg-orange-600 transition-all">Send Request</button>
+                    <p class="text-[10px] text-gray-400 text-center">We will contact you via WhatsApp or Email within 2 hours.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

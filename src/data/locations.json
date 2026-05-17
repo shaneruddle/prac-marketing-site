@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "central-pattaya",
+    "name": "Central Pattaya",
+    "description": "The heart of the action. We offer free delivery to all hotels and condos in Central Pattaya."
+  },
+  {
+    "slug": "jomtien",
+    "name": "Jomtien",
+    "description": "Family-friendly beach vibes. Perfect for long-term rentals and quiet stays."
+  },
+  {
+    "slug": "naklua",
+    "name": "Naklua",
+    "description": "Experience the local side of Pattaya. Fast delivery to North Pattaya and Naklua area."
+  },
+  {
+    "slug": "pratumnak",
+    "name": "Pratumnak",
+    "description": "The 'Beverly Hills' of Pattaya. Upscale stays deserve upscale rental service."
+  },
+  {
+    "slug": "wongamat",
+    "name": "Wongamat",
+    "description": "Exclusive beachfront living. We deliver right to your luxury high-rise lobby."
+  },
+  {
+    "slug": "north-pattaya",
+    "name": "North Pattaya",
+    "description": "Home to Terminal 21 and luxury resorts. Easy access to the highway for Bangkok trips."
+  },
+  {
+    "slug": "south-pattaya",
+    "name": "South Pattaya",
+    "description": "Close to Walking Street and the pier. Ideal for those heading to Koh Larn."
+  },
+  {
+    "slug": "east-pattaya",
+    "name": "East Pattaya",
+    "description": "The 'Dark Side' — popular with expats and families near the scenic lakes."
+  },
+  {
+    "slug": "bang-saray",
+    "name": "Bang Saray",
+    "description": "A charming fishing village just 20 minutes from Pattaya. Perfect for a day trip."
+  },
+  {
+    "slug": "na-jomtien",
+    "name": "Na Jomtien",
+    "description": "Home to trendy beach clubs and big name resorts. We deliver to all villas."
+  },
+  {
+    "slug": "huai-yai",
+    "name": "Huai Yai",
+    "description": "Rural beauty meets modern luxury villas. A car is essential in this area."
+  },
+  {
+    "slug": "bang-lamung",
+    "name": "Bang Lamung",
+    "description": "The industrial and local heart. We serve all residential and business areas."
+  },
+  {
+    "slug": "sattahip",
+    "name": "Sattahip",
+    "description": "Beautiful navy beaches and clear water. Start your coastal road trip here."
+  }
+]

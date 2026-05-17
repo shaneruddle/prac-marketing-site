@@ -1,0 +1,10 @@
+{
+  "name": "Pattaya Rent A Car",
+  "description": "Official marketing website for Pattaya's leading car rental service. Built for SEO, speed, and AI readability.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

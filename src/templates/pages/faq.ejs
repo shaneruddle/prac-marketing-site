@@ -1,0 +1,38 @@
+<section class="bg-gray-100 pt-32 pb-24">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Frequently Asked Questions</h1>
+        <p class="text-xl text-gray-500">Everything you need to know about renting a car in Pattaya.</p>
+    </div>
+</section>
+
+<section class="py-24">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="space-y-12">
+            <% [
+                { cat: 'Booking & Cancellation', qas: [
+                    { q: 'How do I book a car?', a: 'You can book directly on our website or via WhatsApp. The online process takes less than a minute.' },
+                    { q: 'What is your cancellation policy?', a: 'We offer free cancellation up to 24 hours before your scheduled pickup.' }
+                ]},
+                { cat: 'Requirements', qas: [
+                    { q: 'What documents do I need?', a: 'A valid passport and a current driver’s license. An International Driving Permit (IDP) is highly recommended for legality in Thailand.' },
+                    { q: 'What is the minimum age?', a: 'The minimum age to rent most of our vehicles is 21 years old.' }
+                ]},
+                { cat: 'Insurance & Damage', qas: [
+                    { q: 'Is insurance included?', a: 'Yes, all rentals include comprehensive insurance. Excess levels apply depending on the vehicle class.' }
+                ]}
+            ].forEach(group => { %>
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-100"><%= group.cat %></h2>
+                    <div class="space-y-8">
+                        <% group.qas.forEach(item => { %>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2"><%= item.q %></h3>
+                                <p class="text-gray-500 leading-relaxed"><%= item.a %></p>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+[
+  { "code": "en", "name": "English", "flag": "🇺🇸", "path": "/" },
+  { "code": "th", "name": "ไทย", "flag": "🇹🇭", "path": "/th/" },
+  { "code": "ru", "name": "Русский", "flag": "🇷🇺", "path": "/ru/" },
+  { "code": "zh", "name": "中文", "flag": "🇨🇳", "path": "/zh/" },
+  { "code": "de", "name": "Deutsch", "flag": "🇩🇪", "path": "/de/" },
+  { "code": "fr", "name": "Français", "flag": "🇫🇷", "path": "/fr/" }
+]

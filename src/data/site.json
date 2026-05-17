@@ -1,0 +1,31 @@
+{
+  "name": "Pattaya Rent A Car",
+  "domain": "pattayarentacar.com",
+  "tagline": "Easiest booking. Best service in Pattaya.",
+  "companyName": "Pattaya Rent A Car Co., Ltd.",
+  "contact": {
+    "phone": "+66 38 123 4567",
+    "whatsapp": "+66 89 123 4567",
+    "line": "@pattayarentacar",
+    "email": "hello@pattayarentacar.com"
+  },
+  "address": {
+    "street": "123 Beach Road",
+    "area": "Central Pattaya",
+    "city": "Chonburi",
+    "zip": "20150",
+    "country": "Thailand"
+  },
+  "social": {
+    "facebook": "https://facebook.com/pattayarentacar",
+    "instagram": "https://instagram.com/pattayarentacar"
+  },
+  "trust": {
+    "years": "8+",
+    "customers": "12,000+",
+    "googleRating": "4.9",
+    "googleReviews": "450+",
+    "facebookRating": "4.9",
+    "facebookReviews": "320+"
+  }
+}

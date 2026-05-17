@@ -1,0 +1,83 @@
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="<%= lang === 'en' ? '/' : '/' + lang + '/' %>" class="flex items-center gap-3 transition-transform hover:scale-[1.02]" id="logo-link">
+            <img src="https://firebasestorage.googleapis.com/v0/b/pattaya-rent-a-car-rebuild.firebasestorage.app/o/PRAC-Logo-1.png?alt=media" alt="Pattaya RentaCar" class="h-10 w-auto">
+            <div class="flex flex-col">
+                <span class="text-xl font-black tracking-tight text-ink leading-tight uppercase">Pattaya <span class="text-primary tracking-normal font-extrabold lowercase">Rent A Car</span></span>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-10">
+            <div class="flex gap-8 text-xs font-black uppercase tracking-widest text-ink/60">
+                <a href="<%= lang === 'en' ? '/cars' : '/' + lang + '/cars' %>" class="hover:text-primary transition-colors <%= url.includes('/cars') ? 'text-primary' : '' %>">Our Fleet</a>
+                <a href="<%= lang === 'en' ? '/locations' : '/' + lang + '/locations' %>" class="hover:text-primary transition-colors <%= url.includes('/locations') ? 'text-primary' : '' %>">Locations</a>
+                <a href="<%= lang === 'en' ? '/long-term-rental' : '/' + lang + '/long-term-rental' %>" class="hover:text-primary transition-colors <%= url.includes('/long-term-rental') ? 'text-primary' : '' %>">Long Term</a>
+                <a href="<%= lang === 'en' ? '/faq' : '/' + lang + '/faq' %>" class="hover:text-primary transition-colors <%= url.includes('/faq') ? 'text-primary' : '' %>">FAQ</a>
+            </div>
+            
+            <div class="flex items-center gap-6 border-l border-gray-100 pl-10">
+                <!-- Language Switcher -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1.5 text-[10px] font-black tracking-widest text-ink/40 uppercase hover:text-primary transition-colors">
+                        <span><%= languages.find(l => l.code === lang).flag %></span>
+                        <span><%= lang %></span>
+                        <svg class="w-3 h-3 translate-y-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="absolute right-0 mt-3 w-40 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="p-2 grid gap-1">
+                            <% languages.forEach(l => { %>
+                                <a href="<%= l.path %><%= url.replace(/^\/[a-z]{2}\//, '') %>" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs tracking-tight <%= l.code === lang ? 'bg-orange-50 text-primary font-black' : 'text-ink/60 font-medium hover:bg-paper' %>">
+                                    <span><%= l.flag %></span>
+                                    <span><%= l.name %></span>
+                                </a>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>" class="bg-primary text-white px-5 py-2.5 rounded-full text-xs font-black tracking-widest uppercase hover:bg-primary-hover shadow-lg shadow-primary/20 transition-all active:scale-95">
+                    <%= site.contact.phone %>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-toggle" class="md:hidden p-2 text-ink/60 hover:text-primary z-[60]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-ink z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center p-10">
+        <nav class="flex flex-col items-center gap-10 text-center">
+            <% [
+                { name: 'Our Fleet', path: '/cars' },
+                { name: 'Locations', path: '/locations' },
+                { name: 'Long Term', path: '/long-term-rental' },
+                { name: 'FAQ', path: '/faq' },
+                { name: 'About', path: '/about' },
+                { name: 'Contact', path: '/contact' }
+            ].forEach(link => { %>
+                <a href="<%= lang === 'en' ? link.path : '/' + lang + link.path %>" class="text-3xl font-black italic text-white uppercase tracking-tighter hover:text-primary transition-colors">
+                    <%= link.name %>
+                </a>
+            <% }) %>
+            
+            <div class="h-px w-20 bg-white/10 my-4"></div>
+
+            <div class="flex gap-4">
+                <% languages.forEach(l => { %>
+                    <a href="<%= l.path %><%= url.replace(/^\/[a-z]{2}\//, '') %>" class="text-xl <%= l.code === lang ? 'grayscale-0' : 'grayscale' %>">
+                        <%= l.flag %>
+                    </a>
+                <% }) %>
+            </div>
+
+            <a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>" class="text-2xl font-black text-primary uppercase tracking-widest mt-4">
+                <%= site.contact.phone %>
+            </a>
+        </nav>
+    </div>
+</header>
