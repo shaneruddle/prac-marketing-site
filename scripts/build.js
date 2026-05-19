@@ -186,11 +186,16 @@ async function build() {
                 const baseDir = lang === 'en' ? './' : './' + lang + '/';
                 const tPath   = (p) => baseDir + p;
 
+                const flatGuides    = guides.map(g => flattenGuide(g, lang));
+                const flatLocations = locations.map(l => flattenLocation(l, lang));
+
             console.log('Building language: ' + lang + '...');
 
             // Homepage
             await renderPage('home', {
                             lang,
+                            featuredGuides:    flatGuides.slice(0, 3),
+                            featuredLocations: flatLocations,
                             // TODO Phase 7: source translated titles from site.json or CMS Settings
                             // rather than appending langObj.name as a placeholder suffix
                             title: lang === 'en' ? 'Pattaya Car Rental' : 'Car Rental Pattaya - ' + langObj.name,
@@ -209,7 +214,7 @@ async function build() {
             // Fleet overview -- passes guides array for listing
             await renderPage('cars-index', {
                             lang,
-                            guides: guides.map(g => flattenGuide(g, lang)),
+                            guides: flatGuides,
                             title: 'Our Fleet',
                             description: 'Browse our range of rental cars in Pattaya. From economy hatchbacks to luxury SUVs and pickups.',
                             schema: {}
