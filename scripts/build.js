@@ -297,3 +297,4 @@ async function build() {
 }
 
 build();
+// build triggered after Firestore index enable
