@@ -204,7 +204,7 @@ async function build() {
             // Fleet overview -- passes guides array for listing
             await renderPage('cars-index', {
                             lang,
-                            guides,
+                            guides: guides.map(g => flattenGuide(g, lang)),
                             title: 'Our Fleet',
                             description: 'Browse our range of rental cars in Pattaya. From economy hatchbacks to luxury SUVs and pickups.',
                             schema: {}
