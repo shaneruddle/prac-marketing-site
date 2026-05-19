@@ -7,6 +7,11 @@
 // as of this commit -- the build no longer reads them. They are kept for
 // this commit cycle so the previous state can be restored by reverting this
 // file. Delete them once the first successful Firestore build is confirmed.
+//
+// FIRESTORE INDEXES REQUIRED:
+// - vehicle_guides (status ASC, displayOrder ASC)
+// - locations (status ASC, displayOrder ASC)
+// TODO Phase 7: codify these in firestore.indexes.json for reproducibility
 // -----------------------------------------------------------------------------
 
 import ejs from 'ejs';
