@@ -1,21 +1,6 @@
 <div class="card-editorial -mt-0 md:-mt-12 relative z-20">
     <h2 class="text-2xl font-black mb-8 text-center italic text-ink tracking-tight uppercase">Find Your Rental</h2>
     <form id="booking-form" class="space-y-6">
-        <!-- Pickup Location -->
-        <div>
-            <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Location</label>
-            <div class="relative">
-                <select name="pickup_location" class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none cursor-pointer">
-                    <% locations.forEach(loc => { %>
-                        <option value="<%= loc.slug %>" <%= (typeof currentLoc !== 'undefined' && currentLoc === loc.slug) ? 'selected' : '' %>><%= loc.name %></option>
-                    <% }) %>
-                </select>
-                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                </div>
-            </div>
-        </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
                 <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Date</label>
