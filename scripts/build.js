@@ -181,7 +181,7 @@ async function build() {
 
     console.log(guides.length + ' vehicle guides, ' + locations.length + ' locations, ' + Object.keys(carMap).length + ' featured cars');
 
-    for (const langObj of languages) {
+    for (const langObj of languages.filter(l => l.code === 'en')) {
                 const lang    = langObj.code;
                 const baseDir = lang === 'en' ? './' : './' + lang + '/';
                 const tPath   = (p) => baseDir + p;
