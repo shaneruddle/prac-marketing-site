@@ -26,7 +26,7 @@ const srcDir    = path.join(__dirname, '../src');
 const distDir   = path.join(__dirname, '../dist');
 
 // -- Local data files (no CMS pipeline for these) ----------------------------
-const site      = fs.readJsonSync(path.join(srcDir, 'data/site.json'));
+let site      = fs.readJsonSync(path.join(srcDir, 'data/site.json'));
 const languages = fs.readJsonSync(path.join(srcDir, 'data/languages.json'));
 
 // -- Firebase Admin SDK init -------------------------------------------------
@@ -56,6 +56,11 @@ async function fetchPublishedLocations(db) {
             .get();
         return snap.docs.map(d => ({ id: d.id, ...d.data() }));
 }
+async function fetchCompanySettings(db) {
+        const snap = await db.collection('app_settings').doc('company').get();
+        return snap.exists ? snap.data() : {};
+}
+
 
 // Batch-fetch all website_cars docs referenced across guides + locations.
 // Returns lookup map: { [docId]: websiteCarObject }
@@ -171,6 +176,35 @@ async function build() {
         const guides    = await fetchPublishedGuides(db);
         const locations = await fetchPublishedLocations(db);
         const carMap    = await fetchFeaturedCarsMap(db, guides, locations);
+
+        // Company profile from app_settings (source of truth for name/contact/trust/social)
+        const company = await fetchCompanySettings(db);
+        site = {
+            ...site,                                 // site.json defaults (incl. domain) underneath
+            name:    company.companyName || site.name,
+            fleetSize: company.fleetSize || site.fleetSize,
+            address: company.address || site.address,   // flat string from app_settings
+            contact: {
+                ...site.contact,
+                phone:    company.phone    || site.contact?.phone,
+                whatsapp: company.whatsapp || site.contact?.whatsapp,
+                line:     company.lineId   || site.contact?.line,
+            },
+            social: {
+                ...site.social,
+                facebook:  company.social?.facebook  || '',
+                instagram: company.social?.instagram || '',
+            },
+            trust: {
+                ...site.trust,
+                years:        company.trust?.years        ?? site.trust?.years,
+                customers:    company.trust?.customers    || '',
+                googleRating: company.trust?.googleRating ?? site.trust?.googleRating,
+                googleReviews:company.trust?.googleReviews?? site.trust?.googleReviews,
+                facebookRating:  company.trust?.facebookRating  || '',
+                facebookReviews: company.trust?.facebookReviews || '',
+            },
+        };
 
     guides.forEach(g => {
                 g.featuredCars = (g.featuredCarIds || []).map(id => carMap[id]).filter(Boolean);
