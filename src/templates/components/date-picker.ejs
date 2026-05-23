@@ -12,7 +12,16 @@
             </div>
             <div>
                 <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Time</label>
-                <input type="time" name="pickup_time" value="09:00" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                <div class="relative">
+                    <select name="pickup_time" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none cursor-pointer">
+                        <% ['09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'].forEach(t => { %>
+                        <option value="<%= t %>"<%= t === '09:30' ? ' selected' : '' %>><%= t %></option>
+                        <% }) %>
+                    </select>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -27,28 +36,22 @@
             </div>
             <div>
                 <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Return Time</label>
-                <input type="time" name="dropoff_time" value="09:00" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
-            </div>
-        </div>
-
-        <div>
-            <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Car Type</label>
-            <div class="relative">
-                <select name="car_type" class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none cursor-pointer">
-                    <option value="any">Any Car</option>
-                    <option value="economy">Economy</option>
-                    <option value="sedan">Sedan</option>
-                    <option value="suv">SUV</option>
-                    <option value="pickup">Pickup</option>
-                </select>
-                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                <div class="relative">
+                    <select name="dropoff_time" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none cursor-pointer">
+                        <% ['09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'].forEach(t => { %>
+                        <option value="<%= t %>"<%= t === '09:30' ? ' selected' : '' %>><%= t %></option>
+                        <% }) %>
+                    </select>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
                 </div>
             </div>
         </div>
 
+
         <button type="submit" class="btn-primary w-full group mt-4">
-            Find My Car
+            Search
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
 
