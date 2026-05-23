@@ -141,6 +141,23 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = bookingUrl;
         });
     }
+    // FAQ Accordion
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const item = trigger.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const chevron = trigger.querySelector('.faq-chevron');
+            const isOpen = !answer.classList.contains('hidden');
+            if (isOpen) {
+                answer.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            } else {
+                answer.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            }
+        });
+    });
+
     // Lazy load images fallback
     if ('loading' in HTMLImageElement.prototype) {
         // Supported
