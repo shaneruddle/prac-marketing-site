@@ -27,4 +27,34 @@
   .card-editorial {
     @apply bg-white rounded-3xl shadow-2xl shadow-primary/10 border border-gray-100 p-8;
   }
+
+  /* --- Date range picker --- */
+  .dp-field {
+    @apply w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none flex items-center gap-2 cursor-pointer text-left transition-all hover:border-gray-300;
+  }
+  .dp-field.is-placeholder { @apply text-gray-400 font-semibold; }
+  .dp-overlay {
+    @apply fixed inset-0 z-[100] hidden items-center justify-center p-4;
+    background: rgba(0,0,0,0.45);
+  }
+  .dp-overlay.is-open { @apply flex; }
+  .dp-panel { @apply bg-white rounded-3xl shadow-2xl w-full max-w-xl overflow-hidden; }
+  .dp-day {
+    @apply flex items-center justify-center text-sm font-semibold cursor-pointer bg-transparent text-ink relative;
+    aspect-ratio: 1 / 1; border: none; font-family: inherit;
+  }
+  .dp-day.is-empty { @apply pointer-events-none; }
+  .dp-day.is-disabled { @apply text-gray-300 pointer-events-none; }
+  .dp-day:not(.is-disabled):not(.is-empty):hover { @apply bg-gray-100 rounded-full; }
+  .dp-day.is-today::after {
+    content: ""; @apply absolute w-1 h-1 rounded-full bg-primary;
+    bottom: 6px; left: 50%; transform: translateX(-50%);
+  }
+  .dp-day.in-range { background: #ffedd5; color: #7c2d12; border-radius: 0; }
+  .dp-day.range-start { @apply bg-primary text-white; border-radius: 999px 0 0 999px; }
+  .dp-day.range-end { @apply bg-primary text-white; border-radius: 0 999px 999px 0; }
+  .dp-day.range-start.range-end, .dp-day.is-single { @apply bg-primary text-white rounded-full; }
+  .dp-day.in-range.is-today::after,
+  .dp-day.range-start.is-today::after,
+  .dp-day.range-end.is-today::after { @apply bg-white; }
 }
