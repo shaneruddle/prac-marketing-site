@@ -1,37 +1,57 @@
-<section class="bg-gray-50 pt-32 pb-24">
-    <div class="container mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Travel Blog</h1>
-        <p class="text-xl text-gray-500 max-w-2xl">Tips, guides, and inspiration for your next road trip in and around Pattaya.</p>
+<section class="bg-gray-100 pt-32 pb-24">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Blog</h1>
+        <p class="text-xl text-gray-500">Tips, guides, and news for renting in Pattaya.</p>
     </div>
 </section>
 
 <section class="py-24">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <% [
-                { title: 'Best Time to Rent a Car in Pattaya', date: 'May 15, 2024', cat: 'Guides' },
-                { title: 'Driving from Pattaya to Bangkok: Complete Guide', date: 'Apr 28, 2024', cat: 'Tips' },
-                { title: '10 Must-Visit Places Near Pattaya by Car', date: 'Mar 12, 2024', cat: 'Destinations' }
-            ].forEach(post => { %>
-                <article class="group">
-                    <div class="aspect-video bg-gray-100 rounded-3xl mb-6 overflow-hidden border border-gray-100">
-                        <!-- Post Image Placeholder -->
-                        <div class="w-full h-full flex items-center justify-center text-gray-300 font-bold uppercase tracking-widest text-xs">Article Image</div>
-                    </div>
-                    <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-orange-500 mb-3">
-                        <span><%= post.cat %></span>
-                        <span class="text-gray-300">•</span>
-                        <span class="text-gray-400 font-medium"><%= post.date %></span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-4 leading-tight">
-                        <a href="/blog/post-placeholder"><%= post.title %></a>
-                    </h2>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation...
-                    </p>
-                    <a href="/blog/post-placeholder" class="text-sm font-bold text-gray-900 hover:underline">Read More</a>
-                </article>
+        <% if (posts && posts.length > 0) { %>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% posts.forEach(post => { %>
+            <a href="/blog/<%= post.slug %>/" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:-translate-y-1 transition-all">
+                <div class="aspect-[16/9] bg-gray-200 overflow-hidden">
+                    <% if (post.coverImage) { %>
+                    <img src="<%= post.coverImage %>" alt="<%= post.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform" loading="lazy" />
+                    <% } %>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                    <% if (post.category) { %>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-primary mb-2"><%= post.category %></span>
+                    <% } %>
+                    <h2 class="text-lg font-bold text-ink mb-2 group-hover:text-primary transition-colors leading-snug"><%= post.title %></h2>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4 flex-1"><%= post.excerpt %></p>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                        <%= new Date(post.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) %>
+                    </span>
+                </div>
+            </a>
             <% }) %>
         </div>
+
+        <% if (totalPages > 1) { %>
+        <nav class="flex items-center justify-center gap-2 mt-16">
+            <% const prevHref = currentPage === 2 ? '/blog/' : '/blog/page/' + (currentPage - 1) + '/'; %>
+            <% if (currentPage > 1) { %>
+            <a href="<%= prevHref %>" class="px-4 py-2 rounded-xl border border-gray-100 text-xs font-black uppercase tracking-widest hover:border-gray-300 transition-colors">Prev</a>
+            <% } %>
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <% const href = i === 1 ? '/blog/' : '/blog/page/' + i + '/'; %>
+                <% if (i === currentPage) { %>
+                <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-white text-sm font-black"><%= i %></span>
+                <% } else { %>
+                <a href="<%= href %>" class="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-100 text-sm font-bold hover:border-gray-300 transition-colors"><%= i %></a>
+                <% } %>
+            <% } %>
+            <% if (currentPage < totalPages) { %>
+            <a href="/blog/page/<%= currentPage + 1 %>/" class="px-4 py-2 rounded-xl border border-gray-100 text-xs font-black uppercase tracking-widest hover:border-gray-300 transition-colors">Next</a>
+            <% } %>
+        </nav>
+        <% } %>
+
+        <% } else { %>
+        <p class="text-center text-gray-500">No blog posts yet. Check back soon.</p>
+        <% } %>
     </div>
 </section>
