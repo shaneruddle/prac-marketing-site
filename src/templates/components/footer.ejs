@@ -5,18 +5,20 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white font-black text-lg">P</div>
-                        <span class="text-lg font-black tracking-tight uppercase">Pattaya <span class="text-primary tracking-normal lowercase">Rent A Car</span></span>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/pattaya-rent-a-car-rebuild.firebasestorage.app/o/PRAC-Logo-1.png?alt=media" alt="Pattaya Rent A Car" class="h-10 w-auto" />
                     </div>
                     <p class="text-white/40 text-xs leading-relaxed max-w-xs mb-8">
                         The easiest and most reliable car rental service in Pattaya. Operating for over <%= site.trust.years %> years with a fleet of <%= site.fleetSize %> vehicles.
                     </p>
                     <div class="flex gap-3">
-                        <a href="https://wa.me/<%= site.contact.whatsapp %>" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <span class="text-xs font-black italic">W</span>
+                        <a href="https://wa.me/<%= site.contact.whatsapp %>" aria-label="WhatsApp" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.05-1.32A10 10 0 1 0 12 2zm0 18.13a8.13 8.13 0 0 1-4.14-1.13l-.3-.18-3 .79.8-2.92-.2-.3A8.13 8.13 0 1 1 12 20.13z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <span class="text-xs font-black italic">L</span>
+                        <a href="<%= site.contact.line %>" aria-label="LINE" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.34 8.03.32.07.77.21.88.49.1.25.06.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.44 5.7-3.36 7.78-5.75 1.43-1.57 2.12-3.16 2.12-4.95C21.77 5.64 17.52 2 12 2zM8.16 12.6H6.2a.4.4 0 0 1-.4-.4V8.32a.4.4 0 0 1 .8 0v3.48h1.56a.4.4 0 0 1 0 .8zm1.6-.4a.4.4 0 0 1-.8 0V8.32a.4.4 0 0 1 .8 0v3.88zm4.36 0a.4.4 0 0 1-.27.38l-.13.02a.4.4 0 0 1-.32-.16l-1.82-2.47v2.23a.4.4 0 0 1-.8 0V8.32a.4.4 0 0 1 .27-.38l.13-.02c.13 0 .25.06.32.16l1.82 2.48V8.32a.4.4 0 0 1 .8 0v3.88zm3.04-2.34a.4.4 0 0 1 0 .8h-1.56v.74h1.56a.4.4 0 0 1 0 .8h-1.96a.4.4 0 0 1-.4-.4V8.32a.4.4 0 0 1 .4-.4h1.96a.4.4 0 0 1 0 .8h-1.56v.74h1.56z"/></svg>
+                        </a>
+                        <a href="<%= site.social.facebook %>" aria-label="Facebook" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
                         </a>
                     </div>
                 </div>
