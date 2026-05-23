@@ -25,13 +25,17 @@
                 </div>
                 <div class="hidden sm:block w-px h-10 bg-gray-100"></div>
                 <div>
-                    <div class="text-2xl font-black text-ink">★ <%= site.trust.googleRating %></div>
+                    <div class="text-2xl font-black text-ink flex items-center gap-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+                        <%= site.trust.googleRating %>
+                    </div>
                     <div class="text-[10px] text-gray-400 uppercase font-black tracking-widest"><%= site.trust.googleReviews %> Google Reviews</div>
                 </div>
                 <div class="hidden sm:block w-px h-10 bg-gray-100"></div>
                 <div class="flex -space-x-3">
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200"></div>
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-300"></div>
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjU-mUI67_ts0qMSIquyThPFgu4TwxSY709zCi9bp-CUzR-WWqNA=w144-h144-p-rp-mo-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjUKAxIOjGajLiMs4-dQxL3iDDIJDo7iB2kfDy4JocWzrVXSt3GM=w144-h144-p-rp-mo-ba3-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjXY86gP2-_1w1TpOP-QN4y8Q0OgNsPs8COalvO3D0zoB9atI89u=w144-h144-p-rp-mo-ba2-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
                     <div class="w-10 h-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-[10px] text-white font-black uppercase"><%= site.trust.customers.replace('+', 'k+') %></div>
                 </div>
             </div>
@@ -155,3 +159,35 @@
     </div>
 </section>
 <% } %>
+
+<!-- FAQ Section -->
+<section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p class="text-gray-500">Everything you need to know about renting with us.</p>
+        </div>
+        <div class="space-y-4">
+            <% [
+                { q: 'What is included in the rental price for a vehicle?', a: 'The rental rate includes first-class rental insurance, unlimited kilometers, 24-hour breakdown cover, the ability to add additional drivers, and all applicable taxes.' },
+                { q: 'Do I have to pay for the car rental immediately when booking?', a: 'No, you can book now and pay later.' },
+                { q: 'Do I need to pay a deposit for my car rental?', a: 'Yes, a 5,000 THB cash deposit is required upon vehicle collection.' },
+                { q: 'What is the cancellation policy for a booking?', a: 'You can cancel your booking at any time free of charge.' }
+            ].forEach(item => { %>
+            <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left">
+                    <span class="font-bold text-ink"><%= item.q %></span>
+                    <svg class="faq-chevron w-5 h-5 text-primary shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6 text-gray-500 leading-relaxed"><%= item.a %></div>
+            </div>
+            <% }) %>
+        </div>
+        <div class="text-center mt-10">
+            <a href="/faq" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
+                View All FAQs
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
