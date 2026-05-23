@@ -6,33 +6,35 @@
 </section>
 
 <section class="py-24">
-    <div class="container mx-auto px-4 max-w-4xl">
-        <div class="space-y-12">
-            <% [
-                { cat: 'Booking & Cancellation', qas: [
-                    { q: 'How do I book a car?', a: 'You can book directly on our website or via WhatsApp. The online process takes less than a minute.' },
-                    { q: 'What is your cancellation policy?', a: 'We offer free cancellation up to 24 hours before your scheduled pickup.' }
-                ]},
-                { cat: 'Requirements', qas: [
-                    { q: 'What documents do I need?', a: 'A valid passport and a current driver’s license. An International Driving Permit (IDP) is highly recommended for legality in Thailand.' },
-                    { q: 'What is the minimum age?', a: 'The minimum age to rent most of our vehicles is 21 years old.' }
-                ]},
-                { cat: 'Insurance & Damage', qas: [
-                    { q: 'Is insurance included?', a: 'Yes, all rentals include comprehensive insurance. Excess levels apply depending on the vehicle class.' }
-                ]}
-            ].forEach(group => { %>
-                <div>
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-100"><%= group.cat %></h2>
-                    <div class="space-y-8">
-                        <% group.qas.forEach(item => { %>
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-900 mb-2"><%= item.q %></h3>
-                                <p class="text-gray-500 leading-relaxed"><%= item.a %></p>
-                            </div>
-                        <% }) %>
+    <div class="container mx-auto px-4 max-w-3xl">
+        <%
+        const grouped = {};
+        (faqs || []).forEach(f => {
+            const cat = f.category || 'General';
+            if (!grouped[cat]) grouped[cat] = [];
+            grouped[cat].push(f);
+        });
+        const categories = Object.keys(grouped);
+        %>
+        <% if (categories.length > 0) { %>
+            <% categories.forEach(cat => { %>
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-100"><%= cat %></h2>
+                <div class="space-y-4">
+                    <% grouped[cat].forEach(item => { %>
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                        <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left">
+                            <span class="font-bold text-ink"><%= item.q %></span>
+                            <svg class="faq-chevron w-5 h-5 text-primary shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-gray-500 leading-relaxed"><%= item.a %></div>
                     </div>
+                    <% }) %>
                 </div>
+            </div>
             <% }) %>
-        </div>
+        <% } else { %>
+        <p class="text-center text-gray-500">FAQs coming soon.</p>
+        <% } %>
     </div>
 </section>
