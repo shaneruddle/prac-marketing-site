@@ -2,60 +2,63 @@
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
             <span class="inline-block bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Service Area</span>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Car Rental in <%= loc.name %>, Pattaya</h1>
-            <p class="text-xl text-gray-500 leading-relaxed">Fast, easy, and reliable car delivery to all hotels, condos, and villas in the <%= loc.name %> area. No hidden fees, instant booking.</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6"><%= loc.h1 || ('Car Rental in ' + loc.name + ', Pattaya') %></h1>
+            <% if (loc.intro) { %>
+            <p class="text-xl text-gray-500 leading-relaxed"><%= loc.intro %></p>
+            <% } %>
         </div>
     </div>
 </section>
 
-<!-- Date Picker with pre-filled location -->
+<!-- Date Picker -->
 <div class="container mx-auto px-4 -mt-10 relative z-20">
     <%- include('../components/date-picker') %>
 </div>
 
 <section class="py-24">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div class="prose prose-lg max-w-none text-gray-600">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">Renting a Car in <%= loc.name %></h2>
-                <p>
-                    <%= loc.name %> is one of the most popular areas to stay in Pattaya, known for its <%= loc.intro.toLowerCase() %>. Whether you are here for a short holiday or staying long-term, having a private car gives you the freedom to explore at your own pace.
-                </p>
-                <p>
-                    Driving in <%= loc.name %> is relatively straightforward with wide roads and plenty of parking near major landmarks. From <%= loc.name %>, you can easily reach Central Pattaya in just 10-15 minutes, or head out to scenic spots like Silverlake Vineyard and the Big Buddha Hill.
-                </p>
-                <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Free Delivery to Your Door</h3>
-                <p>
-                    We provide **free delivery and pickup** throughout <%= loc.name %>. Simply book your car online, and our staff will meet you at your hotel lobby or villa entrance at your chosen time. We handle all the paperwork on the spot so you can start your journey immediately.
-                </p>
-                
-                <div class="mt-12 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                    <h4 class="text-xl font-bold text-gray-900 mb-6">FAQ for <%= loc.name %> Rentals</h4>
-                    <div class="space-y-6">
-                        <% [
-                            { q: `Can you deliver to my hotel in ${loc.name}?`, a: "Yes, we deliver to 100% of hotels and condos in this area for free." },
-                            { q: "Is insurance included?", a: "Every rental includes comprehensive insurance with roadside assistance." },
-                            { q: "What documents do I need?", a: "A valid passport and a driver's license (International Driving Permit recommended)." }
-                        ].forEach(faq => { %>
-                            <div>
-                                <h5 class="font-bold text-gray-900 mb-1">Q: <%= faq.q %></h5>
-                                <p class="text-sm text-gray-500">A: <%= faq.a %></p>
-                            </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+            <!-- Main content -->
+            <div class="lg:col-span-2">
+                <% if (loc.body) { %>
+                <div class="blog-content"><%- loc.body %></div>
+                <% } else { %>
+                <div class="blog-content">
+                    <h2>Renting a Car in <%= loc.name %></h2>
+                    <p><%= loc.name %> is one of the areas we serve across Pattaya, with free delivery to your hotel, condo, or villa. Book online and we'll bring the car to you.</p>
+                </div>
+                <% } %>
+
+                <!-- FAQs -->
+                <% if (loc.faqs && loc.faqs.length > 0) { %>
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                    <div class="space-y-4">
+                        <% loc.faqs.forEach(faq => { %>
+                        <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                            <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left">
+                                <span class="font-bold text-ink"><%= faq.question %></span>
+                                <svg class="faq-chevron w-5 h-5 text-primary shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-6 text-gray-500 leading-relaxed"><%= faq.answer %></div>
+                        </div>
                         <% }) %>
                     </div>
                 </div>
+                <% } %>
             </div>
 
+            <!-- Sidebar -->
             <div class="space-y-8">
                 <div class="bg-gray-900 text-white p-10 rounded-3xl shadow-2xl overflow-hidden relative">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500 rounded-bl-full opacity-20"></div>
                     <h3 class="text-2xl font-bold mb-6">Popular Cars in <%= loc.name %></h3>
                     <div class="space-y-4">
                         <% if (loc.featuredCars && loc.featuredCars.length > 0) { loc.featuredCars.forEach(car => { %>
-                            <a href="https://pattayarentacar.com" class="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all group">
+                            <a href="/cars/<%= car.slug || '' %>" class="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all group">
                                 <div class="w-20 h-14 bg-gray-800 rounded-lg overflow-hidden shrink-0">
-                                    <% if (car.mainImage) { %>
-                                        <img src="<%= car.mainImage %>" alt="<%= car.name %>" class="w-full h-full object-cover">
+                                    <% if (car.mainImage || car.heroImage) { %>
+                                        <img src="<%= car.mainImage || car.heroImage %>" alt="<%= car.name %>" class="w-full h-full object-cover">
                                     <% } else { %>
                                         <div class="w-full h-full flex items-center justify-center text-[10px] text-gray-500 uppercase font-bold tracking-widest">No img</div>
                                     <% } %>
@@ -67,17 +70,22 @@
                                 <svg class="w-5 h-5 text-gray-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </a>
                         <% }) } else { %>
-                            <p class="text-sm text-gray-400 italic">No vehicles currently available for this area.</p>
+                            <p class="text-sm text-gray-400 italic">Browse our full fleet — all vehicles available in <%= loc.name %>.</p>
                         <% } %>
                     </div>
                     <a href="/cars" class="block text-center mt-8 py-4 rounded-xl bg-orange-500 hover:bg-orange-600 font-bold transition-all">View All Available Cars</a>
                 </div>
 
+                <% if (loc.mapEmbedUrl) { %>
+                <div class="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <iframe src="<%= loc.mapEmbedUrl %>" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <% } %>
+
                 <div class="p-8 rounded-3xl border-2 border-dashed border-gray-200 text-center">
-                    <span class="text-3xl mb-4 block">📍</span>
-                    <h4 class="font-bold text-gray-900 mb-2">Office in Central Pattaya</h4>
-                    <p class="text-sm text-gray-500 mb-6">Open 24/7 for support and vehicle maintenance.</p>
-                    <a href="/contact" class="text-orange-600 font-bold text-sm hover:underline">Get Directions</a>
+                    <h4 class="font-bold text-gray-900 mb-2">Free Delivery in <%= loc.name %></h4>
+                    <p class="text-sm text-gray-500 mb-6">We bring the car to your hotel, condo, or villa. Open 24/7 for support.</p>
+                    <a href="/contact" class="text-orange-600 font-bold text-sm hover:underline">Contact Us</a>
                 </div>
             </div>
         </div>
