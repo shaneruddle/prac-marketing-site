@@ -145,11 +145,12 @@ function flattenLocation(loc, lang) {
                     drivingTips:  t.drivingTips  || '',
                     faqs:         t.faqs         || [],
                     // TRANSITIONAL ALIAS: templates currently access loc.description for prose copy.
-                    // Commit 3 (template update) should standardise on loc.intro throughout
-                    // location-detail.ejs and remove this alias once the template no longer
-                    // references loc.description.
                     description:  t.intro        || '',
                     heroImage:    loc.heroImage   || null,
+                    mapEmbedUrl:  loc.mapEmbedUrl || '',
+                    nearbyAreas:  loc.nearbyAreas || [],
+                    metaTitle:    (loc.seo && loc.seo.metaTitle)       || '',
+                    metaDescription: (loc.seo && loc.seo.metaDescription) || t.intro || '',
         };
 }
 
@@ -334,17 +335,54 @@ async function build() {
             // Individual location pages
             for (const loc of locations) {
                             const flatLoc = flattenLocation(loc, lang);
+                            const locUrl = 'https://' + site.domain + '/locations/' + flatLoc.slug + '/';
                             await renderPage('location-detail', {
                                                 lang,
                                                 loc: flatLoc,
                                                 locations,
-                                                title: 'Car Rental in ' + flatLoc.name,
-                                                description: 'Rent a car in ' + flatLoc.name + ', Pattaya. We offer free delivery and pickup in ' + flatLoc.name + '. Book now for the best rates.',
+                                                title: flatLoc.metaTitle || ('Car Rental in ' + flatLoc.name),
+                                                description: flatLoc.metaDescription || ('Rent a car in ' + flatLoc.name + ', Pattaya. Free delivery and pickup. Book now for the best rates.'),
                                                 schema: {
                                                                         '@context': 'https://schema.org',
-                                                                        '@type': 'LocalBusiness',
-                                                                        'name': site.name + ' - ' + flatLoc.name,
-                                                                        'areaServed': flatLoc.name
+                                                                        '@graph': [
+                                                                            {
+                                                                                            '@type': 'AutoRental',
+                                                                                            'name': site.name,
+                                                                                            'url': locUrl,
+                                                                                            'telephone': site.contact.phone,
+                                                                                            'address': {
+                                                                                                            '@type': 'PostalAddress',
+                                                                                                            'streetAddress': site.address,
+                                                                                                            'addressLocality': 'Pattaya',
+                                                                                                            'addressRegion': 'Chon Buri',
+                                                                                                            'addressCountry': 'TH'
+                                                                                            },
+                                                                                            'areaServed': flatLoc.name + ', Pattaya, Thailand',
+                                                                                            'priceRange': '$',
+                                                                                            ...(site.trust.googleRating ? { 'aggregateRating': {
+                                                                                                                            '@type': 'AggregateRating',
+                                                                                                                            'ratingValue': site.trust.googleRating,
+                                                                                                                            'reviewCount': site.trust.googleReviews
+                                                                                            } } : {}),
+                                                                                            'sameAs': [site.social.facebook, site.social.instagram].filter(Boolean)
+                                                                            },
+                                                                            ...(flatLoc.faqs && flatLoc.faqs.length ? [{
+                                                                                            '@type': 'FAQPage',
+                                                                                            'mainEntity': flatLoc.faqs.map(f => ({
+                                                                                                                            '@type': 'Question',
+                                                                                                                            'name': (f.question || '').trim(),
+                                                                                                                            'acceptedAnswer': { '@type': 'Answer', 'text': (f.answer || '').trim() }
+                                                                                            }))
+                                                                            }] : []),
+                                                                            {
+                                                                                            '@type': 'BreadcrumbList',
+                                                                                            'itemListElement': [
+                                                                                                                            { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://' + site.domain + '/' },
+                                                                                                                            { '@type': 'ListItem', 'position': 2, 'name': 'Locations', 'item': 'https://' + site.domain + '/locations/' },
+                                                                                                                            { '@type': 'ListItem', 'position': 3, 'name': flatLoc.name, 'item': locUrl }
+                                                                                            ]
+                                                                            }
+                                                                        ]
                                                 }
                             }, tPath('locations/' + flatLoc.slug + '/index.html'));
             }
