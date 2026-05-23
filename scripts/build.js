@@ -56,6 +56,18 @@ async function fetchPublishedLocations(db) {
             .get();
         return snap.docs.map(d => ({ id: d.id, ...d.data() }));
 }
+async function fetchPublishedBlogPosts(db) {
+    const snap = await db.collection('blog_posts')
+        .where('status', '==', 'Published')
+        .get();
+    const posts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    posts.sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
+    posts.forEach(p => {
+        if (p.coverImage && p.coverImage.startsWith('//')) p.coverImage = 'https:' + p.coverImage;
+    });
+    return posts;
+}
+
 async function fetchCompanySettings(db) {
         const snap = await db.collection('app_settings').doc('company').get();
         return snap.exists ? snap.data() : {};
@@ -176,6 +188,7 @@ async function build() {
         const guides    = await fetchPublishedGuides(db);
         const locations = await fetchPublishedLocations(db);
         const carMap    = await fetchFeaturedCarsMap(db, guides, locations);
+        const blogPosts = await fetchPublishedBlogPosts(db);
 
         // Company profile from app_settings (source of truth for name/contact/trust/social)
         const company = await fetchCompanySettings(db);
@@ -213,7 +226,7 @@ async function build() {
                     l.featuredCars = (l.featuredCarIds || []).map(id => carMap[id]).filter(Boolean);
         });
 
-    console.log(guides.length + ' vehicle guides, ' + locations.length + ' locations, ' + Object.keys(carMap).length + ' featured cars');
+    console.log(guides.length + ' vehicle guides, ' + locations.length + ' locations, ' + Object.keys(carMap).length + ' featured cars, ' + blogPosts.length + ' blog posts');
 
     for (const langObj of languages.filter(l => l.code === 'en')) {
                 const lang    = langObj.code;
@@ -302,7 +315,7 @@ async function build() {
             }
 
             // Static pages
-            const pages = ['about', 'contact', 'faq', 'terms', 'privacy', 'insurance', 'motorbike-rental', 'long-term-rental', 'blog'];
+            const pages = ['about', 'contact', 'faq', 'terms', 'privacy', 'insurance', 'motorbike-rental', 'long-term-rental'];
                 for (const page of pages) {
                                 await renderPage(page, {
                                                     lang,
@@ -310,6 +323,43 @@ async function build() {
                                                     description: 'Learn more about our ' + page + ' for car rentals in Pattaya.',
                                                     schema: {}
                                 }, tPath(page + '/index.html'));
+                }
+
+                // Blog index (paginated, 12 per page)
+                const POSTS_PER_PAGE = 12;
+                const totalPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
+                for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                    const pagePosts = blogPosts.slice((pageNum - 1) * POSTS_PER_PAGE, pageNum * POSTS_PER_PAGE);
+                    const outPath = pageNum === 1 ? tPath('blog/index.html') : tPath('blog/page/' + pageNum + '/index.html');
+                    await renderPage('blog', {
+                        lang,
+                        posts: pagePosts,
+                        currentPage: pageNum,
+                        totalPages: totalPages,
+                        title: pageNum === 1 ? 'Blog' : 'Blog - Page ' + pageNum,
+                        description: 'Car and motorbike rental tips, guides, and news from Pattaya Rent A Car.',
+                        schema: {}
+                    }, outPath);
+                }
+
+                // Individual blog post pages
+                for (const post of blogPosts) {
+                    await renderPage('blog-post', {
+                        lang,
+                        post,
+                        title: post.title,
+                        description: post.excerpt || post.title,
+                        schema: {
+                            '@context': 'https://schema.org',
+                            '@type': 'BlogPosting',
+                            'headline': post.title,
+                            'description': post.excerpt || '',
+                            'image': post.coverImage || '',
+                            'datePublished': post.publishedAt || '',
+                            'dateModified': post.updatedAt || post.publishedAt || '',
+                            'author': { '@type': 'Organization', 'name': site.name }
+                        }
+                    }, tPath('blog/' + post.slug + '/index.html'));
                 }
     }
 
@@ -321,6 +371,7 @@ async function build() {
 
     guides.forEach(g    => sitemapEntries.push('/cars/' + g.slug + '/'));
         locations.forEach(l => sitemapEntries.push('/locations/' + l.slug + '/'));
+        blogPosts.forEach(p => sitemapEntries.push('/blog/' + p.slug + '/'));
 
     const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                 sitemapEntries.map(e => '  <url><loc>https://' + site.domain + e + '</loc></url>').join('\n') +
