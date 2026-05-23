@@ -4,7 +4,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
                 <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Date</label>
-                <input type="date" name="pickup_date" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                <button type="button" id="dp-trigger-pickup" class="dp-field is-placeholder">
+                    <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span id="dp-val-pickup">Select date</span>
+                </button>
+                <input type="hidden" name="pickup_date" id="dp-input-pickup" required />
             </div>
             <div>
                 <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Time</label>
@@ -15,7 +19,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
                 <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Return Date</label>
-                <input type="date" name="dropoff_date" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                <button type="button" id="dp-trigger-return" class="dp-field is-placeholder">
+                    <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span id="dp-val-return">Select date</span>
+                </button>
+                <input type="hidden" name="dropoff_date" id="dp-input-return" required />
             </div>
             <div>
                 <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Return Time</label>
@@ -48,4 +56,44 @@
             No credit card required to browse • Insurance included
         </p>
     </form>
+
+    <!-- Date range picker popup -->
+    <div class="dp-overlay" id="dp-overlay">
+        <div class="dp-panel">
+            <div class="grid grid-cols-1 sm:grid-cols-2">
+                <div>
+                    <div class="flex items-center justify-between px-6 pt-5 pb-1">
+                        <span class="text-lg font-black" id="dp-m1-label">—</span>
+                        <button type="button" id="dp-prev" class="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center hover:bg-paper disabled:opacity-30 disabled:cursor-not-allowed">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-7 px-6 pt-1 text-[10px] font-black text-gray-400 uppercase text-center">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                    <div class="grid grid-cols-7 px-6 pb-4 gap-0.5" id="dp-m1-grid"></div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between px-6 pt-5 pb-1">
+                        <span class="text-lg font-black" id="dp-m2-label">—</span>
+                        <button type="button" id="dp-next" class="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center hover:bg-paper">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-7 px-6 pt-1 text-[10px] font-black text-gray-400 uppercase text-center">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                    <div class="grid grid-cols-7 px-6 pb-4 gap-0.5" id="dp-m2-grid"></div>
+                </div>
+            </div>
+            <p class="text-center text-xs text-gray-400 font-semibold pb-3 px-6" id="dp-hint">Select your pickup date</p>
+            <div class="flex items-center gap-4 flex-wrap px-6 py-4 bg-paper border-t border-gray-100">
+                <span class="text-sm font-bold text-green-600" id="dp-duration" style="visibility:hidden;">Duration: <span class="bg-green-600 text-white px-3 py-1 rounded-full font-black ml-1" id="dp-duration-pill">0 days</span></span>
+                <div class="flex gap-3 ml-auto">
+                    <button type="button" id="dp-cancel" class="bg-white border border-gray-200 text-ink font-black uppercase tracking-wider text-xs px-5 py-2.5 rounded-xl">Cancel</button>
+                    <button type="button" id="dp-apply" class="bg-primary text-white font-black uppercase tracking-wider text-xs px-6 py-2.5 rounded-xl disabled:opacity-40 disabled:cursor-not-allowed" disabled>Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
