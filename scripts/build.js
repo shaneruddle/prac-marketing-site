@@ -68,6 +68,13 @@ async function fetchPublishedBlogPosts(db) {
     return posts;
 }
 
+async function fetchFaqs(db) {
+        const snap = await db.collection('faqs').get();
+        const faqs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        faqs.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        return faqs;
+}
+
 async function fetchCompanySettings(db) {
         const snap = await db.collection('app_settings').doc('company').get();
         return snap.exists ? snap.data() : {};
@@ -189,6 +196,7 @@ async function build() {
         const locations = await fetchPublishedLocations(db);
         const carMap    = await fetchFeaturedCarsMap(db, guides, locations);
         const blogPosts = await fetchPublishedBlogPosts(db);
+        const faqs      = await fetchFaqs(db);
 
         // Company profile from app_settings (source of truth for name/contact/trust/social)
         const company = await fetchCompanySettings(db);
@@ -249,12 +257,39 @@ async function build() {
                             description: 'Easiest car booking in Pattaya. Best service, free delivery to your hotel, and 24/7 support. Book your car in Pattaya today.',
                             schema: {
                                                 '@context': 'https://schema.org',
-                                                '@type': 'AutoRental',
-                                                'name': site.name,
-                                                'url': 'https://' + site.domain + '/' + baseDir,
-                                                'logo': 'https://' + site.domain + '/assets/images/logo.png',
-                                                'address': site.address,
-                                                'telephone': site.contact.phone
+                                                '@graph': [
+                                                    {
+                                                                    '@type': 'AutoRental',
+                                                                    'name': site.name,
+                                                                    'url': 'https://' + site.domain + '/' + baseDir,
+                                                                    'logo': 'https://' + site.domain + '/assets/images/logo.png',
+                                                                    'image': 'https://' + site.domain + '/assets/images/og-image.jpg',
+                                                                    'address': {
+                                                                                    '@type': 'PostalAddress',
+                                                                                    'streetAddress': site.address,
+                                                                                    'addressLocality': 'Pattaya',
+                                                                                    'addressRegion': 'Chon Buri',
+                                                                                    'addressCountry': 'TH'
+                                                                    },
+                                                                    'telephone': site.contact.phone,
+                                                                    'priceRange': '$',
+                                                                    ...(site.trust.googleRating ? { 'aggregateRating': {
+                                                                                    '@type': 'AggregateRating',
+                                                                                    'ratingValue': site.trust.googleRating,
+                                                                                    'reviewCount': site.trust.googleReviews
+                                                                    } } : {}),
+                                                                    'sameAs': [site.social.facebook, site.social.instagram].filter(Boolean)
+                                                    },
+                                                    {
+                                                                    '@type': 'FAQPage',
+                                                                    'mainEntity': [
+                                                                                    { '@type': 'Question', 'name': 'What is included in the rental price for a vehicle?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'The rental rate includes first-class rental insurance, unlimited kilometers, 24-hour breakdown cover, the ability to add additional drivers, and all applicable taxes.' } },
+                                                                                    { '@type': 'Question', 'name': 'Do I have to pay for the car rental immediately when booking?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'No, you can book now and pay later.' } },
+                                                                                    { '@type': 'Question', 'name': 'Do I need to pay a deposit for my car rental?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, a 5,000 THB cash deposit is required upon vehicle collection.' } },
+                                                                                    { '@type': 'Question', 'name': 'What is the cancellation policy for a booking?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'You can cancel your booking at any time free of charge.' } }
+                                                                    ]
+                                                    }
+                                                ]
                             }
             }, tPath('index.html'));
 
@@ -315,7 +350,7 @@ async function build() {
             }
 
             // Static pages
-            const pages = ['about', 'contact', 'faq', 'terms', 'privacy', 'insurance', 'motorbike-rental', 'long-term-rental'];
+            const pages = ['about', 'contact', 'terms', 'privacy', 'insurance', 'motorbike-rental', 'long-term-rental'];
                 for (const page of pages) {
                                 await renderPage(page, {
                                                     lang,
@@ -324,6 +359,23 @@ async function build() {
                                                     schema: {}
                                 }, tPath(page + '/index.html'));
                 }
+
+                // FAQ page (real data from faqs collection, grouped by category)
+                await renderPage('faq', {
+                            lang,
+                            faqs: faqs,
+                            title: 'Frequently Asked Questions',
+                            description: 'Everything you need to know about renting a car in Pattaya — payments, insurance, delivery, requirements and more.',
+                            schema: {
+                                                '@context': 'https://schema.org',
+                                                '@type': 'FAQPage',
+                                                'mainEntity': faqs.map(f => ({
+                                                                        '@type': 'Question',
+                                                                        'name': f.q,
+                                                                        'acceptedAnswer': { '@type': 'Answer', 'text': f.a }
+                                                }))
+                            }
+                }, tPath('faq/index.html'));
 
                 // Blog index (paginated, 12 per page)
                 const POSTS_PER_PAGE = 12;
@@ -380,7 +432,21 @@ async function build() {
     // TODO Phase 7: emit hreflang variants in sitemap for all languages
     await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
 
-    await fs.outputFile(path.join(distDir, 'robots.txt'), 'User-agent: *\nAllow: /\nSitemap: https://' + site.domain + '/sitemap.xml');
+    const robotsTxt = [
+        '# AI / LLM crawlers — explicitly welcomed',
+        'User-agent: GPTBot', 'Allow: /', '',
+        'User-agent: OAI-SearchBot', 'Allow: /', '',
+        'User-agent: ChatGPT-User', 'Allow: /', '',
+        'User-agent: Google-Extended', 'Allow: /', '',
+        'User-agent: ClaudeBot', 'Allow: /', '',
+        'User-agent: Claude-Web', 'Allow: /', '',
+        'User-agent: PerplexityBot', 'Allow: /', '',
+        'User-agent: Applebot-Extended', 'Allow: /', '',
+        '# All other crawlers',
+        'User-agent: *', 'Allow: /', '',
+        'Sitemap: https://' + site.domain + '/sitemap.xml'
+    ].join('\n');
+    await fs.outputFile(path.join(distDir, 'robots.txt'), robotsTxt);
         await fs.outputFile(path.join(distDir, 'llms.txt'), '# ' + site.name + '\n\nMarketing site for Pattaya\'s leading car rental business.\n\n## Key Pages\n- /: Homepage\n- /cars: Fleet overview\n- /locations: Service areas');
 
     console.log('Build complete!');
