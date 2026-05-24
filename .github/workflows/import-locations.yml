@@ -1,0 +1,49 @@
+name: Import Locations to Firestore
+
+# Manual trigger only — never runs automatically.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Mode: dry-run (safe, writes nothing) / test (one doc) / live (all)'
+        required: true
+        default: 'dry-run'
+        type: choice
+        options:
+          - dry-run
+          - test
+          - live
+      confirm:
+        description: 'Type "yes" to confirm a LIVE write (ignored for dry-run/test)'
+        required: false
+        default: ''
+      location_slug:
+        description: 'Optional: restrict test/live to a single slug (e.g. naklua)'
+        required: false
+        default: ''
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install firebase-admin
+        run: npm install firebase-admin
+
+      - name: Run import
+        env:
+          MODE: ${{ github.event.inputs.mode }}
+          CONFIRM: ${{ github.event.inputs.confirm }}
+          LOCATION_SLUG: ${{ github.event.inputs.location_slug }}
+          # Reuse the same Firebase service-account secret the build uses.
+          # IMPORTANT: confirm this secret NAME matches your repo's secret.
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PATTAYA_RENT_A_CAR_REBUILD }}
+        run: node scripts/import-locations.mjs
