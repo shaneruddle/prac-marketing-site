@@ -32,7 +32,7 @@
   .dp-field {
     @apply w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none flex items-center gap-2 cursor-pointer text-left transition-all hover:border-gray-300;
   }
-  .dp-field.is-placeholder { @apply text-gray-400 font-semibold; 
+  .dp-field.is-placeholder { @apply text-gray-400 font-semibold; }
   .dp-overlay {
     @apply fixed inset-0 z-[100] hidden items-start justify-center p-4;
     overflow-y: auto;
