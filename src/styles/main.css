@@ -32,13 +32,15 @@
   .dp-field {
     @apply w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none flex items-center gap-2 cursor-pointer text-left transition-all hover:border-gray-300;
   }
-  .dp-field.is-placeholder { @apply text-gray-400 font-semibold; }
+  .dp-field.is-placeholder { @apply text-gray-400 font-semibold; 
   .dp-overlay {
-    @apply fixed inset-0 z-[100] hidden items-center justify-center p-4;
+    @apply fixed inset-0 z-[100] hidden items-start justify-center p-4;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background: rgba(0,0,0,0.45);
   }
   .dp-overlay.is-open { @apply flex; }
-  .dp-panel { @apply bg-white rounded-3xl shadow-2xl w-full max-w-xl overflow-hidden; }
+  .dp-panel { @apply bg-white rounded-3xl shadow-2xl w-full max-w-xl; overflow-y: auto; max-height: calc(100vh - 2rem); }
   .dp-day {
     @apply flex items-center justify-center text-sm font-semibold cursor-pointer bg-transparent text-ink relative;
     aspect-ratio: 1 / 1; border: none; font-family: inherit;
