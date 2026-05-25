@@ -326,7 +326,7 @@ async function build() {
             // Locations overview
             await renderPage('locations-index', {
                             lang,
-                            locations,
+                            locations: flatLocations,
                             title: 'Our Pickup Locations',
                             description: 'We deliver cars all across Pattaya. Find our coverage areas here.',
                             schema: {}
