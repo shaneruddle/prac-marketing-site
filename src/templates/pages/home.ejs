@@ -97,46 +97,29 @@
 
 <!-- Featured Fleet -->
 <% if (featuredGuides && featuredGuides.length > 0) { %>
-<section class="py-24 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Featured Fleet</h2>
-                <p class="text-gray-500">From budget city cars to premium family SUVs.</p>
-            </div>
-            <a href="/cars" class="text-orange-600 font-bold hover:underline flex items-center gap-1">
-                View All Cars
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
-        </div>
+<section class="py-24 bg-paper">
+    <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <% featuredGuides.forEach(guide => { %>
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                <div class="aspect-[4/3] bg-gray-200 relative">
+            <a href="/cars/<%= guide.slug %>/" class="glass-card rounded-[32px] overflow-hidden group block">
+                <div class="aspect-[4/3] overflow-hidden bg-paper">
                     <% if (guide.heroImage) { %>
-                    <img src="<%= guide.heroImage %>" alt="<%= guide.title %>" class="w-full h-full object-cover">
+                    <img src="<%= guide.heroImage %>" alt="<%= guide.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                     <% } else { %>
-                    <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-medium"><%= guide.title %></div>
+                    <div class="w-full h-full flex items-center justify-center text-ink/30 font-medium"><%= guide.title %></div>
                     <% } %>
                 </div>
                 <div class="p-6">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold group-hover:text-primary transition-colors"><%= guide.title %></h3>
-                            <div class="flex items-center gap-3 text-xs text-ink/40 font-black uppercase tracking-widest mt-1">
-                                <% if (guide.transmission) { %><span><%= guide.transmission %></span><% } %>
-                                <% if (guide.transmission && guide.seats) { %><span class="w-1 h-1 bg-gray-200 rounded-full"></span><% } %>
-                                <% if (guide.seats) { %><span><%= guide.seats %> Seats</span><% } %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <a href="/cars/<%= guide.slug %>" class="flex-1 text-center py-3 rounded-xl border border-gray-100 text-[10px] font-black uppercase tracking-widest hover:border-gray-300 transition-colors">View Details</a>
-                        <a href="https://pattayarentacar.com" class="btn-primary flex-1 text-xs py-3">Book Now</a>
-                    </div>
+                    <h3 class="font-bold text-xl tracking-tight text-ink"><%= guide.title %></h3>
                 </div>
-            </div>
+            </a>
             <% }) %>
+        </div>
+        <div class="text-center mt-12">
+            <a href="/cars/" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
+                View All Cars
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
         </div>
     </div>
 </section>
@@ -144,16 +127,17 @@
 
 <!-- Locations Selection -->
 <% if (featuredLocations && featuredLocations.length > 0) { %>
-<section class="py-24">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Available All Over Pattaya</h2>
-            <p class="text-gray-500">Wherever you stay, we deliver for free.</p>
+<section class="py-24 bg-paper">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16">
+            <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">Where We Deliver</span>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-4 max-w-3xl">Available All Over Pattaya</h2>
+            <p class="text-ink/50 text-sm leading-relaxed max-w-xl">Wherever you stay, we deliver for free.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <% featuredLocations.forEach(loc => { %>
-            <a href="/locations/<%= loc.slug %>" class="p-4 rounded-xl border border-gray-100 hover:border-orange-500 hover:bg-orange-50 transition-all group">
-                <span class="block font-bold group-hover:text-orange-700 transition-colors"><%= loc.name %></span>
+            <a href="/locations/<%= loc.slug %>/" class="border border-ink/10 rounded-full px-5 py-2 text-ink/70 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                <%= loc.name %>
             </a>
             <% }) %>
         </div>
