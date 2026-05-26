@@ -146,11 +146,12 @@
 <% } %>
 
 <!-- FAQ Section -->
-<section class="py-24 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-3xl">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p class="text-gray-500">Everything you need to know about renting with us.</p>
+<section class="py-24 bg-paper">
+    <div class="max-w-3xl mx-auto px-6">
+        <div class="mb-12">
+            <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">FAQ</span>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12">Frequently Asked Questions</h2>
+            <p class="text-ink/50 text-sm leading-relaxed">Everything you need to know about renting with us.</p>
         </div>
         <div class="space-y-4">
             <% [
@@ -159,17 +160,17 @@
                 { q: 'Do I need to pay a deposit for my car rental?', a: 'Yes, a 5,000 THB cash deposit is required upon vehicle collection.' },
                 { q: 'What is the cancellation policy for a booking?', a: 'You can cancel your booking at any time free of charge.' }
             ].forEach(item => { %>
-            <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+            <div class="faq-item glass-card rounded-[32px] overflow-hidden">
                 <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left">
-                    <span class="font-bold text-ink"><%= item.q %></span>
+                    <span class="font-bold text-lg tracking-tight text-ink"><%= item.q %></span>
                     <svg class="faq-chevron w-5 h-5 text-primary shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
                 </button>
-                <div class="faq-answer hidden px-6 pb-6 text-gray-500 leading-relaxed"><%= item.a %></div>
+                <div class="faq-answer hidden px-6 pb-6 text-ink/50 text-sm leading-relaxed"><%= item.a %></div>
             </div>
             <% }) %>
         </div>
         <div class="text-center mt-10">
-            <a href="/faq" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
+            <a href="/faq/" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
                 View All FAQs
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
