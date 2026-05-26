@@ -206,6 +206,7 @@ async function build() {
             name:    company.companyName || site.name,
             fleetSize: company.fleetSize || site.fleetSize,
             address: company.address || site.address,   // flat string from app_settings
+            mapEmbedUrl: company.mapEmbedUrl || '',
             contact: {
                 ...site.contact,
                 phone:    company.phone    || site.contact?.phone,
@@ -403,7 +404,7 @@ async function build() {
                             lang,
                             faqs: faqs,
                             title: 'Frequently Asked Questions',
-                            description: 'Everything you need to know about renting a car in Pattaya — payments, insurance, delivery, requirements and more.',
+                            description: 'Everything you need to know about renting a car in Pattaya â payments, insurance, delivery, requirements and more.',
                             schema: {
                                                 '@context': 'https://schema.org',
                                                 '@type': 'FAQPage',
@@ -471,7 +472,7 @@ async function build() {
     await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
 
     const robotsTxt = [
-        '# AI / LLM crawlers — explicitly welcomed',
+        '# AI / LLM crawlers â explicitly welcomed',
         'User-agent: GPTBot', 'Allow: /', '',
         'User-agent: OAI-SearchBot', 'Allow: /', '',
         'User-agent: ChatGPT-User', 'Allow: /', '',
