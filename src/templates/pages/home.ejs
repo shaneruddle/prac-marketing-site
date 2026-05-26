@@ -1,37 +1,37 @@
 <!-- Hero Section -->
-<section class="min-h-[80vh] flex flex-col pt-12">
-    <div class="container mx-auto px-6 flex-1 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<section class="min-h-[80vh] flex flex-col pt-12 bg-paper">
+    <div class="max-w-7xl mx-auto px-6 w-full flex-1 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
         <!-- Editorial Left Section -->
         <div class="md:col-span-7 py-12">
-            <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
+            <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ink/10">
                 <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                Cars available right now
+                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/50">Cars available right now</span>
             </div>
-            <h1 class="text-5xl lg:text-7xl font-light leading-[1.1] tracking-tight mb-8 text-ink">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.95] mb-8 text-ink">
                 Easiest booking.<br/><span class="font-black italic text-primary">Best service</span> in Pattaya.
             </h1>
-            <p class="text-lg text-gray-500 max-w-lg mb-10 leading-relaxed font-medium">
+            <p class="text-lg text-ink/60 max-w-lg mb-10 leading-relaxed">
                 Premium fleet, free delivery to your hotel, and 24/7 support. No hidden fees. Just the freedom to explore Thailand.
             </p>
 
             <!-- Trust Indicators -->
-            <div class="flex flex-wrap gap-8 items-center border-t border-gray-100 pt-10">
+            <div class="flex flex-wrap gap-8 items-center border-t border-ink/10 pt-10">
                 <div>
-                    <div class="text-2xl font-black text-ink"><%= site.trust.years %> Years</div>
-                    <div class="text-[10px] text-gray-400 uppercase font-black tracking-widest">In Pattaya</div>
+                    <div class="text-2xl font-bold tracking-tighter text-ink"><%= site.trust.years %> Years</div>
+                    <div class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/30">In Pattaya</div>
                 </div>
-                <div class="hidden sm:block w-px h-10 bg-gray-100"></div>
+                <div class="hidden sm:block w-px h-10 bg-ink/10"></div>
                 <div>
                     <div class="text-2xl font-black text-ink flex items-center gap-2">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
                         <%= site.trust.googleRating %>
                     </div>
-                    <div class="text-[10px] text-gray-400 uppercase font-black tracking-widest"><%= site.trust.googleReviews %> Google Reviews</div>
+                    <div class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/30"><%= site.trust.googleReviews %> Google Reviews</div>
                 </div>
-                <div class="hidden sm:block w-px h-10 bg-gray-100"></div>
+                <div class="hidden sm:block w-px h-10 bg-ink/10"></div>
                 <div class="flex -space-x-3">
                     <img src="https://lh3.googleusercontent.com/a-/ALV-UjU-mUI67_ts0qMSIquyThPFgu4TwxSY709zCi9bp-CUzR-WWqNA=w144-h144-p-rp-mo-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
                     <img src="https://lh3.googleusercontent.com/a-/ALV-UjUKAxIOjGajLiMs4-dQxL3iDDIJDo7iB2kfDy4JocWzrVXSt3GM=w144-h144-p-rp-mo-ba3-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
@@ -49,20 +49,20 @@
 </section>
 
 <!-- Trust Strip Component (Muted style) -->
-<div class="bg-gray-900 h-20 text-white hidden md:flex items-center">
-    <div class="container mx-auto px-6 flex justify-between">
+<div class="bg-ink h-20 text-white hidden md:flex items-center">
+    <div class="max-w-7xl mx-auto px-6 w-full flex justify-between">
         <div class="flex gap-12">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-primary italic font-black">C</div>
-                <span class="text-[10px] font-black uppercase tracking-widest">Free Cancellation</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">Free Cancellation</span>
             </div>
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-primary italic font-black">H</div>
-                <span class="text-[10px] font-black uppercase tracking-widest">Hotel Delivery</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">Hotel Delivery</span>
             </div>
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-primary italic font-black">24</div>
-                <span class="text-[10px] font-black uppercase tracking-widest">24/7 Support</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">24/7 Support</span>
             </div>
         </div>
     </div>
