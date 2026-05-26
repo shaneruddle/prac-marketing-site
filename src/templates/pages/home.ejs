@@ -72,7 +72,7 @@
 <section class="py-24 bg-paper">
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-16">
-            <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">Why Choose Us</span>
+            <span class="eyebrow">Why Choose Us</span>
             <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-4 max-w-3xl">Why Choose Us?</h2>
             <p class="text-ink/50 text-sm leading-relaxed max-w-xl">We focus on making your holiday stress-free with the smoothest rental process in Thailand.</p>
         </div>
@@ -83,12 +83,12 @@
                 { title: 'Full Insurance', desc: 'Every rental includes comprehensive insurance for your peace of mind.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
                 { title: 'Hotel Delivery', desc: 'We bring the car to you. No need to visit our office.', icon: 'M5 13l4 4L19 7' }
             ].forEach(feature => { %>
-                <div class="glass-card rounded-[32px] p-10">
-                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-5">
+                <div class="card">
+                    <div class="icon-pill">
                         <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<%= feature.icon %>"/></svg>
                     </div>
-                    <h3 class="font-bold text-xl tracking-tight text-ink mb-3"><%= feature.title %></h3>
-                    <p class="text-ink/50 text-sm leading-relaxed"><%= feature.desc %></p>
+                    <h3 class="card-title"><%= feature.title %></h3>
+                    <p class="card-body"><%= feature.desc %></p>
                 </div>
             <% }) %>
         </div>
@@ -116,7 +116,7 @@
             <% }) %>
         </div>
         <div class="text-center mt-12">
-            <a href="/cars/" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
+            <a href="/cars/" class="link-arrow">
                 View All Cars
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -130,7 +130,7 @@
 <section class="py-24 bg-paper">
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-16">
-            <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">Where We Deliver</span>
+            <span class="eyebrow">Where We Deliver</span>
             <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-4 max-w-3xl">Available All Over Pattaya</h2>
             <p class="text-ink/50 text-sm leading-relaxed max-w-xl">Wherever you stay, we deliver for free.</p>
         </div>
@@ -149,9 +149,9 @@
 <section class="py-24 bg-paper">
     <div class="max-w-3xl mx-auto px-6">
         <div class="mb-12">
-            <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">FAQ</span>
+            <span class="eyebrow">FAQ</span>
             <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12">Frequently Asked Questions</h2>
-            <p class="text-ink/50 text-sm leading-relaxed">Everything you need to know about renting with us.</p>
+            <p class="card-body">Everything you need to know about renting with us.</p>
         </div>
         <div class="space-y-4">
             <% [
@@ -170,7 +170,7 @@
             <% }) %>
         </div>
         <div class="text-center mt-10">
-            <a href="/faq/" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
+            <a href="/faq/" class="link-arrow">
                 View All FAQs
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
