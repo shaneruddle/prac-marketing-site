@@ -1,53 +1,105 @@
-<section class="bg-gray-900 pt-32 pb-24 text-white">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Long Term Car Rental</h1>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">Special rates for expats and digital nomads. Starting from ฿15,000 per month including all maintenance.</p>
+<section class="bg-paper pt-32 pb-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">Special Rates</span>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-ink leading-[0.9]">Long Term Car Hire in Pattaya</h1>
+        <p class="text-ink/60 text-lg leading-relaxed mt-8">Monthly and long-stay car rentals for expats, digital nomads, and long-term visitors — with preferential rates the longer you stay. Every rental comes with full insurance, free hotel or condo delivery, and 24/7 support as standard.</p>
+        <a href="#enquire" class="btn-primary inline-flex mt-8">Request a Quote</a>
+      </div>
+      <div>
+        <!-- TODO: car image URL — supply a Firebase Storage URL and replace this block -->
+        <div class="rounded-[50px] overflow-hidden shadow-2xl shadow-black/10 bg-black/5 aspect-[4/3] flex items-center justify-center">
+          <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/20">Car image placeholder</span>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="py-24">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-3xl font-bold mb-8">Benefits of Monthly Rental</h2>
-                <div class="space-y-6">
-                    <% [
-                        { t: 'Significant Discounts', d: 'Get up to 40% off standard daily rates for monthly contracts.' },
-                        { t: 'Free Maintenance', d: 'Oil changes, tire rotation, and mechanical checks all included.' },
-                        { t: 'Flexible Car Swapping', d: 'Need a different car for a weekend trip? Swap within our fleet easily.' },
-                        { t: 'No Long-term Commitment', d: 'Rent month-to-month or for a full year. You decide.' }
-                    ].forEach(benefit => { %>
-                        <div class="flex gap-4">
-                            <div class="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900"><%= benefit.t %></h4>
-                                <p class="text-sm text-gray-500"><%= benefit.d %></p>
-                            </div>
-                        </div>
-                    <% }) %>
-                </div>
-            </div>
-            <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-2xl">
-                <h3 class="text-2xl font-bold mb-6">Enquire Now</h3>
-                <form id="long-term-form" class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="Full Name" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
-                        <input type="email" placeholder="Email Address" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
-                    </div>
-                    <input type="tel" placeholder="WhatsApp / Phone Number" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
-                    <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500">
-                        <option>Desired Car Type</option>
-                        <option>Economy Sedan</option>
-                        <option>Family SUV</option>
-                        <option>Work Pickup</option>
-                    </select>
-                    <textarea rows="4" placeholder="How many months do you need the car for?" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"></textarea>
-                    <button type="submit" class="w-full bg-orange-500 text-white font-bold py-4 rounded-xl hover:bg-orange-600 transition-all">Send Request</button>
-                    <p class="text-[10px] text-gray-400 text-center">We will contact you via WhatsApp or Email within 2 hours.</p>
-                </form>
-            </div>
+<section class="bg-paper py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">Why Go Long Term</span>
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12 max-w-3xl">Everything included, the longer you stay</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 max-w-5xl">
+
+      <div class="flex gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <div>
+          <h3 class="font-bold text-lg tracking-tight text-ink mb-1">Better Value the Longer You Stay</h3>
+          <p class="text-ink/50 text-sm leading-relaxed">Preferential monthly rates that reward commitment — the longer your rental, the better your deal.</p>
         </div>
+      </div>
+
+      <div class="flex gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <div>
+          <h3 class="font-bold text-lg tracking-tight text-ink mb-1">First-Class Insurance Included</h3>
+          <p class="text-ink/50 text-sm leading-relaxed">Every long-term rental comes with full Viriyah insurance coverage — no extras, no surprises.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <div>
+          <h3 class="font-bold text-lg tracking-tight text-ink mb-1">Free Delivery &amp; Collection</h3>
+          <p class="text-ink/50 text-sm leading-relaxed">We deliver to your condo, villa, or hotel anywhere in Pattaya — and collect at the end of your stay.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <div>
+          <h3 class="font-bold text-lg tracking-tight text-ink mb-1">Servicing &amp; Maintenance Handled</h3>
+          <p class="text-ink/50 text-sm leading-relaxed">Oil changes, tyre rotation, and all scheduled servicing taken care of throughout your rental.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <div>
+          <h3 class="font-bold text-lg tracking-tight text-ink mb-1">Flexible Vehicle Swaps</h3>
+          <p class="text-ink/50 text-sm leading-relaxed">Need a different vehicle or want to extend? Just give us 7 days' notice and we'll arrange it.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <div>
+          <h3 class="font-bold text-lg tracking-tight text-ink mb-1">24/7 Support</h3>
+          <p class="text-ink/50 text-sm leading-relaxed">Round-the-clock assistance via phone, WhatsApp, and Line — whenever you need us.</p>
+        </div>
+      </div>
+
     </div>
+  </div>
+</section>
+
+<section id="enquire" class="bg-paper pb-32">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="bg-black rounded-[60px] text-white p-12 md:p-24 overflow-hidden relative shadow-2xl shadow-black/40">
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mb-6">Get a Custom Quote</h2>
+          <p class="text-white/60 text-lg leading-relaxed">Tell us how long you need a vehicle and we'll send our best long-term rate within a few hours. You can also reach us directly by phone or WhatsApp — we speak English and Russian.</p>
+        </div>
+        <form action="mailto:<%= site.contact.email %>" method="post" enctype="text/plain" class="space-y-5">
+          <div>
+            <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold block mb-2">Name</label>
+            <input type="text" name="Name" class="w-full bg-white/10 border-none rounded-2xl p-4 outline-none focus:bg-white/20 transition-all font-medium text-white placeholder-white/30">
+          </div>
+          <div>
+            <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold block mb-2">Email</label>
+            <input type="email" name="Email" class="w-full bg-white/10 border-none rounded-2xl p-4 outline-none focus:bg-white/20 transition-all font-medium text-white placeholder-white/30">
+          </div>
+          <div>
+            <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold block mb-2">How long do you need a vehicle?</label>
+            <textarea name="Details" rows="4" class="w-full bg-white/10 border-none rounded-2xl p-4 outline-none focus:bg-white/20 transition-all font-medium text-white placeholder-white/30 resize-none"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full justify-center">Request Quote</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
