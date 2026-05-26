@@ -11,11 +11,12 @@
                 <a href="<%= lang === 'en' ? '/cars' : '/' + lang + '/cars' %>" class="hover:text-primary transition-colors <%= url.includes('/cars') ? 'text-primary' : '' %>">Our Fleet</a>
                 <a href="<%= lang === 'en' ? '/locations' : '/' + lang + '/locations' %>" class="hover:text-primary transition-colors <%= url.includes('/locations') ? 'text-primary' : '' %>">Locations</a>
                 <a href="<%= lang === 'en' ? '/long-term-rental' : '/' + lang + '/long-term-rental' %>" class="hover:text-primary transition-colors <%= url.includes('/long-term-rental') ? 'text-primary' : '' %>">Long Term</a>
+                <a href="https://pattayarentabike.com/" rel="noopener" class="hover:text-primary transition-colors">Rent a Bike</a>
                 <a href="<%= lang === 'en' ? '/faq' : '/' + lang + '/faq' %>" class="hover:text-primary transition-colors <%= url.includes('/faq') ? 'text-primary' : '' %>">FAQ</a>
             </div>
             
             <div class="flex items-center gap-6 border-l border-gray-100 pl-10">
-                <% /* EN-only launch: language switcher disabled — remove wrapping if/end to re-enable */ if (false) { %>
+                <% /* EN-only launch: language switcher disabled â remove wrapping if/end to re-enable */ if (false) { %>
 <!-- Language Switcher -->
                 <div class="relative group">
                     <button class="flex items-center gap-1.5 text-[10px] font-black tracking-widest text-ink/40 uppercase hover:text-primary transition-colors">
@@ -31,6 +32,7 @@
                                     <span><%= l.name %></span>
                                 </a>
                             <% }) %>
+                <a href="https://pattayarentabike.com/" rel="noopener" class="text-3xl font-black italic text-white uppercase tracking-tighter hover:text-primary transition-colors">Rent a Bike</a>
                         </div>
                     </div>
                 </div>
@@ -64,7 +66,7 @@
                 </a>
             <% }) %>
             
-            <% /* EN-only launch: mobile language switcher disabled — remove wrapping if/end to re-enable */ if (false) { %>
+            <% /* EN-only launch: mobile language switcher disabled â remove wrapping if/end to re-enable */ if (false) { %>
 <div class="h-px w-20 bg-white/10 my-4"></div>
 
             <div class="flex gap-4">
