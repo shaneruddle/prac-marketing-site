@@ -1,32 +1,60 @@
-<section class="bg-gray-100 pt-32 pb-24">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">About Pattaya Rent A Car</h1>
-        <p class="text-xl text-gray-500 max-w-2xl mx-auto">Operating since 2016, we have built a reputation for trust, reliability, and the easiest car rental experience in Thailand.</p>
+<!-- Section 1: Hero -->
+<section class="bg-paper pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block">Established 2009</span>
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-ink leading-[0.9] max-w-4xl">Pattaya's Number 1 Car Hire Company</h1>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-12 max-w-5xl">
+            <p class="text-ink/60 text-lg leading-relaxed">Founded in 2009, Pattaya Rent a Car has grown over 16 years into the city's most trusted rental service, operating a fleet of 100+ cars, SUVs, pickups and motorbikes. Thousands of tourists, expats and long-term residents rely on us every year — because we make renting simple, transparent and stress-free.</p>
+            <p class="text-ink/60 text-lg leading-relaxed">Every rental includes first-class Viriyah Insurance as standard, free delivery to your hotel or villa, and 24/7 support by phone, WhatsApp and Line. Our team speaks English and Russian, and our 4.9-star rating from over 1,200 Google reviews speaks for itself.</p>
+        </div>
     </div>
 </section>
 
-<section class="py-24">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6">
-                <h2 class="text-3xl font-bold text-gray-900 leading-tight">We aren't just a rental company, we are your travel partner in Pattaya.</h2>
-                <p class="text-gray-600 leading-relaxed">
-                    Our founder started the business with a single car and a mission: to remove the friction from renting a vehicle in Pattaya. Today, we have a diverse fleet of over 50 vehicles and a team of dedicated professionals serving thousands of tourists and expats every year.
-                </p>
-                <div class="grid grid-cols-2 gap-8 pt-8">
-                    <div>
-                        <span class="text-4xl font-extrabold text-orange-500 block mb-2"><%= site.trust.years %></span>
-                        <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Experience</span>
-                    </div>
-                    <div>
-                        <span class="text-4xl font-extrabold text-orange-500 block mb-2"><%= site.trust.customers %></span>
-                        <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Served</span>
-                    </div>
-                </div>
+<!-- Section 2: Team photo -->
+<section class="bg-paper pb-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="rounded-[50px] overflow-hidden shadow-2xl shadow-black/10">
+            <img src="https://firebasestorage.googleapis.com/v0/b/pattaya-rent-a-car-rebuild.firebasestorage.app/o/Team_cover_image.jpg?alt=media&token=0d338f08-cd9a-4ff4-a7b0-b609314e489d" alt="The Pattaya Rent a Car team" class="w-full h-auto object-cover" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Feature cards -->
+<section class="bg-paper py-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div class="glass-card rounded-[32px] p-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mb-8"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+                <h3 class="font-bold text-xl tracking-tight text-ink mb-3">Quality Fleet</h3>
+                <p class="text-ink/50 text-sm leading-relaxed">100+ well-maintained vehicles spanning economy cars, spacious 7-seat SUVs, pickups and motorbikes — all automatic and freshly serviced.</p>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="aspect-square bg-gray-100 rounded-3xl"></div>
-                <div class="aspect-square bg-gray-50 rounded-3xl mt-12"></div>
+
+            <div class="glass-card rounded-[32px] p-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mb-8"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                <h3 class="font-bold text-xl tracking-tight text-ink mb-3">Full Insurance</h3>
+                <p class="text-ink/50 text-sm leading-relaxed">First-class insurance through Viriyah Insurance included as standard on every rental — no add-ons, no surprises.</p>
+            </div>
+
+            <div class="glass-card rounded-[32px] p-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mb-8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <h3 class="font-bold text-xl tracking-tight text-ink mb-3">24/7 Support</h3>
+                <p class="text-ink/50 text-sm leading-relaxed">Round-the-clock support via phone, WhatsApp and Line, with free hotel delivery across Pattaya — we're always just a message away.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Dark CTA -->
+<section class="bg-paper pb-32">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-black rounded-[60px] text-white p-12 md:p-24 overflow-hidden relative shadow-2xl shadow-black/40">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+            <div class="relative z-10 max-w-3xl">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Experience Pattaya with the freedom of your own vehicle</h2>
+                <p class="text-white/60 text-lg leading-relaxed mb-10">Our team knows every road in Pattaya — and we'll deliver your vehicle straight to your door. Get in touch and we'll take care of the rest.</p>
+                <a href="/contact/" class="btn-primary inline-flex">Get in Touch</a>
             </div>
         </div>
     </div>
