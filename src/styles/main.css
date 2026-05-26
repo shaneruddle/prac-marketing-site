@@ -34,7 +34,7 @@
     @apply font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block;
   }
 
-  /* Feature/content card (spacious) — glass-card utilities inlined */
+  /* Feature/content card (spacious) â glass-card utilities inlined */
   .card {
     @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-sm rounded-[32px] p-10;
   }
@@ -86,7 +86,7 @@
     background: rgba(0,0,0,0.45);
   }
   .dp-overlay.is-open { @apply flex; }
-  .dp-panel { @apply bg-white rounded-3xl shadow-2xl w-full max-w-xl; overflow-y: auto; max-height: calc(100vh - 2rem); }
+  .dp-panel { @apply bg-white rounded-3xl shadow-2xl w-full max-w-xl; overflow-y: auto; max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem); }
   .dp-day {
     @apply flex items-center justify-center text-sm font-semibold cursor-pointer bg-transparent text-ink relative;
     aspect-ratio: 1 / 1; border: none; font-family: inherit;
