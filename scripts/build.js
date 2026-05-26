@@ -173,7 +173,7 @@ async function renderPage(templatePath, data, outputPath) {
                 site,
                 languages,
                 body: renderedBody,
-                url: outputPath.replace(/index\.html$/, '').replace(/^\.\/dist/, '')
+                url: outputPath.replace(/index\.html$/, '').replace(/^\.\/dist/, '').replace(/^\.\//, '/')
     }, { filename: path.join(srcDir, 'templates/layout.ejs') });
 
     await fs.outputFile(path.join(distDir, outputPath), fullHtml);
@@ -404,7 +404,7 @@ async function build() {
                             lang,
                             faqs: faqs,
                             title: 'Frequently Asked Questions',
-                            description: 'Everything you need to know about renting a car in Pattaya â payments, insurance, delivery, requirements and more.',
+                            description: 'Everything you need to know about renting a car in Pattaya Ã¢ÂÂ payments, insurance, delivery, requirements and more.',
                             schema: {
                                                 '@context': 'https://schema.org',
                                                 '@type': 'FAQPage',
@@ -472,7 +472,7 @@ async function build() {
     await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
 
     const robotsTxt = [
-        '# AI / LLM crawlers â explicitly welcomed',
+        '# AI / LLM crawlers Ã¢ÂÂ explicitly welcomed',
         'User-agent: GPTBot', 'Allow: /', '',
         'User-agent: OAI-SearchBot', 'Allow: /', '',
         'User-agent: ChatGPT-User', 'Allow: /', '',
