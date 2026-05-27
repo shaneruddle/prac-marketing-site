@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const pickupTime = bookingForm.pickup_time.value || "09:00";
             const dropoffTime = bookingForm.dropoff_time.value || "09:00";
             // Redirect to booking engine: from/to dates + times (no location at this stage)
-            const bookingUrl = `https://pattayarentacar.com/?from=${from}&to=${to}&pickupTime=${pickupTime}&dropoffTime=${dropoffTime}`;
+            const bookingUrl = `https://app.pattayarentacar.com/?from=${from}&to=${to}&pckupTime=${pickupTime}&dropoffTime=${dropoffTime}`;
             window.location.href = bookingUrl;
         });
     }
