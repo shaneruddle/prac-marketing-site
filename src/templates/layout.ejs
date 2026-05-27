@@ -47,6 +47,42 @@
     <%- include('components/floating-contact', { site }) %>
 
     <%- include('components/date-picker-overlay') %>
+
+    <!-- Mobile Menu — portalled to body root so fixed inset-0 resolves to viewport (not header's backdrop-filter containing block) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-ink z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center p-10">
+        <nav class="flex flex-col items-center gap-10 text-center">
+            <% [
+                { name: 'Our Fleet', path: '/cars' },
+                { name: 'Locations', path: '/locations' },
+                { name: 'Long Term', path: '/long-term-rental' },
+                { name: 'FAQ', path: '/faq' },
+                { name: 'About', path: '/about' },
+                { name: 'Contact', path: '/contact' }
+            ].forEach(link => { %>
+                <a href="<%= lang === 'en' ? link.path : '/' + lang + link.path %>" class="text-3xl font-black italic text-white uppercase tracking-tighter hover:text-primary transition-colors">
+                    <%= link.name %>
+                </a>
+            <% }) %>
+
+            <a href="https://pattayarentabike.com/" rel="noopener" class="text-3xl font-black italic text-white uppercase tracking-tighter hover:text-primary transition-colors">Rent a Bike</a>
+
+            <% /* EN-only launch: mobile language switcher disabled — remove wrapping if/end to re-enable */ if (false) { %>
+<div class="h-px w-20 bg-white/10 my-4"></div>
+
+            <div class="flex gap-4">
+                <% languages.forEach(l => { %>
+                    <a href="<%= l.path %><%= url.replace(/^\/[a-z]{2}\//, '') %>" class="text-xl <%= l.code === lang ? 'grayscale-0' : 'grayscale' %>">
+                        <%= l.flag %>
+                    </a>
+                <% }) %>
+            </div>
+<% } /* end disabled mobile language switcher */ %>
+
+            <a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>" class="text-2xl font-black text-primary uppercase tracking-widest mt-4">
+                <%= site.contact.phone %>
+            </a>
+        </nav>
+    </div>
     <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
