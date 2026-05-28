@@ -68,24 +68,14 @@
                     <% }) %>
                 </div>
 
-                <div class="bg-paper rounded-3xl p-8 border border-gray-100 mb-10">
-                    <div class="flex items-center justify-between mb-8">
-                        <div>
-                            <span class="block text-xs font-black uppercase tracking-widest text-ink/30 mb-1">Status</span>
-                            <div class="flex items-center gap-2">
-                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                                <span class="text-sm font-black text-ink uppercase tracking-widest">Available Now</span>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="block text-xs text-ink/40 font-medium italic">Instant confirmation</span>
-                        </div>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-sm font-black text-ink uppercase tracking-widest">Available Now</span>
                     </div>
-                    <a href="https://app.pattayarentacar.com" class="btn-primary w-full flex items-center justify-center gap-3 group">
-                        <span>Check Availability</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </a>
+                    <span class="text-xs text-ink/40 font-medium italic">Instant confirmation</span>
                 </div>
+                <%- include('../components/date-picker') %>
 
                 <div class="flex flex-wrap gap-4">
                     <div class="flex items-center gap-2 text-sm text-gray-500">
