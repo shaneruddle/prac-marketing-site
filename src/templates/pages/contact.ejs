@@ -54,27 +54,28 @@
       <!-- Form panel -->
       <div class="card-compact">
         <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">Send us a Message</h2>
-        <form action="mailto:<%= site.contact.email %>" method="post" enctype="text/plain" class="space-y-5">
+        <form id="ct-form" class="space-y-5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/30 font-bold block mb-2">First Name</label>
-              <input type="text" name="First Name" class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium">
+              <input type="text" id="ct-firstname" name="First Name" required class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium">
             </div>
             <div>
               <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/30 font-bold block mb-2">Last Name</label>
-              <input type="text" name="Last Name" class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium">
+              <input type="text" id="ct-lastname" name="Last Name" class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium">
             </div>
           </div>
           <div>
             <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/30 font-bold block mb-2">Email</label>
-            <input type="email" name="Email" class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium">
+            <input type="email" id="ct-email" name="Email" required class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium">
           </div>
           <div>
             <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/30 font-bold block mb-2">Message</label>
-            <textarea name="Message" rows="5" class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium resize-none"></textarea>
+            <textarea id="ct-message" name="Message" rows="5" required class="w-full bg-black/5 border-none rounded-2xl p-4 outline-none focus:bg-black/10 transition-all font-medium resize-none"></textarea>
           </div>
-          <button type="submit" class="btn-primary w-full justify-center">Send Message</button>
+          <button type="submit" id="ct-submit" class="btn-primary w-full justify-center">Send Message</button>
         </form>
+        <div id="ct-result" class="hidden"></div>
       </div><!-- /form panel -->
 
     </div>
