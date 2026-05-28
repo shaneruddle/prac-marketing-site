@@ -50,6 +50,9 @@
 
     <!-- Mobile Menu — portalled to body root so fixed inset-0 resolves to viewport (not header's backdrop-filter containing block) -->
     <div id="mobile-menu" class="fixed inset-0 bg-ink z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center p-10">
+    <button id="mobile-menu-close" aria-label="Close menu" class="absolute top-6 right-6 p-2 text-white/60 hover:text-white transition-colors">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
         <nav class="flex flex-col items-center gap-10 text-center">
             <% [
                 { name: 'Our Fleet', path: '/cars' },
