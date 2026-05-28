@@ -164,4 +164,84 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // Fallback for older browsers if needed
     }
+
+    // ── Enquiry Form Handler ───────────────────────────────────────────
+    const EMAIL_ENDPOINT = 'https://app.pattayarentacar.com/api/send-email';
+
+    async function sendEnquiry(payload, btnEl, resultEl) {
+        const originalText = btnEl.textContent;
+        btnEl.disabled = true;
+        btnEl.textContent = 'Sending…';
+        resultEl.className = 'hidden';
+
+        try {
+            const res = await fetch(EMAIL_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!res.ok) throw new Error('Server returned ' + res.status);
+
+            resultEl.className = resultEl.dataset.theme === 'dark'
+                ? 'mt-5 rounded-2xl p-5 bg-white/10 text-green-300 font-medium text-sm'
+                : 'mt-5 rounded-2xl p-5 bg-green-500/10 text-green-700 font-medium text-sm';
+            resultEl.innerHTML = '✓ Thanks — your enquiry has been sent. We’ll be in touch within a few hours.';
+            btnEl.closest('form').reset();
+
+        } catch (err) {
+            resultEl.className = resultEl.dataset.theme === 'dark'
+                ? 'mt-5 rounded-2xl p-5 bg-white/10 text-red-300 font-medium text-sm'
+                : 'mt-5 rounded-2xl p-5 bg-red-500/10 text-red-700 font-medium text-sm';
+            resultEl.innerHTML = 'Something went wrong — please try again, or email us at <a href="mailto:info@pattayarentacar.com" class="underline">info@pattayarentacar.com</a>.';
+            console.error('[Enquiry] Send failed:', err);
+
+        } finally {
+            btnEl.disabled = false;
+            btnEl.textContent = originalText;
+        }
+    }
+
+    // Long-Term form
+    const ltForm = document.getElementById('lt-form');
+    if (ltForm) {
+        ltForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name    = document.getElementById('lt-name').value.trim();
+            const email   = document.getElementById('lt-email').value.trim();
+            const details = document.getElementById('lt-details').value.trim();
+            await sendEnquiry({
+                to:      'info@pattayarentacar.com',
+                replyTo: email,
+                subject: 'Long-Term Enquiry from ' + name,
+                html:    '<h3>New Long-Term Hire Enquiry</h3>' +
+                         '<p><strong>Name:</strong> ' + name + '</p>' +
+                         '<p><strong>Email:</strong> ' + email + '</p>' +
+                         '<p><strong>Details / Duration:</strong></p>' +
+                         '<p>' + details.replace(/\n/g, '<br>') + '</p>'
+            }, document.getElementById('lt-submit'), document.getElementById('lt-result'));
+        });
+    }
+
+    // Contact form
+    const ctForm = document.getElementById('ct-form');
+    if (ctForm) {
+        ctForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const firstName = document.getElementById('ct-firstname').value.trim();
+            const lastName  = document.getElementById('ct-lastname').value.trim();
+            const email     = document.getElementById('ct-email').value.trim();
+            const message   = document.getElementById('ct-message').value.trim();
+            const fullName  = (firstName + ' ' + lastName).trim();
+            await sendEnquiry({
+                to:      'info@pattayarentacar.com',
+                replyTo: email,
+                subject: 'Contact Enquiry from ' + fullName,
+                html:    '<h3>New Contact Enquiry</h3>' +
+                         '<p><strong>Name:</strong> ' + fullName + '</p>' +
+                         '<p><strong>Email:</strong> ' + email + '</p>' +
+                         '<p><strong>Message:</strong></p>' +
+                         '<p>' + message.replace(/\n/g, '<br>') + '</p>'
+            }, document.getElementById('ct-submit'), document.getElementById('ct-result'));
+        });
+    }
 });
