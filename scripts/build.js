@@ -212,6 +212,7 @@ async function build() {
                 phone:    company.phone    || site.contact?.phone,
                 whatsapp: company.whatsapp || site.contact?.whatsapp,
                 line:     company.lineId   || site.contact?.line,
+                email:    company.email    || site.contact?.email,
             },
             social: {
                 ...site.social,
@@ -227,6 +228,7 @@ async function build() {
                 facebookRating:  company.trust?.facebookRating  || '',
                 facebookReviews: company.trust?.facebookReviews || '',
             },
+            openingHours: company.openingHours || null,
         };
 
     guides.forEach(g => {
