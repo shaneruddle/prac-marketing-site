@@ -209,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const name    = document.getElementById('lt-name').value.trim();
             const email   = document.getElementById('lt-email').value.trim();
             const details = document.getElementById('lt-details').value.trim();
+            const phone = document.getElementById('lt-phone').value.trim();
             await sendEnquiry({
                 to:      'info@pattayarentacar.com',
                 replyTo: email,
@@ -216,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 html:    '<h3>New Long-Term Hire Enquiry</h3>' +
                          '<p><strong>Name:</strong> ' + name + '</p>' +
                          '<p><strong>Email:</strong> ' + email + '</p>' +
+                         '<p><strong>Phone / WhatsApp:</strong> ' + (phone || '—') + '</p>' +
                          '<p><strong>Details / Duration:</strong></p>' +
                          '<p>' + details.replace(/\n/g, '<br>') + '</p>'
             }, document.getElementById('lt-submit'), document.getElementById('lt-result'));
@@ -232,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const email     = document.getElementById('ct-email').value.trim();
             const message   = document.getElementById('ct-message').value.trim();
             const fullName  = (firstName + ' ' + lastName).trim();
+            const phone = document.getElementById('ct-phone').value.trim();
             await sendEnquiry({
                 to:      'info@pattayarentacar.com',
                 replyTo: email,
@@ -239,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 html:    '<h3>New Contact Enquiry</h3>' +
                          '<p><strong>Name:</strong> ' + fullName + '</p>' +
                          '<p><strong>Email:</strong> ' + email + '</p>' +
+                         '<p><strong>Phone / WhatsApp:</strong> ' + (phone || '—') + '</p>' +
                          '<p><strong>Message:</strong></p>' +
                          '<p>' + message.replace(/\n/g, '<br>') + '</p>'
             }, document.getElementById('ct-submit'), document.getElementById('ct-result'));
