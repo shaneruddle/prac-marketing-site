@@ -8,6 +8,18 @@
     ],
     "cleanUrls": true,
     "trailingSlash": true,
+    "redirects": [
+      {
+        "source": "/motorbike-rental/",
+        "destination": "https://pattayarentabike.com/",
+        "type": 301
+      },
+      {
+        "source": "/motorbike-rental",
+        "destination": "https://pattayarentabike.com/",
+        "type": 301
+      }
+    ],
     "headers": [
       {
         "source": "**/*.@(jpg|jpeg|gif|png|webp|svg|ico|css|js)",
