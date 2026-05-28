@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenu.classList.add('translate-x-full');
             });
         });
+
+        // Close button inside menu
+        const mobileClose = document.getElementById('mobile-menu-close');
+        if (mobileClose) {
+            mobileClose.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+        }
     }
 
     // Booking Form Logic + Date Range Picker
