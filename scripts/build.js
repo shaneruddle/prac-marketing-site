@@ -263,7 +263,7 @@ async function build() {
                                                     {
                                                                     '@type': 'AutoRental',
                                                                     'name': site.name,
-                                                                    'url': 'https://' + site.domain + '/' + baseDir,
+                                                                    'url': 'https://' + site.domain + '/' + baseDir.replace(/^\.\//,''),
                                                                     'logo': 'https://' + site.domain + '/assets/images/logo.png',
                                                                     'image': 'https://' + site.domain + '/assets/images/og-image.jpg',
                                                                     'address': {
