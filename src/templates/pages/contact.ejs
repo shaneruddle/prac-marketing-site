@@ -55,6 +55,16 @@
       <div class="card-compact">
         <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">Send us a Message</h2>
         <form id="ct-form" class="space-y-5">
+          <!-- Honeypot field — hidden from humans, bots fill it -->
+          <input
+            type="text"
+            id="ct-honeypot"
+            name="website"
+            autocomplete="off"
+            tabindex="-1"
+            aria-hidden="true"
+            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"
+          />
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/30 font-bold block mb-2">First Name</label>
