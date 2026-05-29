@@ -85,6 +85,16 @@
           <p class="text-white/60 text-lg leading-relaxed">Tell us how long you need a vehicle and we'll send our best long-term rate within a few hours. You can also reach us directly by phone or WhatsApp â we speak English and Russian.</p>
         </div>
         <form id="lt-form" class="space-y-5">
+          <!-- Honeypot field — hidden from humans, bots fill it -->
+          <input
+            type="text"
+            id="lt-honeypot"
+            name="website"
+            autocomplete="off"
+            tabindex="-1"
+            aria-hidden="true"
+            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"
+          />
           <div>
             <label class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold block mb-2">Name</label>
             <input type="text" id="lt-name" name="Name" required class="w-full bg-white/10 border-none rounded-2xl p-4 outline-none focus:bg-white/20 transition-all font-medium text-white placeholder-white/30">
