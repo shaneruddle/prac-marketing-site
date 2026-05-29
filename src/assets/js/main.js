@@ -218,6 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const email   = document.getElementById('lt-email').value.trim();
             const details = document.getElementById('lt-details').value.trim();
             const phone = document.getElementById('lt-phone').value.trim();
+                    // Honeypot check — silently succeed if filled
+                    const ltHoneypot = document.getElementById('lt-honeypot').value;
+                    if (ltHoneypot) {
+                                  const ltResultEl = document.getElementById('lt-result');
+                                  ltResultEl.className = 'mt-5 rounded-2xl p-5 bg-white/10 text-green-300 font-medium text-sm';
+                                  ltResultEl.innerHTML = '\u2713 Thanks \u2013 your enquiry has been sent. We\'ll be in touch within a few hours.';
+                                  ltForm.reset();
+                                  return;
+                    }
             await sendEnquiry({
                 to:      'info@pattayarentacar.com',
                 replyTo: email,
@@ -227,7 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
                          '<p><strong>Email:</strong> ' + email + '</p>' +
                          '<p><strong>Phone / WhatsApp:</strong> ' + (phone || '—') + '</p>' +
                          '<p><strong>Details / Duration:</strong></p>' +
-                         '<p>' + details.replace(/\n/g, '<br>') + '</p>'
+                         '<p>' + details.replace(/\n/g, '<br>') + '</p>',
+                          website: ltHoneypot,
             }, document.getElementById('lt-submit'), document.getElementById('lt-result'));
         });
     }
@@ -243,6 +253,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const message   = document.getElementById('ct-message').value.trim();
             const fullName  = (firstName + ' ' + lastName).trim();
             const phone = document.getElementById('ct-phone').value.trim();
+                    // Honeypot check — silently succeed if filled
+                    const ctHoneypot = document.getElementById('ct-honeypot').value;
+                    if (ctHoneypot) {
+                                  const ctResultEl = document.getElementById('ct-result');
+                                  ctResultEl.className = 'mt-5 rounded-2xl p-5 bg-green-500/10 text-green-700 font-medium text-sm';
+                                  ctResultEl.innerHTML = '\u2713 Thanks \u2013 your enquiry has been sent. We\'ll be in touch within a few hours.';
+                                  ctForm.reset();
+                                  return;
+                    }
             await sendEnquiry({
                 to:      'info@pattayarentacar.com',
                 replyTo: email,
@@ -252,7 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
                          '<p><strong>Email:</strong> ' + email + '</p>' +
                          '<p><strong>Phone / WhatsApp:</strong> ' + (phone || '—') + '</p>' +
                          '<p><strong>Message:</strong></p>' +
-                         '<p>' + message.replace(/\n/g, '<br>') + '</p>'
+                         '<p>' + message.replace(/\n/g, '<br>') + '</p>',
+                          website: ctHoneypot,
             }, document.getElementById('ct-submit'), document.getElementById('ct-result'));
         });
     }
