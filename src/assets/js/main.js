@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Mobile menu toggled');
         });
 
-        // Close menu when clicking links
+        // Close menu when clicking link
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -238,6 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
                          '<p><strong>Details / Duration:</strong></p>' +
                          '<p>' + details.replace(/\n/g, '<br>') + '</p>',
                           website: ltHoneypot,
+                            enquiryName:  name,
+                            enquiryEmail: email,
+                            enquiryPhone: phone,
+                            enquiryType:  'long-term',
+                            enquiryNote:  details,
             }, document.getElementById('lt-submit'), document.getElementById('lt-result'));
         });
     }
@@ -273,6 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
                          '<p><strong>Message:</strong></p>' +
                          '<p>' + message.replace(/\n/g, '<br>') + '</p>',
                           website: ctHoneypot,
+                            enquiryName:  fullName,
+                            enquiryEmail: email,
+                            enquiryPhone: phone,
+                            enquiryType:  'contact',
+                            enquiryNote:  message,
             }, document.getElementById('ct-submit'), document.getElementById('ct-result'));
         });
     }
