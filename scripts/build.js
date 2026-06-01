@@ -81,6 +81,34 @@ async function fetchCompanySettings(db) {
 }
 
 
+
+async function fetchTypicalPrices() {
+  const BASE_URL = 'https://pattaya-rent-a-car-rebuild-700448424476.us-west1.run.app';
+  const DAYS = 7;
+  const from = new Date();
+  from.setDate(from.getDate() + 14);
+  const to = new Date(from);
+  to.setDate(to.getDate() + DAYS);
+  const fromISO = from.toISOString().split('T')[0];
+  const toISO = to.toISOString().split('T')[0];
+  const classes = ['Budget Economy', 'Budget SUV', 'SUV', 'MPV', 'Pickup Truck', 'Motorbike'];
+  const priceMap = {};
+  await Promise.all(classes.map(async (cls) => {
+    try {
+      const url = `${BASE_URL}/api/pricing/quote?class=${encodeURIComponent(cls)}&from=${fromISO}&to=${toISO}`;
+      const res = await fetch(url);
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data && data.quotable) {
+        priceMap[cls] = { perDay: data.perDay, totalPrice: data.totalPrice, days: DAYS };
+      }
+    } catch (e) {
+      console.warn(`Pricing fetch failed for ${cls}:`, e.message);
+    }
+  }));
+  console.log('Pricing fetched for classes:', Object.keys(priceMap).join(', ') || 'none');
+  return priceMap;
+}
 // Batch-fetch all website_cars docs referenced across guides + locations.
 // Returns lookup map: { [docId]: websiteCarObject }
 // Single db.getAll() call -- no N+1 queries.
@@ -106,7 +134,7 @@ async function fetchFeaturedCarsMap(db, guides, locations) {
 // Run per-language per-document inside the language loop.
 // Templates stay presentational -- they never touch nested Firestore shapes.
 
-function flattenGuide(guide, lang) {
+function flattenGuide(guide, lang, priceMap = {}) {
         const t = (guide.translations && guide.translations[lang])
             || (guide.translations && guide.translations['en'])
             || {};
@@ -193,14 +221,14 @@ async function build() {
 
     // -- Fetch all Firestore data upfront ------------------------------------
     console.log('Fetching from Firestore...');
-        const guides    = await fetchPublishedGuides(db);
-        const locations = await fetchPublishedLocations(db);
-        const carMap    = await fetchFeaturedCarsMap(db, guides, locations);
-        const blogPosts = await fetchPublishedBlogPosts(db);
-        const faqs      = await fetchFaqs(db);
-
-        // Company profile from app_settings (source of truth for name/contact/trust/social)
-        const company = await fetchCompanySettings(db);
+  const [guides, locations, blogPosts, faqs, company, priceMap] = await Promise.all([
+    fetchPublishedGuides(db),
+    fetchPublishedLocations(db),
+    fetchPublishedBlogPosts(db),
+    fetchFaqs(db),
+    fetchCompanySettings(db),
+    fetchTypicalPrices(),
+  ]);
         site = {
             ...site,                                 // site.json defaults (incl. domain) underneath
             name:    company.companyName || site.name,
@@ -308,7 +336,7 @@ async function build() {
 
             // Individual vehicle guide pages
             for (const guide of guides) {
-                            const flatGuide = flattenGuide(guide, lang);
+                            const flatGuide = flattenGuide(guide, lang, priceMap);
                             await renderPage('guide-detail', {
                                                 lang,
                                                 guide: flatGuide,
@@ -321,7 +349,17 @@ async function build() {
                                                                         'description': flatGuide.intro || '',
                                                                         'model': flatGuide.model || '',
                                                                         'manufacturer': flatGuide.make || '',
-                                                                        'vehicleConfiguration': flatGuide.category || '',
+            'vehicleConfiguration': flatGuide.category || '',
+            ...(flatGuide.typicalPerDay ? {
+              'offers': {
+                '@type': 'Offer',
+                'priceCurrency': 'THB',
+                'price': flatGuide.typicalPerDay,
+                'priceValidUntil': new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                'description': 'Typical daily rate for a 7-day rental. Prices vary by season and availability.',
+                'url': 'https://' + site.domain + '/cars/' + flatGuide.slug + '/'
+              }
+            } : {})
                                                 }
                             }, tPath('cars/' + flatGuide.slug + '/index.html'));
             }
@@ -488,7 +526,47 @@ async function build() {
         'Sitemap: https://' + site.domain + '/sitemap.xml'
     ].join('\n');
     await fs.outputFile(path.join(distDir, 'robots.txt'), robotsTxt);
-        await fs.outputFile(path.join(distDir, 'llms.txt'), '# ' + site.name + '\n\nMarketing site for Pattaya\'s leading car rental business.\n\n## Key Pages\n- /: Homepage\n- /cars: Fleet overview\n- /locations: Service areas');
+  const priceLines = Object.entries(priceMap)
+    .map(([cls, p]) => `- ${cls}: from ฿${p.perDay.toLocaleString()}/day (typical ${p.days}-day rental ฿${p.totalPrice.toLocaleString()} total)`)
+    .join('\n');
+
+  const llmsTxt = [
+    `# ${site.name}`,
+    `> ${site.domain}`,
+    '',
+    `Pattaya's leading car and motorbike rental company, operating since ${(site.trust && site.trust.years) || 2009}. ${site.fleetSize || '100+'} vehicles, free hotel delivery across all Pattaya areas, 24/7 support.`,
+    '',
+    '## Contact',
+    `- Phone/WhatsApp: ${(site.contact && site.contact.phone) || ''}`,
+    `- Email: ${(site.contact && site.contact.email) || ''}`,
+    `- Line: ${(site.contact && site.contact.line) || ''}`,
+    '',
+    '## Typical Pricing (7-day rental, indicative — get exact quote at site)',
+    priceLines || '- Visit site for current pricing',
+    '',
+    '## Fleet',
+    ...flatGuides.map(g => `- ${g.title}: ${g.seats || ''} seats, ${g.transmission || ''}, ${g.fuelType || ''}`),
+    '',
+    '## Areas Served',
+    ...flatLocations.map(l => `- ${l.name}: ${l.description || ''}`),
+    '',
+    '## Rental Policy',
+    '- No upfront payment — pay on vehicle collection',
+    '- 5,000 THB refundable cash deposit required',
+    '- Includes first-class insurance, unlimited kilometres, 24hr breakdown cover',
+    '- Additional drivers permitted at no extra charge',
+    '- Free cancellation at any time',
+    '- International or Thai driving licence required',
+    '',
+    '## Key Pages',
+    '- /: Homepage',
+    '- /cars/: Full fleet',
+    '- /locations/: All service areas',
+    '- /faq/: Common questions',
+    '- /blog/: Guides and tips',
+  ].join('\n');
+
+  await fs.outputFile(path.join(distDir, 'llms.txt'), llmsTxt);
 
     console.log('Build complete!');
 }
