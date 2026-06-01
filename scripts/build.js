@@ -474,7 +474,7 @@ async function build() {
     await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
 
     const robotsTxt = [
-        '# AI / LLM crawlers Ã¢ÂÂ explicitly welcomed',
+                '# AI / LLM crawlers — explicitly welcomed',
         'User-agent: GPTBot', 'Allow: /', '',
         'User-agent: OAI-SearchBot', 'Allow: /', '',
         'User-agent: ChatGPT-User', 'Allow: /', '',
