@@ -437,7 +437,7 @@ async function build() {
             }
 
             // Static pages
-            const pages = ['about', 'contact', 'terms', 'privacy', 'insurance', 'motorbike-rental', 'long-term-rental'];
+                    const pages = ['about', 'contact', 'terms', 'privacy', 'insurance', 'motorbike-rental'];
                 for (const page of pages) {
                                 await renderPage(page, {
                                                     lang,
@@ -446,7 +446,20 @@ async function build() {
                                                     schema: {}
                                 }, tPath(page + '/index.html'));
                 }
-
+        // Long-term rental — dedicated renderPage with full SEO data
+                    await renderPage('long-term-rental', {
+                                            lang,
+                                            title: 'Long Term Car Rental Pattaya | Monthly & Expat Rates',
+                                            description: 'Monthly car rental in Pattaya from ฿10,000/month. Full insurance, free condo delivery, servicing included. Preferred by expats, digital nomads and long-stay visitors. Get a quote today.',
+                                            schema: {
+                                                                            '@context': 'https://schema.org',
+                                                                            '@graph': [
+                                                                                    { '@type': 'Service', '@id': 'https://' + site.domain + '/long-term-rental/#service', 'name': 'Long Term Car Rental Pattaya', 'alternateName': 'Monthly Car Rental Pattaya', 'description': 'Monthly and long-stay car rentals for expats, digital nomads, and long-term visitors in Pattaya. Rates from 10,000 THB/month with full insurance, free delivery and all servicing included.', 'url': 'https://' + site.domain + '/long-term-rental/', 'provider': { '@type': 'CarRental', 'name': site.name, 'telephone': site.contact.phone, 'address': { '@type': 'PostalAddress', 'streetAddress': site.address, 'addressLocality': 'Pattaya', 'addressRegion': 'Chon Buri', 'addressCountry': 'TH' } }, 'areaServed': { '@type': 'City', 'name': 'Pattaya' }, 'offers': { '@type': 'Offer', 'priceCurrency': 'THB', 'price': '10000', 'description': 'Monthly car rental from 10,000 THB — exact rate depends on vehicle and duration', 'eligibleDuration': { '@type': 'QuantitativeValue', 'value': 1, 'unitCode': 'MON' } },
+                                                                                                                     ...(site.trust.googleRating ? { 'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': site.trust.googleRating, 'reviewCount': site.trust.googleReviews } } : {}) },
+                                                                                    { '@type': 'FAQPage', 'mainEntity': [ { '@type': 'Question', 'name': 'How much does long-term car rental in Pattaya cost?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Monthly car rental in Pattaya starts from 10,000 THB per month with Pattaya Rent a Car. The exact rate depends on the vehicle model and rental duration — the longer you rent, the better the rate.' } }, { '@type': 'Question', 'name': 'What is included in a monthly car rental?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Every long-term rental includes comprehensive Viriyah insurance, free delivery and collection to your condo or villa, all scheduled servicing and oil changes, and 24/7 WhatsApp support.' } }, { '@type': 'Question', 'name': 'Can I rent a car in Pattaya for 3 months or longer?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes. We offer flexible long-term rentals for 1 month, 3 months, 6 months, or longer. Multi-month rentals receive preferential rates. Contact us for a custom quote.' } }, { '@type': 'Question', 'name': 'Can someone else drive my rental car?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes — additional drivers are permitted at no extra charge. All drivers must hold a valid foreign or Thai driving licence.' } }, { '@type': 'Question', 'name': 'Do I need a Thai driving licence for a long-term rental?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'No. A valid foreign driving licence is accepted. An International Driving Permit (IDP) is recommended for stays over 90 days.' } } ] }
+                                                                                                            ]
+                                            }
+                    }, tPath('long-term-rental/index.html'));
                 // FAQ page (real data from faqs collection, grouped by category)
                 await renderPage('faq', {
                             lang,
