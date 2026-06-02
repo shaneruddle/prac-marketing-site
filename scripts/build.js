@@ -313,7 +313,7 @@ async function build() {
                                                                                     'ratingValue': site.trust.googleRating,
                                                                                     'reviewCount': site.trust.googleReviews
                                                                     } } : {}),
-                                                                    'sameAs': [site.social.facebook, site.social.instagram].filter(Boolean)
+                                                                    'sameAs': [site.social.facebook, site.social.instagram].filter(Boolean),
                                                                                     'geo': { '@type': 'GeoCoordinates', 'latitude': 12.9274, 'longitude': 100.8834 },
                                                                                 'openingHoursSpecification': [{ '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], 'opens': '09:30', 'closes': '16:30' }],
                                                                                 'priceRange': '฿฿',
