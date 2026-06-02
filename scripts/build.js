@@ -229,6 +229,7 @@ async function build() {
     fetchCompanySettings(db),
     fetchTypicalPrices(),
   ]);
+                const carMap = Object.fromEntries(guides.map(g => [g.id, g]));
         site = {
             ...site,                                 // site.json defaults (incl. domain) underneath
             name:    company.companyName || site.name,
