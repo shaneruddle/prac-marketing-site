@@ -11,7 +11,7 @@
                 <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/50">Cars available right now</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-8 text-ink">
-                Easiest booking.<br/><span class="font-black italic text-primary">Best service</span> in Pattaya.
+                                    Car Rental Pattaya<br/><span class="font-black italic text-primary">Free Hotel Delivery</span> — Best in Thailand.
             </h1>
             <p class="text-lg text-ink/60 max-w-lg mb-10 leading-relaxed">
                 Premium fleet, free delivery to your hotel, and 24/7 support. No hidden fees. Just the freedom to explore Thailand.
@@ -138,7 +138,7 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <% featuredLocations.forEach(loc => { %>
             <a href="/locations/<%= loc.slug %>/" class="border border-ink/10 rounded-full px-5 py-2 text-ink/70 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
-                <%= loc.name %>
+                                    <%= loc.name %> Car Rental
             </a>
             <% }) %>
         </div>
@@ -175,6 +175,16 @@
                 View All FAQs
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
+
+<!-- SEO: Keyword body section -->
+<section class="py-16 bg-paper border-t border-ink/10">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-2xl font-black uppercase tracking-tight text-ink mb-4">Car Rental Pattaya — เช่ารถพัทยา</h2>
+        <p class="text-ink/70 leading-relaxed mb-4">Pattaya Rent a Car has been the trusted choice for car rental in Pattaya for over <%= site.trust.years %> years. Our fleet of 100+ vehicles — from economy cars and automatics to 7-seater SUVs and pickup trucks — is available for short-term and long-term hire across all of Pattaya, Jomtien, Naklua, Wongamat, Pratumnak, Bang Saray, and Na Jomtien.</p>
+        <p class="text-ink/70 leading-relaxed mb-4">Every car rental in Pattaya includes comprehensive insurance, free hotel delivery, and 24/7 WhatsApp support. No credit card is required to browse — pay on collection. With a <%= site.trust.googleRating %>★ rating from over <%= site.trust.googleReviews %> Google reviews, we’re Pattaya’s highest-rated rent a car service.</p>
+        <p class="text-ink/70 leading-relaxed">Looking to rent a car in Pattaya for a day, a week, or a month? <a href="/cars/" class="text-primary font-semibold hover:underline">Browse our full fleet</a> or <a href="/locations/" class="text-primary font-semibold hover:underline">find delivery to your area</a>. บริการเช่ารถพัทยาครบครัน ส่งฟรีถึงโรงแรม ประกันภัยครบ.</p>
+    </div>
+</section>
         </div>
     </div>
 </section>
