@@ -3,7 +3,7 @@
 // Builds the PRAC marketing site. Fetches vehicle_guides and locations from
 // Firestore at build time. Flattens to template-friendly shapes before render.
 //
-// NOTE: src/data/cars.json and src/data/locations.json are orphaned dead code
+// NOTE: src/data/cars.json and sc/data/locations.json are orphaned dead code
 // as of this commit -- the build no longer reads them. They are kept for
 // this commit cycle so the previous state can be restored by reverting this
 // file. Delete them once the first successful Firestore build is confirmed.
@@ -286,13 +286,15 @@ async function build() {
                             featuredLocations: flatLocations,
                             // TODO Phase 7: source translated titles from site.json or CMS Settings
                             // rather than appending langObj.name as a placeholder suffix
-                            title: lang === 'en' ? 'Pattaya Car Rental' : 'Car Rental Pattaya - ' + langObj.name,
-                            description: 'Easiest car booking in Pattaya. Best service, free delivery to your hotel, and 24/7 support. Book your car in Pattaya today.',
+                                            title: lang === 'en' ? 'Car Rental Pattaya | Free Hotel Delivery' : 'Car Rental Pattaya - ' + langObj.name,
+                                            description: lang === 'en' ? 'Rent a car in Pattaya from ฿800/day. Free hotel delivery, full insurance included, 4.9★ on Google. Book in 2 minutes — no credit card required.' : 'Easiest car booking in Pattaya. Best service, free delivery to your hotel, and 24/7 support.',
                             schema: {
                                                 '@context': 'https://schema.org',
                                                 '@graph': [
                                                     {
-                                                                    '@type': 'AutoRental',
+                                                                                            '@type': ['CarRental', 'LocalBusiness'],
+                                                                                    '@id': 'https://' + site.domain + '/#business',
+                                                                                                            'alternateName': ['เช่ารถพัทยา', 'Pattaya Car Rental', 'PRAC'],
                                                                     'name': site.name,
                                                                     'url': 'https://' + site.domain + '/' + baseDir.replace(/^\.\//,''),
                                                                     'logo': 'https://' + site.domain + '/assets/images/logo.png',
@@ -305,21 +307,26 @@ async function build() {
                                                                                     'addressCountry': 'TH'
                                                                     },
                                                                     'telephone': site.contact.phone,
-                                                                    'priceRange': '$',
+                                                                                            'currenciesAccepted': 'THB',
                                                                     ...(site.trust.googleRating ? { 'aggregateRating': {
                                                                                     '@type': 'AggregateRating',
                                                                                     'ratingValue': site.trust.googleRating,
                                                                                     'reviewCount': site.trust.googleReviews
                                                                     } } : {}),
                                                                     'sameAs': [site.social.facebook, site.social.instagram].filter(Boolean)
+                                                                                    'geo': { '@type': 'GeoCoordinates', 'latitude': 12.9274, 'longitude': 100.8834 },
+                                                                                'openingHoursSpecification': [{ '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], 'opens': '09:30', 'closes': '16:30' }],
+                                                                                'priceRange': '฿฿',
                                                     },
                                                     {
                                                                     '@type': 'FAQPage',
                                                                     'mainEntity': [
-                                                                                    { '@type': 'Question', 'name': 'What is included in the rental price for a vehicle?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'The rental rate includes first-class rental insurance, unlimited kilometers, 24-hour breakdown cover, the ability to add additional drivers, and all applicable taxes.' } },
-                                                                                    { '@type': 'Question', 'name': 'Do I have to pay for the car rental immediately when booking?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'No, you can book now and pay later.' } },
-                                                                                    { '@type': 'Question', 'name': 'Do I need to pay a deposit for my car rental?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, a 5,000 THB cash deposit is required upon vehicle collection.' } },
-                                                                                    { '@type': 'Question', 'name': 'What is the cancellation policy for a booking?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'You can cancel your booking at any time free of charge.' } }
+                                                                            { '@type': 'Question', 'name': 'What is included in the car rental price?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'All rentals include comprehensive insurance, unlimited kilometres, 24/7 roadside support, and free hotel delivery anywhere in Pattaya. There are no hidden fees.' } },
+                                                                            { '@type': 'Question', 'name': 'Do I need to pay for the car rental immediately when booking?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'No. You can book now and pay on collection. No credit card is required to browse or reserve your vehicle.' } },
+                                                                            { '@type': 'Question', 'name': 'Do I need to pay a deposit for my car rental?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, a refundable cash deposit of 5,000 THB is required upon vehicle collection. This is fully refunded when you return the car.' } },
+                                                                            { '@type': 'Question', 'name': 'What is the cancellation policy for a booking?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'You can cancel free of charge up to 24 hours before your scheduled pickup. No questions asked.' } },
+                                                                            { '@type': 'Question', 'name': 'Do you offer free delivery to hotels in Pattaya?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes. We deliver your rental car directly to your hotel or resort anywhere in Pattaya — including Central Pattaya, Jomtien, Naklua, Wongamat, and Pratumnak — at no extra charge.' } },
+                                                                            { '@type': 'Question', 'name': 'Can I use a foreign driver licence to rent a car in Thailand?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, a valid foreign driver licence is accepted. An International Driving Permit (IDP) is recommended but not strictly required for short-term rentals.' } }
                                                                     ]
                                                     }
                                                 ]
