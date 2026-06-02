@@ -15,6 +15,9 @@
         <img src="<%= post.coverImage %>" alt="<%= post.title %>" class="w-full rounded-2xl mb-10 shadow-sm" />
         <% } %>
         <div class="blog-content"><%- post.content %></div>
+        <% if (post.faqSchema) { %>
+        <script type="application/ld+json"><%- post.faqSchema %></script>
+        <% } %>
 
         <div class="mt-16 pt-10 border-t border-gray-100">
             <a href="/blog/" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
