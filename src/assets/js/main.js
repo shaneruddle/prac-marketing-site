@@ -245,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             enquiryNote:  details,
             }, document.getElementById('lt-submit'), document.getElementById('lt-result'));
         });
+                if (typeof gtag !== 'undefined') { gtag('event', 'long_term_enquiry', { event_category: 'lead', event_label: 'long-term-form', value: 1 }); }
     }
 
     // Contact form
