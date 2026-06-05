@@ -631,6 +631,7 @@ async function build() {
                 hotel: { ...hotel, schema },
                 title: hotel.seoTitle,
                 description: hotel.metaDescription,
+                schema: JSON.parse(schema),
             }, 'hotels/' + hotel.slug);
         }
     console.log('Build complete!');
