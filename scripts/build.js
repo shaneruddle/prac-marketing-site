@@ -232,10 +232,10 @@ async function build() {
     fetchPublishedGuides(db),
     fetchPublishedLocations(db),
     fetchPublishedBlogPosts(db),
-    fetchPublishedHotels(db),
     fetchFaqs(db),
     fetchCompanySettings(db),
     fetchTypicalPrices(),
+    fetchPublishedHotels(db),
   ]);
                 const carMap = Object.fromEntries(guides.map(g => [g.id, g]));
         site = {
