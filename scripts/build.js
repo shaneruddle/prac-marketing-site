@@ -597,10 +597,6 @@ async function build() {
 
   await fs.outputFile(path.join(distDir, 'llms.txt'), llmsTxt);
 
-    console.log('Build complete!');
-}
-
-build();
 
 
         // Hotel pages
@@ -637,5 +633,9 @@ build();
                 description: hotel.metaDescription,
             }, tPath('hotels/' + hotel.slug));
         }
+    console.log('Build complete!');
+}
+
+build();
 
 // build triggered after Firestore index enable
