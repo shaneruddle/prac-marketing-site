@@ -627,11 +627,11 @@ async function build() {
                 }
             ]);
             await renderPage('hotel-detail', {
-                lang,
+                lang: 'en',
                 hotel: { ...hotel, schema },
                 title: hotel.seoTitle,
                 description: hotel.metaDescription,
-            }, tPath('hotels/' + hotel.slug));
+            }, 'hotels/' + hotel.slug);
         }
     console.log('Build complete!');
 }
