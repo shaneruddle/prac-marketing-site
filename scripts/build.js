@@ -56,6 +56,13 @@ async function fetchPublishedLocations(db) {
             .get();
         return snap.docs.map(d => ({ id: d.id, ...d.data() }));
 }
+
+async function fetchPublishedHotels(db) {
+    const snap = await db.collection('hotels')
+        .where('published', '==', true)
+        .get();
+    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+}
 async function fetchPublishedBlogPosts(db) {
     const snap = await db.collection('blog_posts')
         .where('status', '==', 'Published')
@@ -221,10 +228,11 @@ async function build() {
 
     // -- Fetch all Firestore data upfront ------------------------------------
     console.log('Fetching from Firestore...');
-  const [guides, locations, blogPosts, faqs, company, priceMap] = await Promise.all([
+  const [guides, locations, blogPosts, faqs, company, priceMap, hotels] = await Promise.all([
     fetchPublishedGuides(db),
     fetchPublishedLocations(db),
     fetchPublishedBlogPosts(db),
+    fetchPublishedHotels(db),
     fetchFaqs(db),
     fetchCompanySettings(db),
     fetchTypicalPrices(),
@@ -593,4 +601,41 @@ async function build() {
 }
 
 build();
+
+
+        // Hotel pages
+        for (const hotel of hotels) {
+            const schema = JSON.stringify([
+                {
+                    '@type': 'AutoRental',
+                    name: site.name,
+                    description: 'Car rental delivered to ' + hotel.name,
+                    areaServed: { '@type': 'Place', name: hotel.name + ', Pattaya, Thailand' },
+                    url: 'https://' + site.domain + '/hotels/' + hotel.slug,
+                },
+                ...((hotel.faqs && hotel.faqs.length) ? [{
+                    '@type': 'FAQPage',
+                    mainEntity: hotel.faqs.map(f => ({
+                        '@type': 'Question',
+                        name: (f.question || '').trim(),
+                        acceptedAnswer: { '@type': 'Answer', text: (f.answer || '').trim() }
+                    }))
+                }] : []),
+                {
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
+                        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://' + site.domain + '/' },
+                        { '@type': 'ListItem', position: 2, name: 'Hotels', item: 'https://' + site.domain + '/hotels' },
+                        { '@type': 'ListItem', position: 3, name: hotel.name },
+                    ]
+                }
+            ]);
+            await renderPage('hotel-detail', {
+                lang,
+                hotel: { ...hotel, schema },
+                title: hotel.seoTitle,
+                description: hotel.metaDescription,
+            }, tPath('hotels/' + hotel.slug));
+        }
+
 // build triggered after Firestore index enable

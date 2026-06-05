@@ -1,0 +1,107 @@
+<%- include('../components/layout', { title: hotel.seoTitle, description: hotel.metaDescription, schema: hotel.schema }) %>
+
+<section class="bg-gradient-to-b from-orange-50 to-white py-16">
+  <div class="container mx-auto px-4">
+    <nav class="text-sm text-gray-400 mb-4">
+      <a href="/" class="hover:text-orange-500">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/hotels" class="hover:text-orange-500">Hotels</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-600"><%= hotel.name %></span>
+    </nav>
+    <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"><%= hotel.h1 %></h1>
+    <p class="text-lg text-gray-600 max-w-2xl"><%= hotel.intro %></p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="/rent-a-car" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl transition-all">Book Now</a>
+      <a href="https://wa.me/66XXXXXXXXXX" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition-all">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<% if (hotel.guestDiscount > 0) { %>
+<div class="bg-orange-500 text-white py-4">
+  <div class="container mx-auto px-4 text-center">
+    <p class="font-bold text-lg"><%= hotel.name %> guests: <%= hotel.guestDiscount %>% off
+      <% if (hotel.discountCode) { %> &mdash; use code <span class="bg-white text-orange-500 px-2 py-0.5 rounded font-mono"><%= hotel.discountCode %></span> at checkout<% } %>
+    </p>
+  </div>
+</div>
+<% } %>
+
+<div class="container mx-auto px-4 -mt-10 relative z-20">
+  <%- include("../components/date-picker") %>
+</div>
+
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+      <div class="lg:col-span-2">
+
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-8">
+          <h2 class="font-bold text-gray-900 text-xl mb-3">Pickup & Delivery</h2>
+          <p class="text-gray-600 mb-2"><%= hotel.pickupNotes %></p>
+          <p class="text-sm font-semibold text-orange-500"><%= hotel.responseTime %></p>
+        </div>
+
+        <% if (hotel.body) { %>
+        <div class="blog-content mb-8"><%- hotel.body %></div>
+        <% } %>
+
+        <% if (hotel.whyRentFromUs && hotel.whyRentFromUs.length > 0) { %>
+        <div class="mb-8">
+          <h2 class="font-bold text-gray-900 text-xl mb-4">Why Rent From Us?</h2>
+          <ul class="space-y-2">
+            <% hotel.whyRentFromUs.forEach(point => { %>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-orange-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-gray-600"><%= point %></span>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+
+        <% if (hotel.nearbyAttractions && hotel.nearbyAttractions.length > 0) { %>
+        <div class="mb-8">
+          <h2 class="font-bold text-gray-900 text-xl mb-4">Nearby Attractions</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <% hotel.nearbyAttractions.forEach(a => { %>
+            <div class="bg-gray-50 rounded-xl p-3">
+              <p class="font-medium text-gray-800 text-sm"><%= a.name %></p>
+              <p class="text-xs text-gray-400 mt-0.5"><%= a.distanceKm %> km away</p>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
+
+        <% if (hotel.faqs && hotel.faqs.length > 0) { %>
+        <div class="mt-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <% hotel.faqs.forEach(faq => { %>
+            <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
+              <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left">
+                <span class="font-bold text-ink"><%= faq.question %></span>
+                <svg class="faq-chevron w-5 h-5 text-primary shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="faq-answer hidden px-6 pb-6 text-gray-500 leading-relaxed"><%= faq.answer %></div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
+
+      </div>
+
+      <div class="space-y-6">
+        <div class="p-6 rounded-3xl border-2 border-dashed border-gray-200 text-center">
+          <h4 class="font-bold text-gray-900 mb-2">Free Delivery to <%= hotel.name %></h4>
+          <p class="text-sm text-gray-400 mb-6">We bring the car to your hotel. Open 24/7 for support.</p>
+          <a href="/contact" class="text-orange-600 font-bold text-sm hover:underline">Contact Us</a>
+        </div>
+        <a href="/cars" class="block text-center mt-8 py-4 rounded-xl bg-orange-500 hover:bg-orange-600 font-bold transition-all text-white">View All Available Cars</a>
+      </div>
+    </div>
+  </div>
+</section>
