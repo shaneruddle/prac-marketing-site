@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "fleet": "Our Fleet",
+    "locations": "Locations",
+    "longTerm": "Long Term",
+    "faq": "FAQ",
+    "about": "About",
+    "contact": "Contact",
+    "rentBike": "Rent a Bike"
+  },
+  "meta": {
+    "home": {
+      "title": "Car Rental Pattaya | Free Hotel Delivery",
+      "description": "Rent a car in Pattaya from 800 THB/day. Free hotel delivery, full insurance included, 4.9 on Google. Book in 2 minutes."
+    },
+    "about": {
+      "title": "About Pattaya Rent a Car | Trusted Since 2009",
+      "description": "Pattaya Rent a Car has been serving customers since 2009. Over 1,200 five-star Google reviews, 100+ vehicles, free hotel delivery."
+    },
+    "contact": {
+      "title": "Contact Us | Pattaya Rent a Car",
+      "description": "Get in touch with Pattaya Rent a Car by phone, WhatsApp, Line, or email. We reply fast. Free hotel delivery across all Pattaya areas."
+    },
+    "terms": {
+      "title": "Rental Terms and Conditions | Pattaya Rent a Car",
+      "description": "Rental terms for Pattaya Rent a Car covering deposits, insurance, cancellation, and vehicle return policies."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Pattaya Rent a Car",
+      "description": "Privacy policy for pattayarentacar.com. How we collect, use, and protect your personal data in accordance with Thai law."
+    },
+    "insurance": {
+      "title": "Car Rental Insurance Pattaya | Full Coverage Included",
+      "description": "Every Pattaya Rent a Car rental includes comprehensive Viriyah insurance. Learn exactly what is covered."
+    },
+    "motorbike": {
+      "title": "Motorbike Rental Pattaya | Scooters from 250 THB/day",
+      "description": "Rent a motorbike or scooter in Pattaya from 250 THB/day. Automatic and manual bikes available. Free hotel delivery."
+    },
+    "longTerm": {
+      "title": "Long Term Car Rental Pattaya | Monthly and Expat Rates",
+      "description": "Monthly car rental in Pattaya from 10,000 THB/month. Full insurance, free condo delivery, servicing included."
+    },
+    "fleet": {
+      "title": "Car Rental Fleet Pattaya | Economy, SUV, Pickup and MPV",
+      "description": "Browse our range of rental cars in Pattaya. Economy hatchbacks to luxury SUVs and pickups."
+    },
+    "locations": {
+      "title": "Car Rental Delivery Locations in Pattaya | All Areas Covered",
+      "description": "We deliver cars all across Pattaya. Find our coverage areas here."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions | Pattaya Rent a Car",
+      "description": "Everything you need to know about renting a car in Pattaya."
+    },
+    "blog": {
+      "title": "Pattaya Car Rental Blog | Tips and Driving Guides",
+      "description": "Car and motorbike rental tips, guides, and news from Pattaya Rent a Car."
+    }
+  },
+  "home": {
+    "badge": "Cars available right now",
+    "heading": "Car Rental Pattaya",
+    "tagline": "Free Hotel Delivery",
+    "taglineSuffix": "Best in Pattaya.",
+    "subtitle": "Premium fleet, free delivery to your hotel, and 24/7 support. No hidden fees. Just the freedom to explore Thailand.",
+    "freeCancellation": "Free Cancellation",
+    "hotelDelivery": "Hotel Delivery",
+    "support247": "24/7 Support",
+    "whyBadge": "Why Choose Us",
+    "whyHeading": "Why Choose Us?",
+    "whySubtitle": "We focus on making your holiday stress-free with the smoothest rental process in Thailand.",
+    "whyItems": [
+      {
+        "title": "Free Cancellation",
+        "desc": "Up to 24 hours before your pickup, no questions asked."
+      },
+      {
+        "title": "24/7 Support",
+        "desc": "Real humans ready to help you on WhatsApp and Line anytime."
+      },
+      {
+        "title": "Full Insurance",
+        "desc": "Every rental includes comprehensive insurance for your peace of mind."
+      },
+      {
+        "title": "Hotel Delivery",
+        "desc": "We bring the car to you. No need to visit our office."
+      }
+    ],
+    "viewAllCars": "View All Cars",
+    "whereWeDeliver": "Where We Deliver",
+    "deliveryHeading": "Available All Over Pattaya",
+    "deliverySubtitle": "Wherever you stay, we deliver for free.",
+    "faqBadge": "FAQ",
+    "faqHeading": "Frequently Asked Questions",
+    "faqSubtitle": "Everything you need to know about renting with us.",
+    "viewAllFaqs": "View All FAQs",
+    "faqs": [
+      {
+        "q": "What is included in the rental price?",
+        "a": "The rental rate includes first-class insurance, unlimited kilometres, 24-hour breakdown cover, additional drivers, and all taxes."
+      },
+      {
+        "q": "Do I have to pay immediately when booking?",
+        "a": "No, you can book now and pay on collection."
+      },
+      {
+        "q": "Do I need to pay a deposit?",
+        "a": "Yes, a 5,000 THB cash deposit is required upon vehicle collection."
+      },
+      {
+        "q": "What is the cancellation policy?",
+        "a": "You can cancel your booking at any time free of charge."
+      }
+    ]
+  }
+}
