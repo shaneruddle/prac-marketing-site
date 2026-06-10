@@ -28,6 +28,11 @@ const distDir   = path.join(__dirname, '../dist');
 // -- Local data files (no CMS pipeline for these) ----------------------------
 let site      = fs.readJsonSync(path.join(srcDir, 'data/site.json'));
 const languages = fs.readJsonSync(path.join(srcDir, 'data/languages.json'));
+const i18n = {};
+for (const l of languages) {
+  try { i18n[l.code] = fs.readJsonSync(path.join(srcDir, 'data/i18n/' + l.code + '.json')); }
+  catch(e) {}
+}
 
 // -- Firebase Admin SDK init -------------------------------------------------
 const credJson = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
@@ -277,8 +282,12 @@ async function build() {
 
     console.log(guides.length + ' vehicle guides, ' + locations.length + ' locations, ' + Object.keys(carMap).length + ' featured cars, ' + blogPosts.length + ' blog posts');
 
-    for (const langObj of languages.filter(l => l.code === 'en')) {
+    for (const langObj of languages) {
                 const lang    = langObj.code;
+        const _en = i18n['en'] || {};
+        const _lx = i18n[lang] || {};
+        const t = { nav: {...(_en.nav||{}), ...(_lx.nav||{})}, meta: {...(_en.meta||{}), ...(_lx.meta||{})}, home: {...(_en.home||{}), ...(_lx.home||{})} };
+        const langPrefix = lang === 'en' ? '' : '/' + lang;
                 const baseDir = lang === 'en' ? './' : './' + lang + '/';
                 const tPath   = (p) => baseDir + p;
 
@@ -294,8 +303,8 @@ async function build() {
                             featuredLocations: flatLocations,
                             // TODO Phase 7: source translated titles from site.json or CMS Settings
                             // rather than appending langObj.name as a placeholder suffix
-                                            title: lang === 'en' ? 'Car Rental Pattaya | Free Hotel Delivery' : 'Car Rental Pattaya - ' + langObj.name,
-                                            description: lang === 'en' ? 'Rent a car in Pattaya from ฿800/day. Free hotel delivery, full insurance included, 4.9★ on Google. Book in 2 minutes — no credit card required.' : 'Easiest car booking in Pattaya. Best service, free delivery to your hotel, and 24/7 support.',
+                                  title: (t.meta && t.meta.home && t.meta.home.title) || 'Car Rental Pattaya | Free Hotel Delivery',
+                                  description: (t.meta && t.meta.home && t.meta.home.description) || "Rent a car in Pattaya. Free hotel delivery, full insurance, 4.9 on Google.",
                             schema: {
                                                 '@context': 'https://schema.org',
                                                 '@graph': [
@@ -454,12 +463,14 @@ async function build() {
             'motorbike-rental':  { title: 'Motorbike Rental Pattaya | Scooters from 250 THB/day', description: 'Rent a motorbike or scooter in Pattaya from 250 THB/day. Automatic scooters and manual bikes available. Free delivery to your hotel.' },
           };
           for (const page of Object.keys(staticPageMeta)) {
-            const { title, description } = staticPageMeta[page];
-            await renderPage(page, { lang, title, description, schema: {} }, tPath(page + '/index.html'));
+            const metaKey = page === 'motorbike-rental' ? 'motorbike' : page;
+            const pgMeta = (t.meta && t.meta[metaKey]) || staticPageMeta[page];
+            const { title, description } = pgMeta;
+            await renderPage(page, { lang, t, langPrefix, title, description, schema: {} }, tPath(page + '/index.html'));
                 }
         // Long-term rental — dedicated renderPage with full SEO data
                     await renderPage('long-term-rental', {
-                                            lang,
+                                            lang, t, langPrefix,
                                             title: 'Long Term Car Rental Pattaya | Monthly & Expat Rates',
                                             description: 'Monthly car rental in Pattaya from ฿10,000/month. Full insurance, free condo delivery, servicing included. Preferred by expats, digital nomads and long-stay visitors. Get a quote today.',
                                             schema: {
@@ -473,7 +484,7 @@ async function build() {
                     }, tPath('long-term-rental/index.html'));
                 // FAQ page (real data from faqs collection, grouped by category)
                 await renderPage('faq', {
-                            lang,
+                            lang, t, langPrefix,
                             faqs: faqs,
                             title: 'Frequently Asked Questions',
                             description: 'Everything you need to know about renting a car in Pattaya - payments, insurance, delivery, requirements and more.',
@@ -495,7 +506,7 @@ async function build() {
                     const pagePosts = blogPosts.slice((pageNum - 1) * POSTS_PER_PAGE, pageNum * POSTS_PER_PAGE);
                     const outPath = pageNum === 1 ? tPath('blog/index.html') : tPath('blog/page/' + pageNum + '/index.html');
                     await renderPage('blog', {
-                        lang,
+                        lang, t, langPrefix,
                         posts: pagePosts,
                         currentPage: pageNum,
                         totalPages: totalPages,
@@ -536,12 +547,14 @@ async function build() {
         locations.forEach(l => sitemapEntries.push('/locations/' + l.slug + '/'));
         blogPosts.forEach(p => sitemapEntries.push('/blog/' + p.slug + '/'));
 
-    const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-                sitemapEntries.map(e => '  <url><loc>https://' + site.domain + e + '</loc></url>').join('\n') +
-                '\n</urlset>';
-
-    // TODO Phase 7: emit hreflang variants in sitemap for all languages
-    await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
+    if (lang === 'en') {
+      const lcs = languages.map(l => l.code);
+      const allUrls = [...sitemapEntries, ...lcs.filter(c => c !== 'en').flatMap(c => sitemapEntries.map(e => '/' + c + e))];
+      const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+        allUrls.map(e => '  <url><loc>https://' + site.domain + e + '</loc></url>').join('\n') +
+        '\n</urlset>';
+      await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
+    }
 // IndexNow - notify Bing/Yandex of key pages on every build
 const INDEXNOW_KEY = 'a7b3c9d1e2f4a7b3c9d1e2f4a7b3c9d1';
 await fs.outputFile(path.join(distDir, INDEXNOW_KEY + '.txt'), INDEXNOW_KEY);
