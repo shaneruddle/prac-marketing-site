@@ -1,1 +1,82 @@
-{"nav": {"fleet": "", "locations": "", "longTerm": "", "faq": "", "about": "", "contact": "", "rentBike": ""}, "meta": {"home": {"title": " | ", "description": "8004.9"}, "about": {"title": " Pattaya Rent a Car | 2009", "description": "20091200100"}, "contact": {"title": " | Pattaya Rent a Car", "description": "WhatsAppLine"}, "terms": {"title": " | Pattaya Rent a Car", "description": ""}, "privacy": {"title": " | Pattaya Rent a Car", "description": "pattayarentacar.com "}, "insurance": {"title": " | ", "description": " Viriyah "}, "motorbike": {"title": " | 250/", "description": "250"}, "longTerm": {"title": " | ", "description": "10,000/"}, "fleet": {"title": " | SUVMPV", "description": "SUV"}, "locations": {"title": " | ", "description": ""}, "faq": {"title": " | Pattaya Rent a Car", "description": ""}, "blog": {"title": " | ", "description": " Pattaya Rent a Car "}}, "home": {"badge": "", "heading": "", "tagline": "", "taglineSuffix": "", "subtitle": "724", "freeCancellation": "", "hotelDelivery": "", "support247": "24/7 ", "whyBadge": "", "whyHeading": "", "whySubtitle": "", "viewAllCars": "", "whereWeDeliver": "", "deliveryHeading": "", "deliverySubtitle": "", "faqBadge": "", "faqHeading": "", "faqSubtitle": "", "viewAllFaqs": ""}}
+{
+  "nav": {
+    "fleet": "",
+    "locations": "",
+    "longTerm": "",
+    "faq": "",
+    "about": "",
+    "contact": "",
+    "rentBike": ""
+  },
+  "meta": {
+    "home": {
+      "title": " | ",
+      "description": "8004.9"
+    },
+    "about": {
+      "title": " Pattaya Rent a Car | 2009",
+      "description": "20091200100"
+    },
+    "contact": {
+      "title": " | Pattaya Rent a Car",
+      "description": "WhatsAppLine"
+    },
+    "terms": {
+      "title": " | Pattaya Rent a Car",
+      "description": ""
+    },
+    "privacy": {
+      "title": " | Pattaya Rent a Car",
+      "description": "pattayarentacar.com "
+    },
+    "insurance": {
+      "title": " | ",
+      "description": " Viriyah "
+    },
+    "motorbike": {
+      "title": " | 250/",
+      "description": "250"
+    },
+    "longTerm": {
+      "title": " | ",
+      "description": "10,000/"
+    },
+    "fleet": {
+      "title": " | SUVMPV",
+      "description": "SUV"
+    },
+    "locations": {
+      "title": " | ",
+      "description": ""
+    },
+    "faq": {
+      "title": " | Pattaya Rent a Car",
+      "description": ""
+    },
+    "blog": {
+      "title": " | ",
+      "description": " Pattaya Rent a Car "
+    }
+  },
+  "home": {
+    "badge": "立即可用车辆",
+    "heading": "芭提雅租车",
+    "tagline": "免费送车至酒店",
+    "taglineSuffix": "芭提雅最优惠",
+    "subtitle": "高品质芭提雅租车服务，免费送车至您的酒店，全险保障，24小时服务",
+    "freeCancellation": "免费取消",
+    "hotelDelivery": "送车上门",
+    "support247": "24/7全天候服务",
+    "whyBadge": "为什么选择我们",
+    "whyHeading": "为什么选择芭提雅租车?",
+    "whySubtitle": "超过16年专业租车服务，1,200+条好评，评分4.9星",
+    "viewAllCars": "查看全部车型",
+    "whereWeDeliver": "服务范围",
+    "deliveryHeading": "覆盖整个芭提雅",
+    "deliverySubtitle": "免费送车至您的酒店、度假村或公寓，覆盖芭提雅及周边地区",
+    "faqBadge": "常见问题",
+    "faqHeading": "有什么问题吗?",
+    "faqSubtitle": "芭提雅租车常见问题解答",
+    "viewAllFaqs": "查看全部问题"
+  }
+}{"nav": {"fleet": "", "locations": "", "longTerm": "", "faq": "", "about": "", "contact": "", "rentBike": ""}, "meta": {"home": {"title": " | ", "description": "8004.9"}, "about": {"title": " Pattaya Rent a Car | 2009", "description": "20091200100"}, "contact": {"title": " | Pattaya Rent a Car", "description": "WhatsAppLine"}, "terms": {"title": " | Pattaya Rent a Car", "description": ""}, "privacy": {"title": " | Pattaya Rent a Car", "description": "pattayarentacar.com "}, "insurance": {"title": " | ", "description": " Viriyah "}, "motorbike": {"title": " | 250/", "description": "250"}, "longTerm": {"title": " | ", "description": "10,000/"}, "fleet": {"title": " | SUVMPV", "description": "SUV"}, "locations": {"title": " | ", "description": ""}, "faq": {"title": " | Pattaya Rent a Car", "description": ""}, "blog": {"title": " | ", "description": " Pattaya Rent a Car "}}, "home": {"badge": "", "heading": "", "tagline": "", "taglineSuffix": "", "subtitle": "724", "freeCancellation": "", "hotelDelivery": "", "support247": "24/7 ", "whyBadge": "", "whyHeading": "", "whySubtitle": "", "viewAllCars": "", "whereWeDeliver": "", "deliveryHeading": "", "deliverySubtitle": "", "faqBadge": "", "faqHeading": "", "faqSubtitle": "", "viewAllFaqs": ""}}
