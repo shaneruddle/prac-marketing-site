@@ -345,8 +345,8 @@ async function build() {
             await renderPage('cars-index', {
                             lang,
                             guides: flatGuides,
-                            title: 'Our Fleet',
-                            description: 'Browse our range of rental cars in Pattaya. From economy hatchbacks to luxury SUVs and pickups.',
+                            title: 'Car Rental Fleet Pattaya | Economy, SUV, Pickup and MPV',
+                            description: 'Browse our full fleet of rental cars in Pattaya. Economy cars, SUVs, pickup trucks, and MPVs. Free hotel delivery on every booking.',
                             schema: {}
             }, tPath('cars/index.html'));
 
@@ -384,8 +384,8 @@ async function build() {
             await renderPage('locations-index', {
                             lang,
                             locations: flatLocations,
-                            title: 'Our Pickup Locations',
-                            description: 'We deliver cars all across Pattaya. Find our coverage areas here.',
+                            title: 'Car Rental Delivery Locations in Pattaya | All Areas Covered',
+                            description: 'Pattaya Rent a Car delivers to every area in Pattaya - Jomtien, Naklua, Wongamat, Pratumnak, Central, and more. Free hotel delivery included.',
                             schema: {}
             }, tPath('locations/index.html'));
 
@@ -444,15 +444,19 @@ async function build() {
                             }, tPath('locations/' + flatLoc.slug + '/index.html'));
             }
 
-            // Static pages
-                    const pages = ['about', 'contact', 'terms', 'privacy', 'insurance', 'motorbike-rental'];
-                for (const page of pages) {
-                                await renderPage(page, {
-                                                    lang,
-                                                    title: page.charAt(0).toUpperCase() + page.slice(1).replace(/-/g, ' '),
-                                                    description: 'Learn more about our ' + page + ' for car rentals in Pattaya.',
-                                                    schema: {}
-                                }, tPath(page + '/index.html'));
+            // Static pages - unique SEO meta per page
+          const staticPageMeta = {
+            'about':             { title: 'About Pattaya Rent a Car | Trusted Since 2009', description: 'Pattaya Rent a Car has been serving customers since 2009. Over 1,200 five-star Google reviews, 100+ vehicles, and free hotel delivery across Pattaya.' },
+            'contact':           { title: 'Contact Us | Pattaya Rent a Car', description: 'Get in touch with Pattaya Rent a Car by phone, WhatsApp, Line, or email. We reply fast. Free hotel delivery across all Pattaya areas.' },
+            'terms':             { title: 'Rental Terms and Conditions | Pattaya Rent a Car', description: 'Rental terms and conditions for Pattaya Rent a Car. Covering deposits, insurance, cancellation, and vehicle return policies.' },
+            'privacy':           { title: 'Privacy Policy | Pattaya Rent a Car', description: 'Privacy policy for pattayarentacar.com. How we collect, use, and protect your personal data in accordance with Thai law.' },
+            'insurance':         { title: 'Car Rental Insurance Pattaya | Full Coverage Included', description: 'Every Pattaya Rent a Car rental includes comprehensive Viriyah insurance. Learn exactly what is covered and what your liability is.' },
+            'motorbike-rental':  { title: 'Motorbike Rental Pattaya | Scooters from 250 THB/day', description: 'Rent a motorbike or scooter in Pattaya from 250 THB/day. Automatic scooters and manual bikes available. Free delivery to your hotel.' },
+          };
+          for (const page of Object.keys(staticPageMeta)) {
+            const { title, description } = staticPageMeta[page];
+            await renderPage(page, { lang, title, description, schema: {} }, tPath(page + '/index.html'));
+          }, tPath(page + '/index.html'));
                 }
         // Long-term rental — dedicated renderPage with full SEO data
                     await renderPage('long-term-rental', {
@@ -473,7 +477,7 @@ async function build() {
                             lang,
                             faqs: faqs,
                             title: 'Frequently Asked Questions',
-                            description: 'Everything you need to know about renting a car in Pattaya Ã¢ÂÂ payments, insurance, delivery, requirements and more.',
+                            description: 'Everything you need to know about renting a car in Pattaya - payments, insurance, delivery, requirements and more.',
                             schema: {
                                                 '@context': 'https://schema.org',
                                                 '@type': 'FAQPage',
@@ -496,8 +500,8 @@ async function build() {
                         posts: pagePosts,
                         currentPage: pageNum,
                         totalPages: totalPages,
-                        title: pageNum === 1 ? 'Blog' : 'Blog - Page ' + pageNum,
-                        description: 'Car and motorbike rental tips, guides, and news from Pattaya Rent A Car.',
+                        title: pageNum === 1 ? 'Pattaya Car Rental Blog | Tips and Driving Guides' : 'Car Rental Blog - Page ' + pageNum + ' | Pattaya Rent a Car',
+                        description: 'Car rental tips, driving guides, and local advice for visitors to Pattaya. Driving licences, road safety, top routes, and more.',
                         schema: {}
                     }, outPath);
                 }
@@ -539,6 +543,27 @@ async function build() {
 
     // TODO Phase 7: emit hreflang variants in sitemap for all languages
     await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
+// IndexNow - notify Bing/Yandex of key pages on every build
+const INDEXNOW_KEY = 'a7b3c9d1e2f4a7b3c9d1e2f4a7b3c9d1';
+await fs.outputFile(path.join(distDir, INDEXNOW_KEY + '.txt'), INDEXNOW_KEY);
+const indexNowUrls = [
+  'https://' + site.domain + '/',
+  'https://' + site.domain + '/cars/',
+  'https://' + site.domain + '/locations/',
+  'https://' + site.domain + '/long-term-rental/',
+  'https://' + site.domain + '/faq/',
+  'https://' + site.domain + '/blog/',
+];
+try {
+  const indexNowRes = await fetch('https://api.indexnow.org/indexnow', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    body: JSON.stringify({ host: site.domain, key: INDEXNOW_KEY, keyLocation: 'https://' + site.domain + '/' + INDEXNOW_KEY + '.txt', urlList: indexNowUrls })
+  });
+  console.log('IndexNow ping status:', indexNowRes.status);
+} catch (e) {
+  console.warn('IndexNow ping failed:', e.message);
+}
 
     const robotsTxt = [
                 '# AI / LLM crawlers — explicitly welcomed',
