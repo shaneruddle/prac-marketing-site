@@ -456,7 +456,6 @@ async function build() {
           for (const page of Object.keys(staticPageMeta)) {
             const { title, description } = staticPageMeta[page];
             await renderPage(page, { lang, title, description, schema: {} }, tPath(page + '/index.html'));
-          }, tPath(page + '/index.html'));
                 }
         // Long-term rental — dedicated renderPage with full SEO data
                     await renderPage('long-term-rental', {
