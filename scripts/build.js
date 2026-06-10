@@ -298,7 +298,7 @@ async function build() {
 
             // Homepage
             await renderPage('home', {
-                            lang,
+                            lang, t, langPrefix,
                             featuredGuides:    flatGuides.slice(0, 3),
                             featuredLocations: flatLocations,
                             // TODO Phase 7: source translated titles from site.json or CMS Settings
@@ -352,7 +352,7 @@ async function build() {
 
             // Fleet overview -- passes guides array for listing
             await renderPage('cars-index', {
-                            lang,
+                            lang, t, langPrefix,
                             guides: flatGuides,
                             title: 'Car Rental Fleet Pattaya | Economy, SUV, Pickup and MPV',
                             description: 'Browse our full fleet of rental cars in Pattaya. Economy cars, SUVs, pickup trucks, and MPVs. Free hotel delivery on every booking.',
@@ -363,7 +363,7 @@ async function build() {
             for (const guide of guides) {
                             const flatGuide = flattenGuide(guide, lang, priceMap);
                             await renderPage('guide-detail', {
-                                                lang,
+                                                lang, t, langPrefix,
                                                 guide: flatGuide,
                                                 title: flatGuide.title || flatGuide.make + ' ' + flatGuide.model + ' (' + flatGuide.year + ')',
                                                 description: flatGuide.intro || 'Rent a ' + flatGuide.make + ' ' + flatGuide.model + ' in Pattaya.',
@@ -391,7 +391,7 @@ async function build() {
 
             // Locations overview
             await renderPage('locations-index', {
-                            lang,
+                            lang, t, langPrefix,
                             locations: flatLocations,
                             title: 'Car Rental Delivery Locations in Pattaya | All Areas Covered',
                             description: 'Pattaya Rent a Car delivers to every area in Pattaya - Jomtien, Naklua, Wongamat, Pratumnak, Central, and more. Free hotel delivery included.',
@@ -403,7 +403,7 @@ async function build() {
                             const flatLoc = flattenLocation(loc, lang);
                             const locUrl = 'https://' + site.domain + '/locations/' + flatLoc.slug + '/';
                             await renderPage('location-detail', {
-                                                lang,
+                                                lang, t, langPrefix,
                                                 loc: flatLoc,
                                                 locations,
                                                 title: flatLoc.metaTitle || ('Car Rental in ' + flatLoc.name),
@@ -519,7 +519,7 @@ async function build() {
                 // Individual blog post pages
                 for (const post of blogPosts) {
                     await renderPage('blog-post', {
-                        lang,
+                        lang, t, langPrefix,
                         post,
                         title: post.title,
                         description: post.excerpt || post.title,
@@ -664,7 +664,7 @@ try {
                 }
             ]);
             await renderPage('hotel-detail', {
-                lang: 'en',
+                lang: 'en', t: {}, langPrefix: '',
                 hotel: { ...hotel, schema },
                 title: hotel.seoTitle,
                 description: hotel.metaDescription,
