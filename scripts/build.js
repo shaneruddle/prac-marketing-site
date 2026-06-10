@@ -472,8 +472,8 @@ async function build() {
         // Long-term rental — dedicated renderPage with full SEO data
                     await renderPage('long-term-rental', {
                                             lang, t, langPrefix,
-                                            title: 'Long Term Car Rental Pattaya | Monthly & Expat Rates',
-                                            description: 'Monthly car rental in Pattaya from ฿10,000/month. Full insurance, free condo delivery, servicing included. Preferred by expats, digital nomads and long-stay visitors. Get a quote today.',
+                                            title: (t.meta && t.meta.longTerm && t.meta.longTerm.title) || 'Long Term Car Rental Pattaya | Monthly & Expat Rates',
+                                            description: (t.meta && t.meta.longTerm && t.meta.longTerm.description) || 'Monthly car rental in Pattaya from ฿10,000/month. Full insurance, free condo delivery, servicing included. Preferred by expats, digital nomads and long-stay visitors. Get a quote today.',
                                             schema: {
                                                                             '@context': 'https://schema.org',
                                                                             '@graph': [
