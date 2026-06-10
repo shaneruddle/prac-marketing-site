@@ -535,7 +535,6 @@ async function build() {
                         }
                     }, tPath('blog/' + post.slug + '/index.html'));
                 }
-    }
 
     // -- Sitemap -------------------------------------------------------------
     const sitemapEntries = [
@@ -554,6 +553,7 @@ async function build() {
         allUrls.map(e => '  <url><loc>https://' + site.domain + e + '</loc></url>').join('\n') +
         '\n</urlset>';
       await fs.outputFile(path.join(distDir, 'sitemap.xml'), sitemap);
+    }
     }
 // IndexNow - notify Bing/Yandex of key pages on every build
 const INDEXNOW_KEY = 'a7b3c9d1e2f4a7b3c9d1e2f4a7b3c9d1';
