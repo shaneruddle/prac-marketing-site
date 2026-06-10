@@ -1,190 +1,183 @@
 <!-- Hero Section -->
 <section class="min-h-[80vh] flex flex-col pt-12 bg-paper">
-    <div class="max-w-7xl mx-auto px-6 w-full flex-1 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-        <!-- Editorial Left Section -->
-        <div class="md:col-span-7 py-12">
-            <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ink/10">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/50">Cars available right now</span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-8 text-ink">
-                                    Car Rental Pattaya<br/><span class="font-black italic text-primary">Free Hotel Delivery</span> — Best in Pattaya.
-            </h1>
-            <p class="text-lg text-ink/60 max-w-lg mb-10 leading-relaxed">
-                Premium fleet, free delivery to your hotel, and 24/7 support. No hidden fees. Just the freedom to explore Thailand.
-            </p>
+<div class="max-w-7xl mx-auto px-6 w-full flex-1 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<!-- Editorial Left Section -->
+<div class="md:col-span-7 py-12">
+<div class="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ink/10">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/50"><%= (t.home && t.home.badge) || 'Cars available right now' %></span>
+</div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-8 text-ink">
+<%= (t.home && t.home.heading) || 'Car Rental Pattaya' %><br/><span class="font-black italic text-primary"><%= (t.home && t.home.tagline) || 'Free Hotel Delivery' %></span> — <%= (t.home && t.home.taglineSuffix) || 'Best in Pattaya.' %>
+</h1>
+<p class="text-lg text-ink/60 max-w-lg mb-10 leading-relaxed">
+<%= (t.home && t.home.subtitle) || 'Premium fleet, free delivery to your hotel, and 24/7 support. No hidden fees. Just the freedom to explore Thailand.' %>
+</p>
 
-            <!-- Trust Indicators -->
-            <div class="flex flex-wrap gap-8 items-center border-t border-ink/10 pt-10">
-                <div>
-                    <div class="text-2xl font-bold tracking-tighter text-ink"><%= site.trust.years %> Years</div>
-                    <div class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/30">In Pattaya</div>
-                </div>
-                <div class="hidden sm:block w-px h-10 bg-ink/10"></div>
-                <div>
-                    <div class="text-2xl font-black text-ink flex items-center gap-2">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
-                        <%= site.trust.googleRating %>
-                    </div>
-                    <div class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/30"><%= site.trust.googleReviews %> Google Reviews</div>
-                </div>
-                <div class="hidden sm:block w-px h-10 bg-ink/10"></div>
-                <div class="flex -space-x-3">
-                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjU-mUI67_ts0qMSIquyThPFgu4TwxSY709zCi9bp-CUzR-WWqNA=w144-h144-p-rp-mo-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
-                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjUKAxIOjGajLiMs4-dQxL3iDDIJDo7iB2kfDy4JocWzrVXSt3GM=w144-h144-p-rp-mo-ba3-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
-                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjXY86gP2-_1w1TpOP-QN4y8Q0OgNsPs8COalvO3D0zoB9atI89u=w144-h144-p-rp-mo-ba2-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
-                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjX0SfpIpz9gUjl_xFWwq38LY_Up-uMKyY0blMq-6HK7gRmugTR3fQ=w144-h144-p-rp-mo-ba5-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-[10px] text-white font-black uppercase">12k+</div>
-                </div>
-            </div>
-        </div>
+<!-- Trust Indicators -->
+<div class="flex flex-wrap gap-8 items-center border-t border-ink/10 pt-10">
+<div>
+<div class="text-2xl font-bold tracking-tighter text-ink"><%= site.trust.years %> Years</div>
+<div class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/30">In Pattaya</div>
+</div>
+<div class="hidden sm:block w-px h-10 bg-ink/10"></div>
+<div>
+<div class="text-2xl font-black text-ink flex items-center gap-2">
+<svg class="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+<%= site.trust.googleRating %>
+</div>
+<div class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/30"><%= site.trust.googleReviews %> Google Reviews</div>
+</div>
+<div class="hidden sm:block w-px h-10 bg-ink/10"></div>
+<div class="flex -space-x-3">
+<img src="https://lh3.googleusercontent.com/a-/ALV-UjU-mUI67_ts0qMSIquyThPFgu4TwxSY709zCi9bp-CUzR-WWqNA=w144-h144-p-rp-mo-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
+<img src="https://lh3.googleusercontent.com/a-/ALV-UjUKAxIOjGajLiMs4-dQxL3iDDIJDo7iB2kfDy4JocWzrVXSt3GM=w144-h144-p-rp-mo-ba3-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
+<img src="https://lh3.googleusercontent.com/a-/ALV-UjXY86gP2-_1w1TpOP-QN4y8Q0OgNsPs8COalvO3D0zoB9atI89u=w144-h144-p-rp-mo-ba2-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
+<img src="https://lh3.googleusercontent.com/a-/ALV-UjX0SfpIpz9gUjl_xFWwq38LY_Up-uMKyY0blMq-6HK7gRmugTR3fQ=w144-h144-p-rp-mo-ba5-br100" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" loading="lazy" />
+<div class="w-10 h-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-[10px] text-white font-black uppercase">12k+</div>
+</div>
+</div>
+</div>
 
-        <!-- Booking Section Right -->
-        <div class="md:col-span-5 pb-12 -mt-0 md:-mt-12">
-            <%- include('../components/date-picker') %>
-        </div>
-    </div>
+<!-- Booking Section Right -->
+<div class="md:col-span-5 pb-12 -mt-0 md:-mt-12">
+<%- include('../components/date-picker') %>
+</div>
+</div>
 </section>
 
-<!-- Trust Strip Component (Muted style) -->
+<!-- Trust Strip -->
 <div class="bg-ink h-20 text-white hidden md:flex items-center">
-    <div class="max-w-7xl mx-auto px-6 w-full flex justify-between">
-        <div class="flex gap-12">
-            <div class="flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">Free Cancellation</span>
-            </div>
-            <div class="flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
-                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">Hotel Delivery</span>
-            </div>
-            <div class="flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">24/7 Support</span>
-            </div>
-        </div>
-    </div>
+<div class="max-w-7xl mx-auto px-6 w-full flex justify-between">
+<div class="flex gap-12">
+<div class="flex items-center gap-3">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+<span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60"><%= (t.home && t.home.freeCancellation) || 'Free Cancellation' %></span>
+</div>
+<div class="flex items-center gap-3">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+<span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60"><%= (t.home && t.home.hotelDelivery) || 'Hotel Delivery' %></span>
+</div>
+<div class="flex items-center gap-3">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+<span class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60"><%= (t.home && t.home.support247) || '24/7 Support' %></span>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Key Features -->
 <section class="py-24 bg-paper">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-16">
-            <span class="eyebrow">Why Choose Us</span>
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-4 max-w-3xl">Why Choose Us?</h2>
-            <p class="text-ink/50 text-sm leading-relaxed max-w-xl">We focus on making your holiday stress-free with the smoothest rental process in Thailand.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <% [
-                { title: 'Free Cancellation', desc: 'Up to 24 hours before your pickup, no questions asked.', icon: 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' },
-                { title: '24/7 Support', desc: 'Real humans ready to help you on WhatsApp and Line anytime.', icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z' },
-                { title: 'Full Insurance', desc: 'Every rental includes comprehensive insurance for your peace of mind.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-                { title: 'Hotel Delivery', desc: 'We bring the car to you. No need to visit our office.', icon: 'M5 13l4 4L19 7' }
-            ].forEach(feature => { %>
-                <div class="card">
-                    <div class="icon-pill">
-                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<%= feature.icon %>"/></svg>
-                    </div>
-                    <h3 class="card-title"><%= feature.title %></h3>
-                    <p class="card-body"><%= feature.desc %></p>
-                </div>
-            <% }) %>
-        </div>
-    </div>
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<span class="eyebrow"><%= (t.home && t.home.whyBadge) || 'Why Choose Us' %></span>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-4 max-w-3xl"><%= (t.home && t.home.whyHeading) || 'Why Choose Us?' %></h2>
+<p class="text-ink/50 text-sm leading-relaxed max-w-xl"><%= (t.home && t.home.whySubtitle) || 'We focus on making your holiday stress-free with the smoothest rental process in Thailand.' %></p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<% const _icons=['M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z','M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z','M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z','M5 13l4 4L19 7'];
+const _defWhy=[{title:'Free Cancellation',desc:'Up to 24 hours before your pickup, no questions asked.'},{title:'24/7 Support',desc:'Real humans ready to help you on WhatsApp and Line anytime.'},{title:'Full Insurance',desc:'Every rental includes comprehensive insurance for your peace of mind.'},{title:'Hotel Delivery',desc:'We bring the car to you. No need to visit our office.'}];
+((t.home && t.home.whyItems)||_defWhy).forEach((feature,i)=>{ %>
+<div class="card">
+<div class="icon-pill">
+<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<%= _icons[i]||'' %>"/></svg>
+</div>
+<h3 class="card-title"><%= feature.title %></h3>
+<p class="card-body"><%= feature.desc %></p>
+</div>
+<% }) %>
+</div>
+</div>
 </section>
 
 <!-- Featured Fleet -->
 <% if (featuredGuides && featuredGuides.length > 0) { %>
 <section class="py-24 bg-paper">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <% featuredGuides.forEach(guide => { %>
-            <a href="/cars/<%= guide.slug %>/" class="glass-card rounded-[32px] overflow-hidden group block">
-                <div class="aspect-[4/3] overflow-hidden bg-paper">
-                    <% if (guide.heroImage) { %>
-                    <img src="<%= guide.heroImage %>" alt="<%= guide.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-                    <% } else { %>
-                    <div class="w-full h-full flex items-center justify-center text-ink/30 font-medium"><%= guide.title %></div>
-                    <% } %>
-                </div>
-                <div class="p-6">
-                    <h3 class="font-bold text-xl tracking-tight text-ink"><%= guide.title %></h3>
-                </div>
-            </a>
-            <% }) %>
-        </div>
-        <div class="text-center mt-12">
-            <a href="/cars/" class="link-arrow">
-                View All Cars
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
-        </div>
-    </div>
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<% featuredGuides.forEach(guide => { %>
+<a href="<%= langPrefix %>/cars/<%= guide.slug %>/" class="glass-card rounded-[32px] overflow-hidden group block">
+<div class="aspect-[4/3] overflow-hidden bg-paper">
+<% if (guide.heroImage) { %>
+<img src="<%= guide.heroImage %>" alt="<%= guide.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+<% } else { %>
+<div class="w-full h-full flex items-center justify-center text-ink/30 font-medium"><%= guide.title %></div>
+<% } %>
+</div>
+<div class="p-6">
+<h3 class="font-bold text-xl tracking-tight text-ink"><%= guide.title %></h3>
+</div>
+</a>
+<% }) %>
+</div>
+<div class="text-center mt-12">
+<a href="<%= langPrefix %>/cars/" class="link-arrow">
+<%= (t.home && t.home.viewAllCars) || 'View All Cars' %>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+</a>
+</div>
+</div>
 </section>
 <% } %>
 
 <!-- Locations Selection -->
 <% if (featuredLocations && featuredLocations.length > 0) { %>
 <section class="py-24 bg-paper">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-16">
-            <span class="eyebrow">Where We Deliver</span>
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-4 max-w-3xl">Available All Over Pattaya</h2>
-            <p class="text-ink/50 text-sm leading-relaxed max-w-xl">Wherever you stay, we deliver for free.</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <% featuredLocations.forEach(loc => { %>
-            <a href="/locations/<%= loc.slug %>/" class="border border-ink/10 rounded-full px-5 py-2 text-ink/70 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
-                                    <%= loc.name %> Car Rental
-            </a>
-            <% }) %>
-        </div>
-    </div>
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<span class="eyebrow"><%= (t.home && t.home.whereWeDeliver) || 'Where We Deliver' %></span>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-4 max-w-3xl"><%= (t.home && t.home.deliveryHeading) || 'Available All Over Pattaya' %></h2>
+<p class="text-ink/50 text-sm leading-relaxed max-w-xl"><%= (t.home && t.home.deliverySubtitle) || 'Wherever you stay, we deliver for free.' %></p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<% featuredLocations.forEach(loc => { %>
+<a href="<%= langPrefix %>/locations/<%= loc.slug %>/" class="border border-ink/10 rounded-full px-5 py-2 text-ink/70 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+<%= loc.name %> Car Rental
+</a>
+<% }) %>
+</div>
+</div>
 </section>
 <% } %>
 
 <!-- FAQ Section -->
 <section class="py-24 bg-paper">
-    <div class="max-w-3xl mx-auto px-6">
-        <div class="mb-12">
-            <span class="eyebrow">FAQ</span>
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12">Frequently Asked Questions</h2>
-            <p class="card-body">Everything you need to know about renting with us.</p>
-        </div>
-        <div class="space-y-4">
-            <% [
-                { q: 'What is included in the rental price for a vehicle?', a: 'The rental rate includes first-class rental insurance, unlimited kilometers, 24-hour breakdown cover, the ability to add additional drivers, and all applicable taxes.' },
-                { q: 'Do I have to pay for the car rental immediately when booking?', a: 'No, you can book now and pay later.' },
-                { q: 'Do I need to pay a deposit for my car rental?', a: 'Yes, a 5,000 THB cash deposit is required upon vehicle collection.' },
-                { q: 'What is the cancellation policy for a booking?', a: 'You can cancel your booking at any time free of charge.' }
-            ].forEach(item => { %>
-            <div class="faq-item glass-card rounded-[32px] overflow-hidden">
-                <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left">
-                    <span class="font-bold text-lg tracking-tight text-ink"><%= item.q %></span>
-                    <svg class="faq-chevron w-5 h-5 text-primary shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                </button>
-                <div class="faq-answer hidden px-6 pb-6 text-ink/50 text-sm leading-relaxed"><%= item.a %></div>
-            </div>
-            <% }) %>
-        </div>
-        <div class="text-center mt-10">
-            <a href="/faq/" class="link-arrow">
-                View All FAQs
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
+<div class="max-w-3xl mx-auto px-6">
+<div class="mb-12">
+<span class="eyebrow"><%= (t.home && t.home.faqBadge) || 'FAQ' %></span>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12"><%= (t.home && t.home.faqHeading) || 'Frequently Asked Questions' %></h2>
+<p class="card-body"><%= (t.home && t.home.faqSubtitle) || 'Everything you need to know about renting with us.' %></p>
+</div>
+<div class="space-y-4">
+<% const _defFaqs=[{q:'What is included in the rental price for a vehicle?',a:'The rental rate includes first-class rental insurance, unlimited kilometers, 24-hour breakdown cover, the ability to add additional drivers, and all applicable taxes.'},{q:'Do I have to pay for the car rental immediately when booking?',a:'No, you can book now and pay later.'},{q:'Do I need to pay a deposit for my car rental?',a:'Yes, a 5,000 THB cash deposit is required upon vehicle collection.'},{q:'What is the cancellation policy for a booking?',a:'You can cancel your booking at any time free of charge.'}];
+((t.home && t.home.faqs)||_defFaqs).forEach(item=>{ %>
+<div class="faq-item glass-card rounded-[32px] overflow-hidden">
+<button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left">
+<span class="font-bold text-lg tracking-tight text-ink"><%= item.q %></span>
+<svg class="faq-chevron w-5 h-5 text-primary shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+</button>
+<div class="faq-answer hidden px-6 pb-6 text-ink/50 text-sm leading-relaxed"><%= item.a %></div>
+</div>
+<% }) %>
+</div>
+<div class="text-center mt-10">
+<a href="<%= langPrefix %>/faq/" class="link-arrow">
+<%= (t.home && t.home.viewAllFaqs) || 'View All FAQs' %>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+</a>
 
 <!-- SEO: Keyword body section -->
 <section class="py-16 bg-paper border-t border-ink/10">
-    <div class="max-w-4xl mx-auto px-6">
-        <h2 class="text-2xl font-black uppercase tracking-tight text-ink mb-4">Car Rental Pattaya — เช่ารถพัทยา</h2>
-        <p class="text-ink/70 leading-relaxed mb-4">Pattaya Rent a Car has been the trusted choice for car rental in Pattaya for over <%= site.trust.years %> years. Our fleet of 100+ vehicles — from economy cars and automatics to 7-seater SUVs and pickup trucks — is available for short-term and long-term hire across all of Pattaya, Jomtien, Naklua, Wongamat, Pratumnak, Bang Saray, and Na Jomtien.</p>
-        <p class="text-ink/70 leading-relaxed mb-4">Every car rental in Pattaya includes comprehensive insurance, free hotel delivery, and 24/7 WhatsApp support. No credit card is required to browse — pay on collection. With a <%= site.trust.googleRating %>★ rating from over <%= site.trust.googleReviews %> Google reviews, we’re Pattaya’s highest-rated rent a car service.</p>
-        <p class="text-ink/70 leading-relaxed">Looking to rent a car in Pattaya for a day, a week, or a month? <a href="/cars/" class="text-primary font-semibold hover:underline">Browse our full fleet</a> or <a href="/locations/" class="text-primary font-semibold hover:underline">find delivery to your area</a>. บริการเช่ารถพัทยาครบครัน ส่งฟรีถึงโรงแรม ประกันภัยครบ.</p>
-    </div>
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-2xl font-black uppercase tracking-tight text-ink mb-4">Car Rental Pattaya — เช่ารถพัทยา</h2>
+<p class="text-ink/70 leading-relaxed mb-4">Pattaya Rent a Car has been the trusted choice for car rental in Pattaya for over <%= site.trust.years %> years. Our fleet of 100+ vehicles — from economy cars and automatics to 7-seater SUVs and pickup trucks — is available for short-term and long-term hire across all of Pattaya, Jomtien, Naklua, Wongamat, Pratumnak, Bang Saray, and Na Jomtien.</p>
+<p class="text-ink/70 leading-relaxed mb-4">Every car rental in Pattaya includes comprehensive insurance, free hotel delivery, and 24/7 WhatsApp support. No credit card is required to browse — pay on collection. With a <%= site.trust.googleRating %>★ rating from over <%= site.trust.googleReviews %> Google reviews, we're Pattaya's highest-rated rent a car service.</p>
+<p class="text-ink/70 leading-relaxed">Looking to rent a car in Pattaya for a day, a week, or a month? <a href="/cars/" class="text-primary font-semibold hover:underline">Browse our full fleet</a> or <a href="/locations/" class="text-primary font-semibold hover:underline">find delivery to your area</a>. บริการเช่ารถพัทยาครบครัน ส่งฟรีถึงโรงแรม ประกันภัยครบ.</p>
+</div>
 </section>
-        </div>
-    </div>
+</div>
+</div>
 </section>
