@@ -1,1 +1,82 @@
-{"nav": {"fleet": "", "locations": "", "longTerm": "", "faq": "", "about": "", "contact": "", "rentBike": ""}, "meta": {"home": {"title": " | ", "description": " 800 /    4.9 "}, "about": {"title": " | Pattaya Rent a Car", "description": " 2552  5  1,200 "}, "contact": {"title": " | Pattaya Rent a Car", "description": " WhatsApp Line  "}, "terms": {"title": " | Pattaya Rent a Car", "description": "   "}, "privacy": {"title": " | Pattaya Rent a Car", "description": ""}, "insurance": {"title": " | ", "description": ""}, "motorbike": {"title": " |  250 /", "description": " 250 / "}, "longTerm": {"title": " | ", "description": " 10,000 /"}, "fleet": {"title": " | SUV  MPV", "description": "  SUV"}, "locations": {"title": " | ", "description": ""}, "faq": {"title": " | Pattaya Rent a Car", "description": ""}, "blog": {"title": " | ", "description": ""}}, "home": {"badge": "", "heading": "", "tagline": "", "taglineSuffix": "", "subtitle": "   24  ", "freeCancellation": "", "hotelDelivery": "", "support247": " 24 .", "whyBadge": "", "whyHeading": "?", "whySubtitle": "", "viewAllCars": "", "whereWeDeliver": "", "deliveryHeading": "", "deliverySubtitle": " ", "faqBadge": "", "faqHeading": "", "faqSubtitle": "", "viewAllFaqs": ""}}
+{
+  "nav": {
+    "fleet": "",
+    "locations": "",
+    "longTerm": "",
+    "faq": "",
+    "about": "",
+    "contact": "",
+    "rentBike": ""
+  },
+  "meta": {
+    "home": {
+      "title": " | ",
+      "description": " 800 /    4.9 "
+    },
+    "about": {
+      "title": " | Pattaya Rent a Car",
+      "description": " 2552  5  1,200 "
+    },
+    "contact": {
+      "title": " | Pattaya Rent a Car",
+      "description": " WhatsApp Line  "
+    },
+    "terms": {
+      "title": " | Pattaya Rent a Car",
+      "description": "   "
+    },
+    "privacy": {
+      "title": " | Pattaya Rent a Car",
+      "description": ""
+    },
+    "insurance": {
+      "title": " | ",
+      "description": ""
+    },
+    "motorbike": {
+      "title": " |  250 /",
+      "description": " 250 / "
+    },
+    "longTerm": {
+      "title": " | ",
+      "description": " 10,000 /"
+    },
+    "fleet": {
+      "title": " | SUV  MPV",
+      "description": "  SUV"
+    },
+    "locations": {
+      "title": " | ",
+      "description": ""
+    },
+    "faq": {
+      "title": " | Pattaya Rent a Car",
+      "description": ""
+    },
+    "blog": {
+      "title": " | ",
+      "description": ""
+    }
+  },
+  "home": {
+    "badge": "รถพร้อมให้บริการตอนนี้",
+    "heading": "เช่ารถพัทยา",
+    "tagline": "ส่งฟรีถึงโรงแรม",
+    "taglineSuffix": "ดีที่สุดในพัทยา",
+    "subtitle": "เช่ารถพัทยาคุณภาพสูง ส่งฟรีถึงโรงแรมของคุณ ประกันภัยครอบคลุม บริการ 24 ชั่วโมง",
+    "freeCancellation": "ยกเลิกฟรี",
+    "hotelDelivery": "ส่งถึงโรงแรม",
+    "support247": "บริการ 24/7",
+    "whyBadge": "ทำไมต้องเลือกเรา",
+    "whyHeading": "ทำไมต้องเลือกพัทยาเรนท์อะคาร์?",
+    "whySubtitle": "บริการเช่ารถมากกว่า 16 ปี พร้อมรีวิว 4.9 ดาวจากลูกค้ากว่า 1,200 คน",
+    "viewAllCars": "ดูรถทั้งหมด",
+    "whereWeDeliver": "พื้นที่ให้บริการ",
+    "deliveryHeading": "เราส่งรถทั่วพัทยา",
+    "deliverySubtitle": "ส่งรถฟรีถึงโรงแรม รีสอร์ท หรืออพาร์ตเมนต์ของคุณ ทั่วพัทยาและบริเวณใกล้เคียง",
+    "faqBadge": "คำถามที่พบบ่อย",
+    "faqHeading": "มีคำถามอะไรไหม?",
+    "faqSubtitle": "รวมคำถามที่พบบ่อยเกี่ยวกับการเช่ารถในพัทยา",
+    "viewAllFaqs": "ดูคำถามทั้งหมด"
+  }
+}{"nav": {"fleet": "", "locations": "", "longTerm": "", "faq": "", "about": "", "contact": "", "rentBike": ""}, "meta": {"home": {"title": " | ", "description": " 800 /    4.9 "}, "about": {"title": " | Pattaya Rent a Car", "description": " 2552  5  1,200 "}, "contact": {"title": " | Pattaya Rent a Car", "description": " WhatsApp Line  "}, "terms": {"title": " | Pattaya Rent a Car", "description": "   "}, "privacy": {"title": " | Pattaya Rent a Car", "description": ""}, "insurance": {"title": " | ", "description": ""}, "motorbike": {"title": " |  250 /", "description": " 250 / "}, "longTerm": {"title": " | ", "description": " 10,000 /"}, "fleet": {"title": " | SUV  MPV", "description": "  SUV"}, "locations": {"title": " | ", "description": ""}, "faq": {"title": " | Pattaya Rent a Car", "description": ""}, "blog": {"title": " | ", "description": ""}}, "home": {"badge": "", "heading": "", "tagline": "", "taglineSuffix": "", "subtitle": "   24  ", "freeCancellation": "", "hotelDelivery": "", "support247": " 24 .", "whyBadge": "", "whyHeading": "?", "whySubtitle": "", "viewAllCars": "", "whereWeDeliver": "", "deliveryHeading": "", "deliverySubtitle": " ", "faqBadge": "", "faqHeading": "", "faqSubtitle": "", "viewAllFaqs": ""}}
