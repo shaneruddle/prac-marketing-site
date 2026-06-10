@@ -1,11 +1,12 @@
 <section class="bg-paper pt-32 pb-20">
+
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <div>
-        <span class="eyebrow">Special Rates</span>
-        <h1 class="text-5xl md:text-7xl font-bod tracking-tighter text-ink leading-[0.9]">Long Term Car Hire in Pattaya</h1>
-        <p class="text-ink/60 text-lg leading-relaxed mt-8">Monthly and long-stay car rentals for expats, digital nomads, and long-term visitors with preferential rates the longer you stay. Every rental comes with full insurance, free hotel or condo delivery, and 24/7 support as standard.</p>
-        <a href="#enquire" class="btn-primary inline-flex mt-8">Request a Quote</a>
+        <span class="eyebrow"><%= (t.longTerm && t.longTerm.eyebrow) || 'Special Rates' %></span>
+        <h1 class="text-5xl md:text-7xl font-bod tracking-tighter text-ink leading-[0.9]"><%= (t.longTerm && t.longTerm.h1) || 'Long Term Car Hire in Pattaya' %></h1>
+        <p class="text-ink/60 text-lg leading-relaxed mt-8"><%= (t.longTerm && t.longTerm.intro) || 'Monthly and long-stay car rentals for expats, digital nomads, and long-term visitors with preferential rates the longer you stay. Every rental comes with full insurance, free hotel or condo delivery, and 24/7 support as standard.' %></p>
+        <a href="#enquire" class="btn-primary inline-flex mt-8"><%= (t.longTerm && t.longTerm.cta) || 'Request a Quote' %></a>
       </div>
       <div>
         <div class="rounded-[50px] overflow-hidden shadow-2xl shadow-black/10 aspect-[4/3]"><img src="https://firebasestorage.googleapis.com/v0/b/pattaya-rent-a-car-rebuild.firebasestorage.app/o/vehicle-guides%2Feconomy-car-rental%2Fhero_1780122822793_2.png?alt=media&token=1b581775-fe40-4008-9026-0623933ad3ba" alt="Long term car rental Pattaya" class="w-full h-full object-cover" loading="eager" /></div>
@@ -16,8 +17,8 @@
 
 <section class="bg-paper py-20">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="eyebrow">Why Go Long Term</span>
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12 max-w-3xl">Everything included, the longer you stay</h2>
+    <span class="eyebrow"><%= (t.longTerm && t.longTerm.whyEyebrow) || 'Why Go Long Term' %></span>
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12 max-w-3xl"><%= (t.longTerm && t.longTerm.whyH2) || 'Everything included, the longer you stay' %></h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 max-w-5xl">
 
       <div class="flex gap-4">
@@ -75,9 +76,9 @@
 <!-- Pricing & vehicles section -->
 <section class="bg-paper py-20">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="eyebrow">Pricing</span>
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-inkmb-4 max-w-3xl">Monthly Car Rental from ฿10,000</h2>
-    <p class="text-ink/60 text-lg mb-12 max-w-2xl">Rates start from ฿20,000/month for pickup trucks and ฿30,000/month for SUVs. The longer you stay, the better the deal. All rates include insurance, delivery, and servicing.</p>
+    <span class="eyebrow"><%= (t.longTerm && t.longTerm.pricingEyebrow) || 'Pricing' %></span>
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-inkmb-4 max-w-3xl"><%= (t.longTerm && t.longTerm.pricingH2) || 'Monthly Car Rental from ฿10,000' %></h2>
+    <p class="text-ink/60 text-lg mb-12 max-w-2xl"><%= (t.longTerm && t.longTerm.pricingIntro) || 'Rates start from ฿20,000/month for pickup trucks and ฿30,000/month for SUVs. The longer you stay, the better the deal. All rates include insurance, delivery, and servicing.' %></p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
       <div class="glass-card rounded-[32px] p-8">
         <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/40 mb-3">Pickup Truck</div>
@@ -107,8 +108,8 @@
       <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
       <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mb-6">Get a Custom Quote</h2>
-          <p class="text-white/60 text-lg leading-relaxed">Tell us how long you need a vehicle and we'll send our best long-term rate within a few hours. You can also reach us directly by phone or WhatsApp we speak English and Thai.</p>
+          <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mb-6"><%= (t.longTerm && t.longTerm.quoteH2) || 'Get a Custom Quote' %></h2>
+          <p class="text-white/60 text-lg leading-relaxed"><%= (t.longTerm && t.longTerm.quoteIntro) || 'Tell us how long you need a vehicle and we'll send our best long-term rate within a few hours. You can also reach us directly by phone or WhatsApp we speak English and Thai.' %></p>
         </div>
         <form id="lt-form" class="space-y-5">
           <!-- Honeypot field â hidden from humans, bots fill it -->
@@ -147,7 +148,7 @@
 
 <section class="bg-paper py-20">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12 text-right">Common Questions</h2>
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-ink mb-12 text-right"><%= (t.longTerm && t.longTerm.faqH2) || 'Common Questions' %></h2>
     <div class="space-y-4 max-w-3xl ml-auto">
 
       <details class="glass-card rounded-[24px] p-6 group">
