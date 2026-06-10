@@ -21,8 +21,9 @@
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href="https://<%= site.domain %><%= url %>">
     <% languages.forEach(l => { %>
-        <link rel="alternate" hreflang="<%= l.code %>" href="https://<%= site.domain %><%= l.path %><%= url.replace(/^\/[a-z]{2}\//, '') %>">
+        <link rel="alternate" hreflang="<%= l.code %>" href="https://<%= site.domain %><%= (l.code === 'en' ? '' : '/' + l.code) + url.replace(/^\/[a-z]{2}\//, '/') %>">
     <% }) %>
+    <link rel="alternate" hreflang="x-default" href="https://<%= site.domain %><%= url.replace(/^\/[a-z]{2}\//,'/') %>">
 
     <!-- Styling -->
     <link rel="stylesheet" href="/assets/css/main.css">
@@ -35,7 +36,7 @@
 </head>
 <body class="font-sans text-ink bg-paper antialiased">
     
-    <%- include('components/header', { site, languages, lang, url }) %>
+    <%- include('components/header', { site, languages, lang, url, t, langPrefix }) %>
 
     <main id="main-content">
         <%- body %>
@@ -55,12 +56,12 @@
     </button>
         <nav class="flex flex-col items-center gap-10 text-center">
             <% [
-                { name: 'Our Fleet', path: '/cars' },
-                { name: 'Locations', path: '/locations' },
-                { name: 'Long Term', path: '/long-term-rental' },
-                { name: 'FAQ', path: '/faq' },
-                { name: 'About', path: '/about' },
-                { name: 'Contact', path: '/contact' }
+                { name: (t&&t.nav&&t.nav.fleet)||'Our Fleet', path: '/cars' },
+                { name: (t&&t.nav&&t.nav.locations)||'Locations', path: '/locations' },
+                { name: (t&&t.nav&&t.nav.longTerm)||'Long Term', path: '/long-term-rental' },
+                { name: (t&&t.nav&&t.nav.faq)||'FAQ', path: '/faq' },
+                { name: (t&&t.nav&&t.nav.about)||'About', path: '/about' },
+                { name: (t&&t.nav&&t.nav.contact)||'Contact', path: '/contact' }
             ].forEach(link => { %>
                 <a href="<%= lang === 'en' ? link.path : '/' + lang + link.path %>" class="text-3xl font-black italic text-white uppercase tracking-tighter hover:text-primary transition-colors">
                     <%= link.name %>
@@ -69,17 +70,15 @@
 
             <a href="https://pattayarentabike.com/" rel="noopener" class="text-3xl font-black italic text-white uppercase tracking-tighter hover:text-primary transition-colors">Rent a Bike</a>
 
-            <% /* EN-only launch: mobile language switcher disabled — remove wrapping if/end to re-enable */ if (false) { %>
 <div class="h-px w-20 bg-white/10 my-4"></div>
 
             <div class="flex gap-4">
                 <% languages.forEach(l => { %>
-                    <a href="<%= l.path %><%= url.replace(/^\/[a-z]{2}\//, '') %>" class="text-xl <%= l.code === lang ? 'grayscale-0' : 'grayscale' %>">
+                    <a href="<%= (l.code === 'en' ? '' : '/' + l.code) + url.replace(/^\/[a-z]{2}\//, '/') %>" class="text-xl <%= l.code === lang ? 'grayscale-0' : 'grayscale' %>">
                         <%= l.flag %>
                     </a>
                 <% }) %>
             </div>
-<% } /* end disabled mobile language switcher */ %>
 
             <a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>" class="text-2xl font-black text-primary uppercase tracking-widest mt-4">
                 <%= site.contact.phone %>

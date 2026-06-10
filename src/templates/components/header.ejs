@@ -8,15 +8,14 @@
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center gap-10">
             <div class="flex gap-8 text-xs font-black uppercase tracking-widest text-ink/60">
-                <a href="<%= lang === 'en' ? '/cars' : '/' + lang + '/cars' %>" class="hover:text-primary transition-colors <%= url.includes('/cars') ? 'text-primary' : '' %>">Our Fleet</a>
-                <a href="<%= lang === 'en' ? '/locations' : '/' + lang + '/locations' %>" class="hover:text-primary transition-colors <%= url.includes('/locations') ? 'text-primary' : '' %>">Locations</a>
-                <a href="<%= lang === 'en' ? '/long-term-rental' : '/' + lang + '/long-term-rental' %>" class="hover:text-primary transition-colors <%= url.includes('/long-term-rental') ? 'text-primary' : '' %>">Long Term</a>
+                <a href="<%= lang === 'en' ? '/cars' : '/' + lang + '/cars' %>" class="hover:text-primary transition-colors <%= url.includes('/cars') ? 'text-primary' : '' %>"><%=(t&&t.nav&&t.nav.fleet)||"Our Fleet"%></a>
+                <a href="<%= lang === 'en' ? '/locations' : '/' + lang + '/locations' %>" class="hover:text-primary transition-colors <%= url.includes('/locations') ? 'text-primary' : '' %>"><%=(t&&t.nav&&t.nav.locations)||"Locations"%></a>
+                <a href="<%= lang === 'en' ? '/long-term-rental' : '/' + lang + '/long-term-rental' %>" class="hover:text-primary transition-colors <%= url.includes('/long-term-rental') ? 'text-primary' : '' %>"><%=(t&&t.nav&&t.nav.longTerm)||"Long Term"%></a>
                 <a href="https://pattayarentabike.com/" rel="noopener" class="hover:text-primary transition-colors">Rent a Bike</a>
-                <a href="<%= lang === 'en' ? '/faq' : '/' + lang + '/faq' %>" class="hover:text-primary transition-colors <%= url.includes('/faq') ? 'text-primary' : '' %>">FAQ</a>
+                <a href="<%= lang === 'en' ? '/faq' : '/' + lang + '/faq' %>" class="hover:text-primary transition-colors <%= url.includes('/faq') ? 'text-primary' : '' %>"><%=(t&&t.nav&&t.nav.faq)||"FAQ"%></a>
             </div>
             
             <div class="flex items-center gap-6 border-l border-gray-100 pl-10">
-                <% /* EN-only launch: language switcher disabled â remove wrapping if/end to re-enable */ if (false) { %>
 <!-- Language Switcher -->
                 <div class="relative group">
                     <button class="flex items-center gap-1.5 text-[10px] font-black tracking-widest text-ink/40 uppercase hover:text-primary transition-colors">
@@ -27,7 +26,7 @@
                     <div class="absolute right-0 mt-3 w-40 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <div class="p-2 grid gap-1">
                             <% languages.forEach(l => { %>
-                                <a href="<%= l.path %><%= url.replace(/^\/[a-z]{2}\//, '') %>" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs tracking-tight <%= l.code === lang ? 'bg-orange-50 text-primary font-black' : 'text-ink/60 font-medium hover:bg-paper' %>">
+                                <a href="<%= (l.code === 'en' ? '' : '/' + l.code) + url.replace(/^\/[a-z]{2}\//, '/') %>" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs tracking-tight <%= l.code === lang ? 'bg-orange-50 text-primary font-black' : 'text-ink/60 font-medium hover:bg-paper' %>">
                                     <span><%= l.flag %></span>
                                     <span><%= l.name %></span>
                                 </a>
@@ -36,7 +35,6 @@
                         </div>
                     </div>
                 </div>
-<% } /* end disabled language switcher */ %>
 
                 <a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>" class="bg-primary text-white px-5 py-2.5 rounded-full text-xs font-black tracking-widest uppercase hover:bg-primary-hover shadow-lg shadow-primary/20 transition-all active:scale-95">
                     <%= site.contact.phone %>
