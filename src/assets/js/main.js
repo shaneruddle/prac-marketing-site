@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
         const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
         const today = new Date(); today.setHours(0,0,0,0);
+        const MIN_DAYS = 2; // minimum rental period (days) — keep in sync with pricing engine thresholds.minRentalDays
 
         const elPickupInput = document.getElementById('dp-input-pickup');
         const elReturnInput = document.getElementById('dp-input-return');
@@ -60,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const b = document.createElement('button');
                 b.type='button'; b.className='dp-day'; b.textContent=d;
                 if (date < today) b.classList.add('is-disabled');
+                if (startDate && !endDate && date > startDate && (date - startDate)/86400000 < MIN_DAYS) b.classList.add('is-disabled');
                 if (sameDay(date, today)) b.classList.add('is-today');
                 if (startDate && endDate) {
                     if (sameDay(date,startDate)) b.classList.add('range-start');
@@ -75,8 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function pick(date) {
             if (!startDate || (startDate && endDate)) { startDate = date; endDate = null; }
-            else if (date < startDate) { endDate = startDate; startDate = date; }
+            else if (date < startDate) {
+                // Reversed selection: only form the range if it meets the minimum, else restart from the new date
+                if ((startDate - date)/86400000 >= MIN_DAYS) { endDate = startDate; startDate = date; }
+                else { startDate = date; endDate = null; }
+            }
             else if (sameDay(date, startDate)) { /* ignore same-day */ }
+            else if ((date - startDate)/86400000 < MIN_DAYS) { /* below minimum rental — ignore */ }
             else { endDate = date; }
             render();
         }
@@ -99,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hint.textContent = `Pickup ${fmt(startDate)} → Return ${fmt(endDate)}`;
             } else if (startDate) {
                 dur.style.visibility='hidden'; apply.disabled=true;
-                hint.textContent = 'Now select your return date';
+                hint.textContent = `Now select your return date (minimum ${MIN_DAYS} days)`;
             } else {
                 dur.style.visibility='hidden'; apply.disabled=true;
                 hint.textContent = 'Select your pickup date';
