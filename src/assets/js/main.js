@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const b = document.createElement('button');
                 b.type='button'; b.className='dp-day'; b.textContent=d;
                 if (date < today) b.classList.add('is-disabled');
-                if (startDate && !endDate && date > startDate && (date - startDate)/86400000 < MIN_DAYS) b.classList.add('is-disabled');
+                if (startDate && !endDate && date > startDate && Math.round((date - startDate)/86400000) < MIN_DAYS) b.classList.add('is-disabled');
                 if (sameDay(date, today)) b.classList.add('is-today');
                 if (startDate && endDate) {
                     if (sameDay(date,startDate)) b.classList.add('range-start');
@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!startDate || (startDate && endDate)) { startDate = date; endDate = null; }
             else if (date < startDate) {
                 // Reversed selection: only form the range if it meets the minimum, else restart from the new date
-                if ((startDate - date)/86400000 >= MIN_DAYS) { endDate = startDate; startDate = date; }
+                if (Math.round((startDate - date)/86400000) >= MIN_DAYS) { endDate = startDate; startDate = date; }
                 else { startDate = date; endDate = null; }
             }
             else if (sameDay(date, startDate)) { /* ignore same-day */ }
-            else if ((date - startDate)/86400000 < MIN_DAYS) { /* below minimum rental — ignore */ }
+            else if (Math.round((date - startDate)/86400000) < MIN_DAYS) { /* below minimum rental — ignore */ }
             else { endDate = date; }
             render();
         }
