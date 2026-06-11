@@ -3,49 +3,22 @@
     <form id="booking-form" class="space-y-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-                <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Date</label>
+                <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Date &amp; Time</label>
                 <button type="button" id="dp-trigger-pickup" class="dp-field is-placeholder">
                     <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     <span id="dp-val-pickup">Select date</span>
                 </button>
                 <input type="hidden" name="pickup_date" id="dp-input-pickup" required />
+                <input type="hidden" name="pickup_time" id="dp-input-pickup-time" value="09:30" />
             </div>
             <div>
-                <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Pickup Time</label>
-                <div class="relative">
-                    <select name="pickup_time" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none cursor-pointer">
-                        <% ['09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'].forEach(t => { %>
-                        <option value="<%= t %>"<%= t === '09:30' ? ' selected' : '' %>><%= t %></option>
-                        <% }) %>
-                    </select>
-                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-                <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Return Date</label>
+                <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Return Date &amp; Time</label>
                 <button type="button" id="dp-trigger-return" class="dp-field is-placeholder">
                     <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     <span id="dp-val-return">Select date</span>
                 </button>
                 <input type="hidden" name="dropoff_date" id="dp-input-return" required />
-            </div>
-            <div>
-                <label class="block text-[10px] font-black uppercase text-gray-400 mb-2 ml-1 tracking-widest">Return Time</label>
-                <div class="relative">
-                    <select name="dropoff_time" required class="w-full p-4 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none cursor-pointer">
-                        <% ['09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'].forEach(t => { %>
-                        <option value="<%= t %>"<%= t === '09:30' ? ' selected' : '' %>><%= t %></option>
-                        <% }) %>
-                    </select>
-                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                    </div>
-                </div>
+                <input type="hidden" name="dropoff_time" id="dp-input-return-time" value="09:30" />
             </div>
         </div>
 

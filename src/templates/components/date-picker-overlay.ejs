@@ -31,8 +31,39 @@
                 </div>
             </div>
             <p class="text-center text-xs text-gray-400 font-semibold pb-3 px-6" id="dp-hint">Select your pickup date</p>
+            <div class="grid grid-cols-2 border-t border-gray-100">
+                <div class="px-6 py-4 border-r border-gray-100">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Pickup</p>
+                    <p class="text-base font-black text-ink mb-2" id="dp-sum-pickup">&mdash;</p>
+                    <div class="relative">
+                        <select id="dp-time-pickup" class="w-full p-3 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none cursor-pointer">
+                            <% ['09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'].forEach(t => { %>
+                            <option value="<%= t %>"<%= t === '09:30' ? ' selected' : '' %>><%= t %></option>
+                            <% }) %>
+                        </select>
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Return</p>
+                    <p class="text-base font-black text-ink mb-2" id="dp-sum-return">&mdash;</p>
+                    <div class="relative">
+                        <select id="dp-time-return" class="w-full p-3 bg-paper rounded-xl border border-gray-100 text-sm font-black text-ink outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none cursor-pointer">
+                            <% ['09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'].forEach(t => { %>
+                            <option value="<%= t %>"<%= t === '09:30' ? ' selected' : '' %>><%= t %></option>
+                            <% }) %>
+                        </select>
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="flex items-center gap-4 flex-wrap px-6 py-4 bg-paper border-t border-gray-100">
                 <span class="text-sm font-bold text-green-600" id="dp-duration" style="visibility:hidden;">Duration: <span class="bg-green-600 text-white px-3 py-1 rounded-full font-black ml-1" id="dp-duration-pill">0 days</span></span>
+                <button type="button" id="dp-reset" class="text-xs font-black uppercase tracking-wider text-gray-400 hover:text-primary transition-colors">Reset dates</button>
                 <div class="flex gap-3 ml-auto">
                     <button type="button" id="dp-cancel" class="bg-white border border-gray-200 text-ink font-black uppercase tracking-wider text-xs px-5 py-2.5 rounded-xl">Cancel</button>
                     <button type="button" id="dp-apply" class="bg-primary text-white font-black uppercase tracking-wider text-xs px-6 py-2.5 rounded-xl disabled:opacity-40 disabled:cursor-not-allowed" disabled>Apply</button>
