@@ -93,7 +93,14 @@
   }
   .dp-day.is-empty { @apply pointer-events-none; }
   .dp-day.is-disabled { @apply text-gray-300 pointer-events-none; }
-  .dp-day:not(.is-disabled):not(.is-empty):hover { @apply bg-gray-100 rounded-full; }
+  .dp-day.is-min-block { @apply text-gray-300 cursor-not-allowed; }
+  .dp-day.is-min-block:hover::after {
+    content: attr(data-tip);
+    @apply absolute bg-primary text-white font-bold rounded-lg whitespace-nowrap z-10;
+    font-size: 10px; padding: 4px 8px;
+    bottom: calc(100% + 2px); left: 50%; transform: translateX(-50%);
+  }
+  .dp-day:not(.is-disabled):not(.is-empty):not(.is-min-block):hover { @apply bg-gray-100 rounded-full; }
   .dp-day.is-today::after {
     content: ""; @apply absolute w-1 h-1 rounded-full bg-primary;
     bottom: 6px; left: 50%; transform: translateX(-50%);

@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
         const today = new Date(); today.setHours(0,0,0,0);
         const MIN_DAYS = 2; // minimum rental period (days) — keep in sync with pricing engine thresholds.minRentalDays
+        const minNote = document.getElementById('dp-min-note');
+        if (minNote) minNote.textContent = MIN_DAYS + '-day minimum rental';
 
         const elPickupInput = document.getElementById('dp-input-pickup');
         const elReturnInput = document.getElementById('dp-input-return');
@@ -61,7 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const b = document.createElement('button');
                 b.type='button'; b.className='dp-day'; b.textContent=d;
                 if (date < today) b.classList.add('is-disabled');
-                if (startDate && !endDate && date > startDate && Math.round((date - startDate)/86400000) < MIN_DAYS) b.classList.add('is-disabled');
+                if (startDate && !endDate && date > startDate && Math.round((date - startDate)/86400000) < MIN_DAYS) {
+                    b.classList.add('is-min-block');
+                    b.dataset.tip = MIN_DAYS + ' day minimum';
+                }
                 if (sameDay(date, today)) b.classList.add('is-today');
                 if (startDate && endDate) {
                     if (sameDay(date,startDate)) b.classList.add('range-start');
@@ -70,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (startDate && sameDay(date,startDate)) {
                     b.classList.add('is-single');
                 }
-                if (!b.classList.contains('is-disabled')) b.addEventListener('click', () => pick(date));
+                if (!b.classList.contains('is-disabled') && !b.classList.contains('is-min-block')) b.addEventListener('click', () => pick(date));
                 el.appendChild(b);
             }
         }
