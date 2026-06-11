@@ -152,12 +152,22 @@ document.addEventListener('DOMContentLoaded', () => {
             elTriggerReturn.classList.remove('is-placeholder');
         }
 
+        function goToResults() {
+            const from = elPickupInput.value;
+            const to = elReturnInput.value;
+            const pickupTime = (elPickupTimeInput && elPickupTimeInput.value) || "09:30";
+            const dropoffTime = (elReturnTimeInput && elReturnTimeInput.value) || "09:30";
+            // Redirect to booking engine: from/to dates + times (no location at this stage)
+            window.location.href = `https://app.pattayarentacar.com/?from=${from}&to=${to}&pickupTime=${pickupTime}&dropoffTime=${dropoffTime}`;
+        }
+
         document.getElementById('dp-apply').addEventListener('click', () => {
             committed.start = startDate; committed.end = endDate;
             committed.pickupTime = elTimePickup ? elTimePickup.value : committed.pickupTime;
             committed.dropoffTime = elTimeReturn ? elTimeReturn.value : committed.dropoffTime;
             commitSelection();
             closeCal();
+            goToResults();
         });
 
         document.getElementById('dp-reset')?.addEventListener('click', () => {
@@ -173,15 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
         committed.start = tomorrow; committed.end = nextWeek;
         commitSelection();
 
+        // Form has no submit button anymore (the picker's Search triggers results), kept as a safety net
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const from = elPickupInput.value;
-            const to = elReturnInput.value;
-            const pickupTime = (elPickupTimeInput && elPickupTimeInput.value) || "09:30";
-            const dropoffTime = (elReturnTimeInput && elReturnTimeInput.value) || "09:30";
-            // Redirect to booking engine: from/to dates + times (no location at this stage)
-            const bookingUrl = `https://app.pattayarentacar.com/?from=${from}&to=${to}&pickupTime=${pickupTime}&dropoffTime=${dropoffTime}`;
-            window.location.href = bookingUrl;
+            goToResults();
         });
     }
     // FAQ Accordion
