@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const elPickupInput = document.getElementById('dp-input-pickup');
         const elReturnInput = document.getElementById('dp-input-return');
+        const elPickupTimeInput = document.getElementById('dp-input-pickup-time');
+        const elReturnTimeInput = document.getElementById('dp-input-return-time');
+        const elTimePickup = document.getElementById('dp-time-pickup');
+        const elTimeReturn = document.getElementById('dp-time-return');
+        const elSumPickup = document.getElementById('dp-sum-pickup');
+        const elSumReturn = document.getElementById('dp-sum-return');
         const elPickupVal = document.getElementById('dp-val-pickup');
         const elReturnVal = document.getElementById('dp-val-return');
         const elTriggerPickup = document.getElementById('dp-trigger-pickup');
@@ -47,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let viewMonth = today.getMonth(), viewYear = today.getFullYear();
         let startDate = null, endDate = null;
-        let committed = { start: null, end: null };
+        let committed = { start: null, end: null, pickupTime: '09:30', dropoffTime: '09:30' };
 
         const sameDay = (a,b) => a && b && a.getTime() === b.getTime();
         const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -104,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const dur = document.getElementById('dp-duration');
             const apply = document.getElementById('dp-apply');
             const hint = document.getElementById('dp-hint');
+            if (elSumPickup) elSumPickup.textContent = startDate ? fmt(startDate) : '\u2014';
+            if (elSumReturn) elSumReturn.textContent = endDate ? fmt(endDate) : '\u2014';
             if (startDate && endDate) {
                 const days = Math.round((endDate-startDate)/86400000);
                 document.getElementById('dp-duration-pill').textContent = days + (days===1?' day':' days');
@@ -121,6 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         function openCal() {
             if (committed.start) { viewMonth = committed.start.getMonth(); viewYear = committed.start.getFullYear(); }
             startDate = committed.start; endDate = committed.end;
+            if (elTimePickup) elTimePickup.value = committed.pickupTime;
+            if (elTimeReturn) elTimeReturn.value = committed.dropoffTime;
             render(); overlay.classList.add('is-open');
         }
         function closeCal(){ overlay.classList.remove('is-open'); }
@@ -132,30 +142,43 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dp-prev').addEventListener('click', () => { if(viewMonth===0){viewMonth=11;viewYear--;}else viewMonth--; render(); });
         document.getElementById('dp-next').addEventListener('click', () => { if(viewMonth===11){viewMonth=0;viewYear++;}else viewMonth++; render(); });
 
-        document.getElementById('dp-apply').addEventListener('click', () => {
-            committed.start = startDate; committed.end = endDate;
-            elPickupInput.value = iso(startDate); elReturnInput.value = iso(endDate);
-            elPickupVal.textContent = fmt(startDate); elReturnVal.textContent = fmt(endDate);
+        function commitSelection() {
+            elPickupInput.value = iso(committed.start); elReturnInput.value = iso(committed.end);
+            if (elPickupTimeInput) elPickupTimeInput.value = committed.pickupTime;
+            if (elReturnTimeInput) elReturnTimeInput.value = committed.dropoffTime;
+            elPickupVal.textContent = fmt(committed.start) + ' \u00b7 ' + committed.pickupTime;
+            elReturnVal.textContent = fmt(committed.end) + ' \u00b7 ' + committed.dropoffTime;
             elTriggerPickup.classList.remove('is-placeholder');
             elTriggerReturn.classList.remove('is-placeholder');
+        }
+
+        document.getElementById('dp-apply').addEventListener('click', () => {
+            committed.start = startDate; committed.end = endDate;
+            committed.pickupTime = elTimePickup ? elTimePickup.value : committed.pickupTime;
+            committed.dropoffTime = elTimeReturn ? elTimeReturn.value : committed.dropoffTime;
+            commitSelection();
             closeCal();
+        });
+
+        document.getElementById('dp-reset')?.addEventListener('click', () => {
+            startDate = null; endDate = null;
+            if (elTimePickup) elTimePickup.value = '09:30';
+            if (elTimeReturn) elTimeReturn.value = '09:30';
+            render();
         });
 
         // Default selection: tomorrow → +8 days (preserves prior default behaviour)
         const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate()+1);
         const nextWeek = new Date(today); nextWeek.setDate(nextWeek.getDate()+8);
         committed.start = tomorrow; committed.end = nextWeek;
-        elPickupInput.value = iso(tomorrow); elReturnInput.value = iso(nextWeek);
-        elPickupVal.textContent = fmt(tomorrow); elReturnVal.textContent = fmt(nextWeek);
-        elTriggerPickup.classList.remove('is-placeholder');
-        elTriggerReturn.classList.remove('is-placeholder');
+        commitSelection();
 
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const from = elPickupInput.value;
             const to = elReturnInput.value;
-            const pickupTime = bookingForm.pickup_time.value || "09:00";
-            const dropoffTime = bookingForm.dropoff_time.value || "09:00";
+            const pickupTime = (elPickupTimeInput && elPickupTimeInput.value) || "09:30";
+            const dropoffTime = (elReturnTimeInput && elReturnTimeInput.value) || "09:30";
             // Redirect to booking engine: from/to dates + times (no location at this stage)
             const bookingUrl = `https://app.pattayarentacar.com/?from=${from}&to=${to}&pickupTime=${pickupTime}&dropoffTime=${dropoffTime}`;
             window.location.href = bookingUrl;
