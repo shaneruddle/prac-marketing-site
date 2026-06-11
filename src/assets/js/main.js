@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         elTriggerPickup.addEventListener('click', openCal);
         elTriggerReturn.addEventListener('click', openCal);
+        document.getElementById('dp-open')?.addEventListener('click', openCal);
         document.getElementById('dp-cancel').addEventListener('click', closeCal);
         overlay.addEventListener('click', e => { if (e.target === overlay) closeCal(); });
         document.getElementById('dp-prev').addEventListener('click', () => { if(viewMonth===0){viewMonth=11;viewYear--;}else viewMonth--; render(); });
