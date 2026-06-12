@@ -228,6 +228,7 @@
       });
 
       if (res.ok) {
+          if (typeof gtag !== 'undefined') { gtag('event', 'conversion', { send_to: 'AW-806173499/REPLACE_WITH_LABEL' }); }
         msg.textContent = 'Thanks! We\'ll be in touch with your quote shortly.';
         msg.className = 'text-sm font-medium rounded-xl p-3 bg-green-500/20 text-green-300';
         msg.classList.remove('hidden');
