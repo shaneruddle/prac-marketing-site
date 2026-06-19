@@ -499,6 +499,33 @@ async function build() {
                         'priceRange': '฿฿'
                     }
                 }, tPath('jomtien-car-rental/index.html'));
+
+                // Russian-language landing page — standalone, no language-loop variants
+                if (lang === 'en') {
+                    await renderPage('arenda-avto-pattaya', {
+                        lang: 'ru',
+                        t: {},
+                        langPrefix: '',
+                        title: 'Аренда автомобиля в Паттайе — Цены, Условия и Доставка до Отеля | Pattaya Rent a Car',
+                        description: 'Аренда авто в Паттайе от 800 THB в сутки. Широкий выбор автомобилей, доставка до отеля, без скрытых платежей. Забронируйте онлайн прямо сейчас.',
+                        hreflangTags: [
+                            { lang: 'ru', href: 'https://' + site.domain + '/arenda-avto-pattaya/' },
+                            { lang: 'x-default', href: 'https://' + site.domain + '/' }
+                        ],
+                        schema: {
+                            '@context': 'https://schema.org',
+                            '@type': 'AutoRental',
+                            'name': site.name + ' — Аренда автомобилей в Паттайе',
+                            'description': 'Аренда авто в Паттайе с доставкой до отеля. Эконом-класс, седаны, кроссоверы и внедорожники. Полная страховка Viriyah. Работаем с русскоговорящими клиентами.',
+                            'url': 'https://' + site.domain + '/arenda-avto-pattaya/',
+                            'telephone': site.contact.phone,
+                            'email': site.contact.email,
+                            'areaServed': 'Pattaya, Jomtien, Naklua, Pratumnak, Chonburi, Thailand',
+                            'priceRange': '฿฿',
+                            'inLanguage': 'ru'
+                        }
+                    }, 'arenda-avto-pattaya/index.html');
+                }
                 // FAQ page (real data from faqs collection, grouped by category)
                 await renderPage('faq', {
                             lang, t, langPrefix,
@@ -565,7 +592,7 @@ async function build() {
 
     if (lang === 'en') {
       const lcs = languages.map(l => l.code);
-      const allUrls = [...sitemapEntries, ...lcs.filter(c => c !== 'en').flatMap(c => sitemapEntries.map(e => '/' + c + e))];
+      const allUrls = [...sitemapEntries, ...lcs.filter(c => c !== 'en').flatMap(c => sitemapEntries.map(e => '/' + c + e)), '/arenda-avto-pattaya/'];
       const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
         allUrls.map(e => '  <url><loc>https://' + site.domain + e + '</loc></url>').join('\n') +
         '\n</urlset>';

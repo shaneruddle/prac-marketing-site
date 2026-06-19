@@ -20,10 +20,16 @@
     
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href="https://<%= site.domain %><%= url %>">
+    <% if (typeof hreflangTags !== 'undefined' && hreflangTags) { %>
+        <% hreflangTags.forEach(h => { %>
+        <link rel="alternate" hreflang="<%= h.lang %>" href="<%= h.href %>">
+        <% }) %>
+    <% } else { %>
     <% languages.forEach(l => { %>
         <link rel="alternate" hreflang="<%= l.code %>" href="https://<%= site.domain %><%= (l.code === 'en' ? '' : '/' + l.code) + url.replace(/^\/[a-z]{2}\//, '/') %>">
     <% }) %>
     <link rel="alternate" hreflang="x-default" href="https://<%= site.domain %><%= url.replace(/^\/[a-z]{2}\//,'/') %>">
+    <% } %>
 
     <!-- Google tag (gtag.js) — Google Ads AW-806173499 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-806173499"></script>

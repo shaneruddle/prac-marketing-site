@@ -1,0 +1,166 @@
+<!-- Hero -->
+<section class="bg-paper pt-32 pb-24 border-b border-gray-100">
+    <div class="container mx-auto px-6">
+        <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
+            Аренда автомобилей
+        </div>
+        <h1 class="text-4xl md:text-6xl font-light tracking-tight mb-6 text-ink">Аренда <span class="font-black italic text-primary">автомобиля</span> в Паттайе</h1>
+        <p class="text-xl text-gray-500 max-w-2xl font-medium">Аренда авто в Паттайе с доставкой прямо до вашего отеля или кондоминиума. Аренда авто Паттайя и аренда машины Паттайя — всё это мы. Без лишних депозитов, без скрытых платежей, с полной страховкой.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="/cars/" class="btn-primary inline-flex">Выбрать автомобиль</a>
+            <a href="https://wa.me/<%= site.contact.whatsapp %>" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-gray-200 hover:border-primary text-ink font-black uppercase tracking-widest py-4 px-8 rounded-full transition-all active:scale-95">Написать в WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-24">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto space-y-20">
+
+            <!-- Наш автопарк -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Наш автопарк</h2>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    В нашем автопарке представлены автомобили на любой вкус и бюджет: эконом-класс (Honda Jazz, Toyota Yaris, Nissan Almera), удобные седаны для городских поездок, а также кроссоверы и внедорожники для тех, кто планирует выезды за пределы Паттайи.
+                </p>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    Для семей с детьми или компаний из четырёх человек и более мы предлагаем вместительные семейные автомобили. Все автомобили регулярно проходят техническое обслуживание, застрахованы по первому классу через Viriyah Insurance и оснащены исправным кондиционером — что в условиях тайского климата особенно важно.
+                </p>
+                <p class="text-gray-500 leading-relaxed">
+                    Также доступна аренда мотоциклов и скутеров — Honda PCX 150, Honda Click и другие модели для тех, кто предпочитает передвигаться налегке.
+                </p>
+            </div>
+
+            <!-- Цены на аренду -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Цены на аренду автомобиля в Паттайе</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="text-left p-3 font-black text-ink border-b border-gray-200">Категория</th>
+                                <th class="text-left p-3 font-black text-ink border-b border-gray-200">Цена в сутки (THB)</th>
+                                <th class="text-left p-3 font-black text-ink border-b border-gray-200">Депозит (THB)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100">
+                                <td class="p-3 text-gray-600">Эконом-класс</td>
+                                <td class="p-3 text-gray-600">от 800 THB</td>
+                                <td class="p-3 text-gray-600">5 000 THB</td>
+                            </tr>
+                            <tr class="border-b border-gray-100">
+                                <td class="p-3 text-gray-600">Седан</td>
+                                <td class="p-3 text-gray-600">от 1 000 THB</td>
+                                <td class="p-3 text-gray-600">5 000 THB</td>
+                            </tr>
+                            <tr class="border-b border-gray-100">
+                                <td class="p-3 text-gray-600">Кроссовер</td>
+                                <td class="p-3 text-gray-600">от 1 400 THB</td>
+                                <td class="p-3 text-gray-600">10 000 THB</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-gray-600">Внедорожник</td>
+                                <td class="p-3 text-gray-600">от 1 800 THB</td>
+                                <td class="p-3 text-gray-600">10 000 THB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-gray-400 mt-3 leading-relaxed">
+                    Цены указаны за сутки при аренде от 3 дней. Оплата наличными или банковским переводом.
+                </p>
+            </div>
+
+            <!-- Необходимые документы -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Необходимые документы</h2>
+                <ul class="space-y-3 mb-4">
+                    <li class="flex gap-3 items-start">
+                        <div class="w-5 h-5 bg-blue-50 text-primary rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <span class="text-gray-500">Действующий загранпаспорт</span>
+                    </li>
+                    <li class="flex gap-3 items-start">
+                        <div class="w-5 h-5 bg-blue-50 text-primary rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <span class="text-gray-500">Международное водительское удостоверение (рекомендуется) или национальные права</span>
+                    </li>
+                    <li class="flex gap-3 items-start">
+                        <div class="w-5 h-5 bg-blue-50 text-primary rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <span class="text-gray-500">Депозит наличными или банковским переводом</span>
+                    </li>
+                </ul>
+                <p class="text-gray-500 leading-relaxed">
+                    Граждане России и стран СНГ арендуют у нас автомобили регулярно. Процесс оформления простой и занимает не более 15 минут — мы поможем на каждом шаге.
+                </p>
+            </div>
+
+            <!-- Доставка до отеля -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Доставка автомобиля до вашего отеля</h2>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    Мы доставляем автомобиль в любой отель или кондоминиум в Паттайе, Джомтьене, Наклуа и Пратумнаке. Доставка в пределах городской черты Паттайи — бесплатно.
+                </p>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    В конце срока аренды мы забираем автомобиль прямо у вас — вам не нужно никуда ехать и ничего организовывать. Также возможна доставка в аэропорт Утапао (U-Tapao) и аэропорт Суварнабхуми (Suvarnabhumi).
+                </p>
+                <p class="text-gray-500 leading-relaxed">
+                    Просто сообщите нам ваш точный адрес в WhatsApp — и машина будет ждать вас в согласованное время.
+                </p>
+            </div>
+
+            <!-- Как забронировать -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Как забронировать аренду авто в Паттайе</h2>
+                <ol class="space-y-4 mb-8">
+                    <li class="flex gap-4 items-start">
+                        <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center shrink-0 font-black text-sm">1</span>
+                        <span class="text-gray-500 pt-1">Выберите автомобиль и даты на нашем сайте.</span>
+                    </li>
+                    <li class="flex gap-4 items-start">
+                        <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center shrink-0 font-black text-sm">2</span>
+                        <span class="text-gray-500 pt-1">Отправьте заявку через форму бронирования или напишите нам напрямую в WhatsApp.</span>
+                    </li>
+                    <li class="flex gap-4 items-start">
+                        <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center shrink-0 font-black text-sm">3</span>
+                        <span class="text-gray-500 pt-1">Получите подтверждение и инструкции по доставке.</span>
+                    </li>
+                </ol>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="/cars/" class="btn-primary inline-flex">Выбрать автомобиль и забронировать</a>
+                    <a href="https://wa.me/<%= site.contact.whatsapp %>" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-gray-200 hover:border-primary text-ink font-black uppercase tracking-widest py-4 px-8 rounded-full transition-all active:scale-95">Написать в WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Motorbike cross-link (verbatim from jomtien-car-rental.ejs) -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Scooter and Motorbike Rental in Jomtien</h2>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    If a car is more than you need, a scooter or motorbike is perfect for navigating Jomtien's beach road and the narrow side streets — you can park anywhere, move quickly, and enjoy the sea breeze.
+                </p>
+                <p class="text-gray-500 leading-relaxed">
+                    We also offer motorbike and scooter rental, including Honda Click, PCX, Yamaha NMAX and more. <a href="https://pattayarentabike.com/" rel="noopener" class="text-primary font-bold hover:underline">View our scooter and motorbike rental options →</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA Block -->
+<section class="py-24 bg-ink">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-5xl font-black text-white italic tracking-tight mb-4">Готовы забронировать аренду авто в Паттайе?</h2>
+        <p class="text-white/40 font-medium mb-10 max-w-lg mx-auto">Доставим до вашего отеля или кондо, 7 дней в неделю. Выберите автомобиль онлайн или напишите нам в WhatsApp.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/cars/" class="btn-primary inline-flex">Выбрать автомобиль</a>
+            <a href="https://wa.me/<%= site.contact.whatsapp %>" class="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-black uppercase tracking-widest py-4 px-8 rounded-full transition-all active:scale-95">Написать в WhatsApp</a>
+        </div>
+    </div>
+</section>
