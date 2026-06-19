@@ -1,0 +1,99 @@
+<!-- Hero -->
+<section class="bg-paper pt-32 pb-24 border-b border-gray-100">
+    <div class="container mx-auto px-6">
+        <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
+            Service Area
+        </div>
+        <h1 class="text-4xl md:text-6xl font-light tracking-tight mb-6 text-ink">Car Rental in <span class="font-black italic text-primary">Jomtien</span></h1>
+        <p class="text-xl text-gray-500 max-w-2xl font-medium">We deliver your rental car directly to your Jomtien hotel or condo — no depot visit, no hassle. Cars from ฿700/day.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="/cars/" class="btn-primary inline-flex">Browse Available Cars</a>
+            <a href="https://wa.me/<%= site.contact.whatsapp %>" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-gray-200 hover:border-primary text-ink font-black uppercase tracking-widest py-4 px-8 rounded-full transition-all active:scale-95">WhatsApp Us Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-24">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto space-y-20">
+
+            <!-- Section 1: Hotel Delivery -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Delivered Directly to Your Jomtien Hotel</h2>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    We deliver rental cars straight to your door anywhere along Jomtien Beach Road, Dongtan Beach, Thappraya Road, and Chaiyaphruek Road. Whether you're staying in a beachfront hotel, a condo on the quieter sois, or a guesthouse tucked off the main road — we come to you.
+                </p>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    There's no depot to visit, no taxi to take first, and no time wasted. Book online or WhatsApp us, confirm your drop-off point, and the car will be waiting for you when you arrive.
+                </p>
+                <p class="text-gray-500 leading-relaxed">
+                    Delivery is available 7 days a week. WhatsApp us to confirm your exact hotel address and pickup time — we'll handle the rest.
+                </p>
+            </div>
+
+            <!-- Section 2: Driving & Parking -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Driving &amp; Parking in Jomtien</h2>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    Jomtien Beach Road has street parking along the beachfront — it's easy to find on weekdays but fills up quickly on weekends and public holidays. For quieter parking, the side sois running off Jomtien Beach Road are a much better bet, with shaded spots usually available throughout the day.
+                </p>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    One of the biggest advantages of renting a car in Jomtien is the freedom to explore beyond the baht bus route. Head south and you can reach Sattahip, Samaesan, and Bang Saray — areas that are beautiful but time-consuming to access by public transport.
+                </p>
+                <p class="text-gray-500 leading-relaxed">
+                    Jomtien sits approximately 6–8 km south of central Pattaya. You can take the scenic beachfront route via Pattaya–Naklua Road and South Pattaya, or use Sukhumvit Road for a faster run. Either way, it's a straightforward drive that a rental car makes very easy.
+                </p>
+            </div>
+
+            <!-- Section 3: Scooter / Motorbike -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Scooter and Motorbike Rental in Jomtien</h2>
+                <p class="text-gray-500 leading-relaxed mb-4">
+                    If a car is more than you need, a scooter or motorbike is perfect for navigating Jomtien's beach road and the narrow side streets — you can park anywhere, move quickly, and enjoy the sea breeze.
+                </p>
+                <p class="text-gray-500 leading-relaxed">
+                    We also offer motorbike and scooter rental, including Honda Click, PCX, Yamaha NMAX and more. <a href="https://pattayarentabike.com/" rel="noopener" class="text-primary font-bold hover:underline">View our scooter and motorbike rental options →</a>
+                </p>
+            </div>
+
+            <!-- Section 4: Why PRAC -->
+            <div>
+                <h2 class="text-3xl font-black text-ink mb-6">Why Rent with Pattaya Rent a Car</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <% [
+                        { title: 'English-speaking team', desc: 'No language barriers. We respond fast on WhatsApp — in plain English, any time.' },
+                        { title: 'Flexible rental periods', desc: 'Rent for a single day or several months. Rates get better the longer you rent.' },
+                        { title: 'Full insurance included', desc: 'Every rental includes comprehensive Viriyah insurance. No hidden extras.' },
+                        { title: 'No hidden fees', desc: 'The price you see is the price you pay. Unlimited kilometres, no surprises.' },
+                        { title: 'WhatsApp booking', desc: 'Book, ask questions, and manage your rental entirely over WhatsApp.' },
+                        { title: 'Over ' + site.trust.years + ' years operating', desc: 'More than ' + site.trust.customers + ' customers and ' + site.trust.googleRating + ' stars on Google.' }
+                    ].forEach(item => { %>
+                        <div class="flex gap-4 items-start p-6 bg-paper rounded-2xl border border-gray-100">
+                            <div class="w-6 h-6 bg-blue-50 text-primary rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-black text-ink text-sm mb-1"><%= item.title %></p>
+                                <p class="text-xs text-gray-500 leading-relaxed"><%= item.desc %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA Block -->
+<section class="py-24 bg-ink">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-5xl font-black text-white italic tracking-tight mb-4">Ready to Book Your Jomtien Car Rental?</h2>
+        <p class="text-white/40 font-medium mb-10 max-w-lg mx-auto">We deliver to your hotel or condo, 7 days a week. Browse the fleet or WhatsApp us now for a fast quote.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/cars/" class="btn-primary inline-flex">Browse Available Cars</a>
+            <a href="https://wa.me/<%= site.contact.whatsapp %>" class="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-black uppercase tracking-widest py-4 px-8 rounded-full transition-all active:scale-95">WhatsApp Us Now</a>
+        </div>
+    </div>
+</section>

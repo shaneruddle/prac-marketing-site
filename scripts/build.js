@@ -483,6 +483,22 @@ async function build() {
                                                                                                             ]
                                             }
                     }, tPath('long-term-rental/index.html'));
+                // Jomtien Car Rental — dedicated location landing page
+                await renderPage('jomtien-car-rental', {
+                    lang, t, langPrefix,
+                    title: 'Car Rental Jomtien | Pattaya Rent a Car — Delivered to Your Hotel',
+                    description: 'Car rental in Jomtien from ฿700/day. We deliver directly to your Jomtien hotel or condo. Easy beach road parking, flexible pickup. Book online or WhatsApp us now.',
+                    schema: {
+                        '@context': 'https://schema.org',
+                        '@type': 'AutoRental',
+                        'name': site.name + ' — Jomtien',
+                        'description': 'Car rental delivered to Jomtien hotels and condos. Serving Jomtien Beach Road, Thappraya Road, and the wider Jomtien area.',
+                        'areaServed': 'Jomtien, Pattaya, Chonburi',
+                        'url': 'https://' + site.domain + '/jomtien-car-rental/',
+                        'telephone': site.contact.phone,
+                        'priceRange': '฿฿'
+                    }
+                }, tPath('jomtien-car-rental/index.html'));
                 // FAQ page (real data from faqs collection, grouped by category)
                 await renderPage('faq', {
                             lang, t, langPrefix,
@@ -540,7 +556,7 @@ async function build() {
     // -- Sitemap -------------------------------------------------------------
     const sitemapEntries = [
                 '/', '/cars/', '/locations/', '/about/', '/contact/', '/faq/',
-                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/blog/'
+                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/jomtien-car-rental/', '/blog/'
             ];
 
     guides.forEach(g    => sitemapEntries.push('/cars/' + g.slug + '/'));
