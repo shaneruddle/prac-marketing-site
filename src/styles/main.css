@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 @theme {
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-primary: #FF6321;
-  --color-primary-hover: #e5571e;
-  --color-paper: #F5F5F0;
-  --color-ink: #1A1A1A;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-primary: #F07D17;
+  --color-primary-hover: #D76C0F;
+  --color-paper: #F5F5F0;
+  --color-ink: #1D1D1B;
 }
 
 @layer base {
@@ -15,6 +16,9 @@
   }
   body {
     @apply bg-paper text-ink antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
   }
 }
 
@@ -34,7 +38,7 @@
     @apply font-mono text-[10px] uppercase tracking-[0.4em] text-ink/30 mb-6 block;
   }
 
-  /* Feature/content card (spacious) â glass-card utilities inlined */
+  /* Feature/content card (spacious) — glass-card utilities inlined */
   .card {
     @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-sm rounded-[32px] p-10;
   }

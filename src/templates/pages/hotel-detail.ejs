@@ -7,7 +7,7 @@
       <span class="mx-2">/</span>
       <span class="text-gray-600"><%= hotel.name %></span>
     </nav>
-    <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"><%= hotel.h1 %></h1>
+    <h1 class="text-3xl lg:text-4xl font-bold text-ink mb-4"><%= hotel.h1 %></h1>
     <p class="text-lg text-gray-600 max-w-2xl"><%= hotel.intro %></p>
     <div class="mt-6 flex flex-wrap gap-3">
       <a href="/rent-a-car" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl transition-all">Book Now</a>
@@ -36,7 +36,7 @@
       <div class="lg:col-span-2">
 
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-8">
-          <h2 class="font-bold text-gray-900 text-xl mb-3">Pickup & Delivery</h2>
+          <h2 class="font-bold text-ink text-xl mb-3">Pickup & Delivery</h2>
           <p class="text-gray-600 mb-2"><%= hotel.pickupNotes %></p>
           <p class="text-sm font-semibold text-orange-500"><%= hotel.responseTime %></p>
         </div>
@@ -47,7 +47,7 @@
 
         <% if (hotel.whyRentFromUs && hotel.whyRentFromUs.length > 0) { %>
         <div class="mb-8">
-          <h2 class="font-bold text-gray-900 text-xl mb-4">Why Rent From Us?</h2>
+          <h2 class="font-bold text-ink text-xl mb-4">Why Rent From Us?</h2>
           <ul class="space-y-2">
             <% hotel.whyRentFromUs.forEach(point => { %>
             <li class="flex items-start gap-2">
@@ -61,7 +61,7 @@
 
         <% if (hotel.nearbyAttractions && hotel.nearbyAttractions.length > 0) { %>
         <div class="mb-8">
-          <h2 class="font-bold text-gray-900 text-xl mb-4">Nearby Attractions</h2>
+          <h2 class="font-bold text-ink text-xl mb-4">Nearby Attractions</h2>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <% hotel.nearbyAttractions.forEach(a => { %>
             <div class="bg-gray-50 rounded-xl p-3">
@@ -75,7 +75,7 @@
 
         <% if (hotel.faqs && hotel.faqs.length > 0) { %>
         <div class="mt-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <h2 class="text-2xl font-bold text-ink mb-6">Frequently Asked Questions</h2>
           <div class="space-y-4">
             <% hotel.faqs.forEach(faq => { %>
             <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden">
@@ -94,7 +94,7 @@
 
       <div class="space-y-6">
         <div class="p-6 rounded-3xl border-2 border-dashed border-gray-200 text-center">
-          <h4 class="font-bold text-gray-900 mb-2">Free Delivery to <%= hotel.name %></h4>
+          <h4 class="font-bold text-ink mb-2">Free Delivery to <%= hotel.name %></h4>
           <p class="text-sm text-gray-400 mb-6">We bring the car to your hotel. Open 24/7 for support.</p>
           <a href="/contact" class="text-orange-600 font-bold text-sm hover:underline">Contact Us</a>
         </div>
