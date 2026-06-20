@@ -214,7 +214,7 @@ async function renderPage(templatePath, data, outputPath) {
                 site,
                 languages,
                 body: renderedBody,
-                url: outputPath.replace(/index\.html$/, '').replace(/^\.\/dist/, '').replace(/^\.\//, '/')
+                url: ('/' + outputPath.replace(/index\.html$/, '').replace(/^\.\/dist\//, '').replace(/^(\.\/|\/)/, '')).replace('//', '/')
     }, { filename: path.join(srcDir, 'templates/layout.ejs') });
 
     await fs.outputFile(path.join(distDir, outputPath), fullHtml);
