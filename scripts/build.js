@@ -499,6 +499,14 @@ async function build() {
                     }
                 }, tPath('jomtien-car-rental/index.html'));
 
+                // Cheap car rental Pattaya -- price-led landing page
+                await renderPage('cheap-car-rental-pattaya', {
+                    lang, t, langPrefix,
+                    title: 'Cheap Car Rental Pattaya from ฿590/day | No Hidden Fees',
+                    description: 'Cheap car rental Pattaya from ฿590/day. Economy, sedan & SUV hire with free hotel delivery, insurance included, and no hidden fees. Book online now.',
+                    schema: null
+                }, tPath('cheap-car-rental-pattaya/index.html'));
+
                 // Russian-language landing page — standalone, no language-loop variants
                 if (lang === 'en') {
                     await renderPage('arenda-avto-pattaya', {
@@ -609,7 +617,7 @@ async function build() {
     // -- Sitemap -------------------------------------------------------------
     const sitemapEntries = [
                 '/', '/cars/', '/locations/', '/about/', '/contact/', '/faq/',
-                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/jomtien-car-rental/', '/blog/'
+                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/jomtien-car-rental/', '/cheap-car-rental-pattaya/', '/blog/'
             ];
 
     guides.forEach(g    => sitemapEntries.push('/cars/' + g.slug + '/'));
