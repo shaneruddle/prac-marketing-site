@@ -524,6 +524,33 @@ async function build() {
                             'inLanguage': 'ru'
                         }
                     }, 'arenda-avto-pattaya/index.html');
+
+  await renderPage('autovermietung-pattaya', {
+    lang: 'de',
+    t: {},
+    langPrefix: '',
+    title: 'Autovermietung Pattaya - Mietwagen ab 590 THB/Tag | Pattaya Rent a Car',
+    description: 'Auto mieten in Pattaya ab 590 THB/Tag (~15 EUR). Hotellieferung inklusive, internationaler Fuehrerschein erforderlich. Jetzt anfragen.',
+    hreflangTags: [
+      { lang: 'de', href: 'https://' + site.domain + '/autovermietung-pattaya/' },
+      { lang: 'x-default', href: 'https://' + site.domain + '/' }
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'AutoRental',
+      'name': 'Pattaya Rent a Car',
+      'url': 'https://' + site.domain + '/autovermietung-pattaya/',
+      'description': 'Autovermietung Pattaya - guenstige Mietwagen mit Hotellieferung. Preise ab 590 THB/Tag.',
+      'telephone': site.contact.phone,
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Pattaya',
+        'addressCountry': 'TH'
+      },
+      'priceRange': '590-2500 THB/Tag',
+      'areaServed': 'Pattaya, Jomtien, Naklua, Pratumnak'
+    }
+  }, 'autovermietung-pattaya/index.html');
                 }
                 // FAQ page (real data from faqs collection, grouped by category)
                 await renderPage('faq', {
@@ -591,7 +618,7 @@ async function build() {
 
     if (lang === 'en') {
       const lcs = languages.map(l => l.code);
-      const allUrls = [...sitemapEntries, ...lcs.filter(c => c !== 'en').flatMap(c => sitemapEntries.map(e => '/' + c + e)), '/arenda-avto-pattaya/'];
+      const allUrls = [...sitemapEntries, ...lcs.filter(c => c !== 'en').flatMap(c => sitemapEntries.map(e => '/' + c + e)), '/arenda-avto-pattaya/', '/autovermietung-pattaya/'];
       const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
         allUrls.map(e => '  <url><loc>https://' + site.domain + e + '</loc></url>').join('\n') +
         '\n</urlset>';
