@@ -559,6 +559,37 @@ async function build() {
       'areaServed': 'Pattaya, Jomtien, Naklua, Pratumnak'
     }
   }, 'autovermietung-pattaya/index.html');
+  await renderPage('car-rental-pattaya-korean', {
+    lang: 'ko',
+    t: {},
+    langPrefix: '',
+    title: '파타야 렌터카 | 저렴한 가격으로 차량 렌트 예약',
+    description: '파타야 렌터카 최저가 보장. 경제형부터 SUV까지 다양한 차량. 호텔 픽업 서비스 제공. 하루 ฿590부터 시작.',
+    hreflangTags: [
+      { lang: 'ko', href: 'https://' + site.domain + '/car-rental-pattaya-korean/' },
+      { lang: 'x-default', href: 'https://' + site.domain + '/' }
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'AutoRental',
+      'name': 'Pattaya Rent a Car',
+      'url': 'https://' + site.domain + '/car-rental-pattaya-korean/',
+      'description': '파타야 렌터카 서비스. 호텔 픽업 및 반납 제공.',
+      'telephone': site.contact.phone,
+      'email': site.contact.email,
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Pattaya',
+        'addressCountry': 'TH'
+      },
+      'areaServed': {
+        '@type': 'City',
+        'name': 'Pattaya'
+      },
+      'priceRange': '฿590 - ฿3000',
+      'inLanguage': 'ko'
+    }
+  }, 'car-rental-pattaya-korean/index.html');
                 }
                 // FAQ page (real data from faqs collection, grouped by category)
                 await renderPage('faq', {
@@ -626,7 +657,7 @@ async function build() {
 
     if (lang === 'en') {
       const lcs = languages.map(l => l.code);
-      const allUrls = [...sitemapEntries, ...lcs.filter(c => c !== 'en').flatMap(c => sitemapEntries.map(e => '/' + c + e)), '/arenda-avto-pattaya/', '/autovermietung-pattaya/'];
+      const allUrls = [...sitemapEntries, ...lcs.filter(c => c !== 'en').flatMap(c => sitemapEntries.map(e => '/' + c + e)), '/arenda-avto-pattaya/', '/autovermietung-pattaya/', '/car-rental-pattaya-korean/'];
       const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
         allUrls.map(e => '  <url><loc>https://' + site.domain + e + '</loc></url>').join('\n') +
         '\n</urlset>';
