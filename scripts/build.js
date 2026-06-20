@@ -195,6 +195,22 @@ function flattenLocation(loc, lang) {
         };
 }
 
+// -- Blog post flattener ----------------------------------------------------
+
+function flattenBlogPost(post, lang) {
+        const t = (post.translations && post.translations[lang])
+            || (post.translations && post.translations['en'])
+            || {};
+        return {
+                    ...post,
+                    title:       t.title       || post.slug,
+                    excerpt:     t.excerpt     || '',
+                    content:     t.body        || '',
+                    coverImage:  post.featuredImage || post.coverImage || null,
+                    tags:        post.tags     || [],
+        };
+}
+
 // -- Page renderer -----------------------------------------------------------
 
 async function renderPage(templatePath, data, outputPath) {
@@ -627,19 +643,20 @@ async function build() {
 
                 // Individual blog post pages
                 for (const post of blogPosts) {
+                    const flatPost = flattenBlogPost(post, lang);
                     await renderPage('blog-post', {
                         lang, t, langPrefix,
-                        post,
-                        title: post.title,
-                        description: post.excerpt || post.title,
+                        post: flatPost,
+                        title: flatPost.title,
+                        description: flatPost.excerpt || flatPost.title,
                         schema: {
                             '@context': 'https://schema.org',
                             '@type': 'BlogPosting',
-                            'headline': post.title,
-                            'description': post.excerpt || '',
-                            'image': post.coverImage || '',
-                            'datePublished': post.publishedAt || '',
-                            'dateModified': post.updatedAt || post.publishedAt || '',
+                            'headline': flatPost.title,
+                            'description': flatPost.excerpt || '',
+                            'image': flatPost.coverImage || '',
+                            'datePublished': flatPost.publishedAt || '',
+                            'dateModified': flatPost.updatedAt || flatPost.publishedAt || '',
                             'author': { '@type': 'Organization', 'name': site.name }
                         }
                     }, tPath('blog/' + post.slug + '/index.html'));
