@@ -523,6 +523,14 @@ async function build() {
                     schema: null
                 }, tPath('cheap-car-rental-pattaya/index.html'));
 
+                // Pattaya Car Hire — British English landing page targeting 'car hire pattaya' queries
+                await renderPage('pattaya-car-hire', {
+                    lang, t, langPrefix,
+                    title: 'Car Hire Pattaya — Daily Rentals from ฿590',
+                    description: 'Car hire in Pattaya from ฿590/day. Free hotel delivery, no hidden fees. Honda Jazz, Toyota Yaris, SUVs available. Book online in 60 seconds.',
+                    schema: null
+                }, tPath('pattaya-car-hire/index.html'));
+
                 // Russian-language landing page — standalone, no language-loop variants
                 if (lang === 'en') {
                     await renderPage('arenda-avto-pattaya', {
@@ -665,7 +673,7 @@ async function build() {
     // -- Sitemap -------------------------------------------------------------
     const sitemapEntries = [
                 '/', '/cars/', '/locations/', '/about/', '/contact/', '/faq/',
-                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/jomtien-car-rental/', '/cheap-car-rental-pattaya/', '/blog/'
+                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/jomtien-car-rental/', '/cheap-car-rental-pattaya/', '/pattaya-car-hire/', '/blog/'
             ];
 
     guides.forEach(g    => sitemapEntries.push('/cars/' + g.slug + '/'));
