@@ -10,9 +10,16 @@
 </span>
 <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/50"><%= (t.home && t.home.badge) || 'Cars available right now' %></span>
 </div>
+<% if (lang === 'th') { %>
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8 text-ink">เช่ารถพัทยา ราคาถูก</h1>
+<p class="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8 text-ink">
+<span class="font-black italic text-primary"><%= (t.home && t.home.tagline) || 'ส่งฟรีถึงโรงแรม' %></span> — <%= (t.home && t.home.taglineSuffix) || 'ดีที่สุดในพัทยา' %>
+</p>
+<% } else { %>
 <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8 text-ink">
 <%= (t.home && t.home.heading) || 'Car Rental Pattaya' %><br/><span class="font-black italic text-primary"><%= (t.home && t.home.tagline) || 'Free Hotel Delivery' %></span> — <%= (t.home && t.home.taglineSuffix) || 'Best in Pattaya.' %>
 </h1>
+<% } %>
 <p class="text-lg text-ink/60 max-w-lg mb-10 leading-relaxed">
 <%= (t.home && t.home.subtitle) || 'Premium fleet, free delivery to your hotel, and 24/7 support. No hidden fees. Just the freedom to explore Thailand.' %>
 </p>
