@@ -248,6 +248,10 @@ async function build() {
     await fs.copy(path.join(srcDir, 'assets'), path.join(distDir, 'assets'));
         await fs.outputFile(path.join(distDir, 'favicon.ico'), '');
 
+    // Copy standalone video asset
+    await fs.ensureDir(path.join(distDir, 'video'));
+    await fs.copy(path.join(srcDir, 'video/prac-pre-drive-check.html'), path.join(distDir, 'video/prac-pre-drive-check.html'));
+
     // -- Fetch all Firestore data upfront ------------------------------------
     console.log('Fetching from Firestore...');
   const [guides, locations, blogPosts, faqs, company, priceMap, hotels] = await Promise.all([
@@ -632,6 +636,42 @@ async function build() {
                             }
                 }, tPath('faq/index.html'));
 
+                // Pre-drive checklist — static content page with VideoObject + FAQPage schema
+                await renderPage('pre-drive-checklist', {
+                    lang, t, langPrefix,
+                    title: 'Pre-Drive Checklist — Car Rental Pattaya | What to Check Before You Drive',
+                    description: 'Renting a car in Pattaya? Run this free 10-point pre-drive check — tyres, glass, lights, fuel and more — before you drive away. Protect your deposit and avoid disputes. By Pattaya Rent a Car.',
+                    schema: {
+                        '@context': 'https://schema.org',
+                        '@graph': [
+                            {
+                                '@type': 'VideoObject',
+                                'name': 'Pattaya Rent a Car — Pre-Drive Checklist',
+                                'description': 'A 90-second animated guide to the 10 checks every renter should make before driving away in Pattaya: exterior damage, tyres, glass, lights, fuel, seat & seatbelt, mirrors, air-con, navigation and final sign-off.',
+                                'thumbnailUrl': 'https://' + site.domain + '/img/pre-drive-check-thumb.jpg',
+                                'uploadDate': '2026-06-21',
+                                'duration': 'PT1M31S',
+                                'contentUrl': 'https://' + site.domain + '/video/prac-pre-drive-check.html',
+                                'embedUrl': 'https://' + site.domain + '/video/prac-pre-drive-check.html',
+                                'publisher': {
+                                    '@type': 'Organization',
+                                    'name': site.name,
+                                    'logo': { '@type': 'ImageObject', 'url': 'https://' + site.domain + '/assets/images/logo.png' }
+                                }
+                            },
+                            {
+                                '@type': 'FAQPage',
+                                'mainEntity': [
+                                    { '@type': 'Question', 'name': 'What should I check before driving a rental car in Pattaya?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Before driving away, do a full 360° walk-around for existing damage and photograph it, check all four tyres plus the spare, scan the windscreen and windows for chips, test every light, note the fuel level and type, adjust your seat and seatbelt, set the mirrors, get the air-con and Bluetooth working, and set your route. Finally, sign off the vehicle condition with the delivery driver.' } },
+                                    { '@type': 'Question', 'name': 'Why should I photograph the car before I drive away?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Photos and a short video taken at handover are your record of any existing dents, scratches or scuffs. Damage noted before departure is covered; damage discovered after return may be charged. It protects both you and your deposit.' } },
+                                    { '@type': 'Question', 'name': 'What happens if I find damage or a problem at pickup?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Show it to our delivery driver and make sure it is noted on your rental agreement before driving. For anything serious — a flat tyre, a cracked windscreen or a faulty light — message us on WhatsApp before moving the car and we will sort it immediately. We are available 24/7.' } },
+                                    { '@type': 'Question', 'name': 'Is insurance included with Pattaya Rent a Car?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes. Every rental includes comprehensive insurance. Running this pre-drive checklist and recording the vehicle\'s condition at handover keeps your cover straightforward and avoids disputes at return.' } }
+                                ]
+                            }
+                        ]
+                    }
+                }, tPath('pre-drive-checklist/index.html'));
+
                 // Blog index (paginated, 12 per page)
                 const POSTS_PER_PAGE = 12;
                 const totalPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
@@ -673,7 +713,7 @@ async function build() {
     // -- Sitemap -------------------------------------------------------------
     const sitemapEntries = [
                 '/', '/cars/', '/locations/', '/about/', '/contact/', '/faq/',
-                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/jomtien-car-rental/', '/cheap-car-rental-pattaya/', '/pattaya-car-hire/', '/blog/'
+                '/terms/', '/privacy/', '/insurance/', '/motorbike-rental/', '/long-term-rental/', '/jomtien-car-rental/', '/cheap-car-rental-pattaya/', '/pattaya-car-hire/', '/pre-drive-checklist/', '/blog/'
             ];
 
     guides.forEach(g    => sitemapEntries.push('/cars/' + g.slug + '/'));
